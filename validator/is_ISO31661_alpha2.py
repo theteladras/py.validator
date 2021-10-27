@@ -1,4 +1,4 @@
-from utils.assert_string import assert_string
+from .utils.assert_string import assert_string
 
 valid_ISO31661_alpha2_countries_codes = {
     'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW', 'AX', 'AZ',

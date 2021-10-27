@@ -1,7 +1,7 @@
 import re
 
-from utils.assert_string import assert_string
-from utils.assert_string import assert_string
+from .utils.assert_string import assert_string
+from .utils.assert_string import assert_string
 
 base32 = re.compile("^[A-Z2-7]+=*$")
 

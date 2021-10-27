@@ -1,6 +1,6 @@
 import re
 
-from utils.assert_string import assert_string
+from .utils.assert_string import assert_string
 
 pattern = re.compile("^[\x00-\x7F]+$")
 

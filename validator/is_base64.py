@@ -1,8 +1,8 @@
 import re
 
-from utils.assert_string import assert_string
-from utils.merge import merge
-from utils.index_of import index_of
+from .utils.assert_string import assert_string
+from .utils.merge import merge
+from .utils.index_of import index_of
 
 not_base64 = re.compile("[^A-Z0-9+\/=]", re.IGNORECASE)
 url_safe_base64 = re.compile("^[A-Z0-9_\-]*$", re.IGNORECASE)

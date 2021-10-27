@@ -1,6 +1,6 @@
 import re
 
-from utils.assert_string import assert_string
+from .utils.assert_string import assert_string
 
 base58Reg = re.compile("^[A-HJ-NP-Za-km-z1-9]*$")
 

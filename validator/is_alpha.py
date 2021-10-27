@@ -1,7 +1,7 @@
 import re
 
-from utils.assert_string import assert_string
-from alpha import alpha
+from .utils.assert_string import assert_string
+from .alpha import alpha
 
 def is_alpha(input, locale = 'en-US', options = {}):
     assert_string(input)

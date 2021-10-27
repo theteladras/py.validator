@@ -1,6 +1,6 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-VERSION = '0.0.1'
+VERSION = '0.0.6'
 DESCRIPTION = 'String validation and sanitization'
 LONG_DESCRIPTION = 'Package that allows for validate and sanitize of string values. For example to check if a string is an ascii string etc.'
 
@@ -8,12 +8,13 @@ LONG_DESCRIPTION = 'Package that allows for validate and sanitize of string valu
 setup(
     name="py.validator",
     version=VERSION,
-    author="theteladras",
+    author="Sanel",
+    author_email="sanelbgd@hotmail.com",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
-    packages=find_packages(),
-    install_requires=['opencv-python', 'pyautogui', 'pyaudio'],
+    packages=['validator'],
+    install_requires=[],
     keywords=['python', 'validation', 'sanitization', 'javascript'],
     classifiers=[
         "Development Status :: 1 - Planning",
@@ -22,5 +23,6 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
-    ]
+    ],
+    license='MIT'
 )
