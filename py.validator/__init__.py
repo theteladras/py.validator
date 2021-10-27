@@ -5,3 +5,5 @@ from .is_base32 import *
 from .is_base58 import *
 from .is_base64 import *
 from .is_before import *
+from .is_BIC import *
+from .is_ISO31661_alpha2 import *
