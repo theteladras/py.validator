@@ -14,8 +14,8 @@ def is_byte_length(input: str, options = {}) -> bool:
 
     options = merge(options, default_options)
 
-    input_length = len(re.split("%..|.", parse.quote(input, safe='@/:;?&=+$,')))
+    input_length = len(re.split("%..|.", parse.quote(input, safe='@/:;?&=+$,'))) - 1
 
     return input_length >= options["min"] and (
-        options["max"] == None or input_length < options["max"]
+        options["max"] == None or input_length <= options["max"]
     )

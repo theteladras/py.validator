@@ -1,6 +1,6 @@
-from .utils.to_date import to_date, default
+from .utils.to_date import to_date, default_date_string
 
-def is_after(input, date = default()):
+def is_after(input, date = default_date_string()):
     comparison = to_date(date)
     original = to_date(input)
     return bool(original and comparison and original > comparison)

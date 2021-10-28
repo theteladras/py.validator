@@ -2,7 +2,6 @@ import unittest
 import validator
 
 class TestIsBase58(unittest.TestCase):
-    print('>>>>TestIsBase64<<<<')
 
     def test_valid_base64(self):
         self.assertTrue(validator.is_base64(''))

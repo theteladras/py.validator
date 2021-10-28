@@ -2,7 +2,6 @@ import unittest
 import validator
 
 class TestIsAscii(unittest.TestCase):
-    print('>>>>TestIsAscii<<<<')
 
     def test_valid_ascii_strings(self):
         self.assertTrue(validator.is_ascii('foobar'))

@@ -2,7 +2,6 @@ import unittest
 import validator
 
 class TestIsBase32(unittest.TestCase):
-    print('>>>>TestIsBase32<<<<')
 
     def test_valid_base32(self):
         self.assertTrue(validator.is_base32('ZG======'))

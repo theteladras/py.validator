@@ -2,7 +2,6 @@ import unittest
 import validator
 
 class TestIsBase58(unittest.TestCase):
-    print('>>>>TestIsBase58<<<<')
 
     def test_valid_base58(self):
         self.assertTrue(validator.is_base58('BukQL'))

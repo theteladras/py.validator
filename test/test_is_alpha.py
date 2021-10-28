@@ -2,7 +2,6 @@ import unittest
 import validator
 
 class TestIsAlpha(unittest.TestCase):
-    print('>>>>TestIsAlpha<<<<')
 
     def test_valid_alpha_strings(self):
         self.assertTrue(validator.is_alpha('abc'))
