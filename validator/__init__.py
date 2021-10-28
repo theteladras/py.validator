@@ -12,3 +12,4 @@ from .is_boolean import *
 from .is_btc_address import *
 from .is_byte_length import *
 from .is_credit_card import *
+from .is_currency import *

@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=['validator'],
-    install_requires=[],
+    install_requires=['typing'],
     keywords=['python', 'validation', 'sanitization', 'javascript'],
     classifiers=[
         "Development Status :: 1 - Planning",
