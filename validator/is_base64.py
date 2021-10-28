@@ -8,18 +8,18 @@ not_base64 = re.compile("[^A-Z0-9+\/=]", re.IGNORECASE)
 url_safe_base64 = re.compile("^[A-Z0-9_\-]*$", re.IGNORECASE)
 
 default_base64_options = {
-    "urlSafe": False
+    "url_safe": False
 }
 
-def is_base64(input, options = {}):
+def is_base64(input: str, options = {}) -> bool:
     assert_string(input)
-    merge(options, default_base64_options)
+    options = merge(options, default_base64_options)
     input_length = len(input)
 
-    if options.url_safe:
+    if options["url_safe"]:
         return url_safe_base64.match(input)
 
-    if len % 4 != 0 or not_base64.match(input):
+    if (input_length % 4) != 0 or not_base64.match(input):
         return False
 
     first_padding_char = index_of(input, '=')
