@@ -2,7 +2,7 @@ from setuptools import setup
 
 VERSION = '0.0.6'
 DESCRIPTION = 'String validation and sanitization'
-LONG_DESCRIPTION = 'Package that allows for validate and sanitize of string values. For example to check if a string is an ascii string etc.'
+LONG_DESCRIPTION = 'Package that allows for validate and sanitize of string values. For example to check if a string is an ascii string, is it a float or an uuid etc.'
 
 # Setting up
 setup(
