@@ -20,3 +20,4 @@ from .is_int import *
 from .is_number import *
 from .is_ean import *
 from .is_uuid import *
+from .is_isrc import *
