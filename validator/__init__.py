@@ -19,3 +19,4 @@ from .is_float import *
 from .is_int import *
 from .is_number import *
 from .is_ean import *
+from .is_uuid import *
