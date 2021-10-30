@@ -18,3 +18,7 @@ class List(list):
 
     def reduce(self, cb, initializer=None):
         return reduce(self, cb, initializer)
+
+    @property
+    def length(self):
+        return len(self)

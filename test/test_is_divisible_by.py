@@ -3,7 +3,7 @@ import validator
 
 class TestIsDivisibleBy(unittest.TestCase):
 
-    def test_valid_divisible(self) -> bool:
+    def test_valid_divisible(self):
         self.assertTrue(validator.is_divisible_by('2', 2))
         self.assertTrue(validator.is_divisible_by('4', 2))
         self.assertTrue(validator.is_divisible_by('100', 2))

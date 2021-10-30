@@ -3,7 +3,7 @@ import validator
 
 class TestIsCurrency(unittest.TestCase):
 
-    def test_valid_currency(self) -> bool:
+    def test_valid_currency(self):
         self.assertTrue(validator.is_currency('-$10,123.45'))
         self.assertTrue(validator.is_currency('$10,123.45'))
         self.assertTrue(validator.is_currency('$10123.45'))
@@ -49,7 +49,7 @@ class TestIsCurrency(unittest.TestCase):
         self.assertFalse(validator.is_currency('- $'))
         print('OK - test_invalid_currency')
 
-    def test_valid_currency_dont_allow_decimal(self) -> bool:
+    def test_valid_currency_dont_allow_decimal(self):
         self.assertTrue(validator.is_currency('-$10,123', {
           "allow_decimal": False,
         }))
@@ -169,7 +169,7 @@ class TestIsCurrency(unittest.TestCase):
         }))
         print('OK - test_invalid_currency_dont_allow_decimal')
 
-    def test_valid_currency_digits_after_decimal(self) -> bool:
+    def test_valid_currency_digits_after_decimal(self):
         self.assertTrue(validator.is_currency('-$10,123.4', {
           "digits_after_decimal": [1, 3],
         }))
@@ -229,7 +229,7 @@ class TestIsCurrency(unittest.TestCase):
         }))
         print('OK - test_invalid_currency_digits_after_decimal')
 
-    def test_valid_currency_require_symbol(self) -> bool:
+    def test_valid_currency_require_symbol(self):
         self.assertTrue(validator.is_currency('-$.99', {
           "require_symbol": True,
         }))
@@ -256,7 +256,7 @@ class TestIsCurrency(unittest.TestCase):
         }))
         print('OK - test_invalid_currency_require_symbol')
 
-    def test_valid_currency_add_symbol_prefix(self) -> bool:
+    def test_valid_currency_add_symbol_prefix(self):
         self.assertTrue(validator.is_currency('123,456.78', {
           "symbol": "¥",
           "negative_sign_before_digits": True,

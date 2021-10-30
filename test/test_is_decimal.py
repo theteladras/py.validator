@@ -3,7 +3,7 @@ import validator
 
 class TestIsDecimal(unittest.TestCase):
 
-    def test_valid_decimale(self) -> bool:
+    def test_valid_decimale(self):
         self.assertTrue(validator.is_decimal('123'))
         self.assertTrue(validator.is_decimal('00123'))
         self.assertTrue(validator.is_decimal('-00123'))
@@ -39,7 +39,7 @@ class TestIsDecimal(unittest.TestCase):
         self.assertFalse(validator.is_decimal('\n'))
         print('OK - test_invalid_decimale')
 
-    def test_valid_decimale_locale_en_au(self) -> bool:
+    def test_valid_decimale_locale_en_au(self):
         self.assertTrue(validator.is_decimal('123', { "locale": "en-AU" }))
         self.assertTrue(validator.is_decimal('00123', { "locale": "en-AU" }))
         self.assertTrue(validator.is_decimal('-00123', { "locale": "en-AU" }))
@@ -75,7 +75,7 @@ class TestIsDecimal(unittest.TestCase):
         self.assertFalse(validator.is_decimal('\n', { "locale": "en-AU" }))
         print('OK - test_invalid_decimale_locale_en_au')
 
-    def test_valid_decimale_locale_ar(self) -> bool:
+    def test_valid_decimale_locale_ar(self):
         self.assertTrue(validator.is_decimal('123', { "locale": "ar" }))
         self.assertTrue(validator.is_decimal('00123', { "locale": "ar" }))
         self.assertTrue(validator.is_decimal('-00123', { "locale": "ar" }))
@@ -98,7 +98,7 @@ class TestIsDecimal(unittest.TestCase):
         self.assertFalse(validator.is_decimal('0.0000000000001', { "locale": "ar" }))
         print('OK - test_invalid_decimale_locale_ar')
 
-    def test_valid_decimale_locale_force_decimal(self) -> bool:
+    def test_valid_decimale_locale_force_decimal(self):
         self.assertTrue(validator.is_decimal('0.01', { "force_decimal": True }))
         self.assertTrue(validator.is_decimal('.1', { "force_decimal": True }))
         self.assertTrue(validator.is_decimal('1.0', { "force_decimal": True }))
@@ -114,7 +114,7 @@ class TestIsDecimal(unittest.TestCase):
         self.assertFalse(validator.is_decimal('+123', { "force_decimal": True }))
         print('OK - test_invalid_decimale_locale_force_decimal')
 
-    def test_valid_decimale_locale_decimal_digits_2_3(self) -> bool:
+    def test_valid_decimale_locale_decimal_digits_2_3(self):
         self.assertTrue(validator.is_decimal('123', { "decimal_digits": "2,3" }))
         self.assertTrue(validator.is_decimal('00123', { "decimal_digits": "2,3" }))
         self.assertTrue(validator.is_decimal('-00123', { "decimal_digits": "2,3" }))

@@ -3,7 +3,7 @@ import validator
 
 class TestIsFloat(unittest.TestCase):
 
-    def test_valid_floats(self) -> bool:
+    def test_valid_floats(self):
         self.assertTrue(validator.is_float('123'))
         self.assertTrue(validator.is_float('123.'))
         self.assertTrue(validator.is_float('123.123'))
@@ -29,7 +29,7 @@ class TestIsFloat(unittest.TestCase):
         self.assertFalse(validator.is_float('2020-11-06T14:31:00.135Z'))
         print('OK - test_invalid_floats')
 
-    def test_valid_floats_locale_ar(self) -> bool:
+    def test_valid_floats_locale_ar(self):
         self.assertTrue(validator.is_float('123', { "locale": "ar" }))
         self.assertTrue(validator.is_float('123٫', { "locale": "ar" }))
         self.assertTrue(validator.is_float('123٫123', { "locale": "ar" }))

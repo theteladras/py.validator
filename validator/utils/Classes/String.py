@@ -12,7 +12,8 @@ class String(str):
 
     def split(self, separator = None) -> List:
         if bool(separator):
-            split_string = List(self.split(separator))
+            string = self.__str__().split(separator)
+            split_string = List(string)
             return split_string
 
         split_string =  List(self)

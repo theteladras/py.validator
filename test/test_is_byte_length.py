@@ -3,7 +3,7 @@ import validator
 
 class TestIsByteLength(unittest.TestCase):
 
-    def test_valid_byte_length_min_2(self) -> bool:
+    def test_valid_byte_length_min_2(self):
         self.assertTrue(validator.is_byte_length('abc', { "min": 2 }))
         self.assertTrue(validator.is_byte_length('de', { "min": 2 }))
         self.assertTrue(validator.is_byte_length('abcd', { "min": 2 }))
@@ -15,7 +15,7 @@ class TestIsByteLength(unittest.TestCase):
         self.assertFalse(validator.is_byte_length('a', { "min": 2 }))
         print('OK - test_invalid_byte_length')
 
-    def test_valid_byte_length_min_2_max_3(self) -> bool:
+    def test_valid_byte_length_min_2_max_3(self):
         self.assertTrue(validator.is_byte_length('abc', { "min": 2, "max": 3 }))
         self.assertTrue(validator.is_byte_length('de', { "min": 2, "max": 3 }))
         self.assertTrue(validator.is_byte_length('ｇ', { "min": 2, "max": 3 }))
@@ -28,7 +28,7 @@ class TestIsByteLength(unittest.TestCase):
         self.assertFalse(validator.is_byte_length('ｇｍ', { "min": 2, "max": 3 }))
         print('OK - test_invalid_byte_length')
 
-    def test_valid_byte_length_max_0(self) -> bool:
+    def test_valid_byte_length_max_0(self):
         self.assertTrue(validator.is_byte_length('', { "max": 0 }))
         print('OK - test_valid_byte_length')
 

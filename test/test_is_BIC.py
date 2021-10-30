@@ -3,7 +3,7 @@ import validator
 
 class TestIsBIC(unittest.TestCase):
 
-    def test_valid_bic_codes(self) -> bool:
+    def test_valid_bic_codes(self):
         self.assertTrue(validator.is_bic('SBICKEN1345'))
         self.assertTrue(validator.is_bic('SBICKEN1'))
         self.assertTrue(validator.is_bic('SBICKENY'))

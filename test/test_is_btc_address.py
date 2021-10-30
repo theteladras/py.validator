@@ -3,7 +3,7 @@ import validator
 
 class TestIsBtcAddress(unittest.TestCase):
 
-    def test_valid_btc_address(self) -> bool:
+    def test_valid_btc_address(self):
         self.assertTrue(validator.is_btc_address('1MUz4VMYui5qY1mxUiG8BQ1Luv6tqkvaiL'))
         self.assertTrue(validator.is_btc_address('3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy'))
         self.assertTrue(validator.is_btc_address('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq'))

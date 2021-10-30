@@ -11,4 +11,4 @@ class RegEx(object):
     def match(self, input: str) -> bool:
         if not self.pattern:
             return False
-        return self.pattern.match(input)
+        return bool(self.pattern.match(input))

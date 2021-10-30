@@ -17,7 +17,7 @@ def is_base64(input: str, options = {}) -> bool:
     input_length = len(input)
 
     if options["url_safe"]:
-        return url_safe_base64.match(input)
+        return bool(url_safe_base64.match(input))
 
     if (input_length % 4) != 0 or not_base64.match(input):
         return False

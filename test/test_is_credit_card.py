@@ -3,7 +3,7 @@ import validator
 
 class TestIsCreditCard(unittest.TestCase):
 
-    def test_valid_credit_cards(self) -> bool:
+    def test_valid_credit_cards(self):
         self.assertTrue(validator.is_credit_card('375556917985515'))
         self.assertTrue(validator.is_credit_card('36050234196908'))
         self.assertTrue(validator.is_credit_card('4716461583322103'))

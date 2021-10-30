@@ -3,7 +3,7 @@ import validator
 
 class TestIsInt(unittest.TestCase):
 
-    def test_valid_ints(self) -> bool:
+    def test_valid_ints(self):
         self.assertTrue(validator.is_int('13'))
         self.assertTrue(validator.is_int('123'))
         self.assertTrue(validator.is_int('0'))

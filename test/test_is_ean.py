@@ -3,7 +3,7 @@ import validator
 
 class TestIsEan(unittest.TestCase):
 
-    def test_valid_ean(self) -> bool:
+    def test_valid_ean(self):
         self.assertTrue(validator.is_ean('9421023610112'))
         self.assertTrue(validator.is_ean('1234567890128'))
         self.assertTrue(validator.is_ean('4012345678901'))

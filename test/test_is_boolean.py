@@ -3,7 +3,7 @@ import validator
 
 class TestIsBoolean(unittest.TestCase):
 
-    def test_valid_booleans(self) -> bool:
+    def test_valid_booleans(self):
         self.assertTrue(validator.is_boolean('True'))
         self.assertTrue(validator.is_boolean('False'))
         self.assertTrue(validator.is_boolean('true'))
@@ -19,7 +19,7 @@ class TestIsBoolean(unittest.TestCase):
         self.assertFalse(validator.is_boolean('yes'))
         print('OK - test_invalid_booleans')
 
-    def test_valid_loosly_booleans(self) -> bool:
+    def test_valid_loosly_booleans(self):
         self.assertTrue(validator.is_boolean('true', { "loose": True }))
         self.assertTrue(validator.is_boolean('True', { "loose": True }))
         self.assertTrue(validator.is_boolean('TRUE', { "loose": True }))
