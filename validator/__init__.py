@@ -13,3 +13,4 @@ from .is_byte_length import *
 from .is_credit_card import *
 from .is_currency import *
 from .is_data_uri import *
+from .is_decimal import *
