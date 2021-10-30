@@ -20,8 +20,6 @@ def is_float(input: Union[int, float, str], options = __default_options) -> bool
 
     options = merge(options, __default_options)
 
-    print('options: ', options)
-
     if includes(['+', '-', '.', ''], input):
         return False
 

@@ -5,7 +5,7 @@ from .is_base32 import *
 from .is_base58 import *
 from .is_base64 import *
 from .is_before import *
-from .is_BIC import *
+from .is_bic import *
 from .is_ISO31661_alpha2 import *
 from .is_boolean import *
 from .is_btc_address import *
@@ -16,3 +16,6 @@ from .is_data_uri import *
 from .is_decimal import *
 from .is_divisible_by import *
 from .is_float import *
+from .is_int import *
+from .is_number import *
+from .is_ean import *
