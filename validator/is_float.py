@@ -1,10 +1,8 @@
-import re
-from typing import Union
-
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .utils.includes import includes
 from .utils.merge import merge
-from .utils.merge import merge
+from .utils.math import grather_then_check, less_then_check
 from .alpha import decimal
 
 __default_options = {
@@ -15,26 +13,23 @@ __default_options = {
     "locale": None,
 }
 
-def is_float(input: Union[int, float, str], options = __default_options) -> bool:
-    assert_string(input)
+def is_float(input: str, options = __default_options) -> bool:
+    input = assert_string(input)
 
     options = merge(options, __default_options)
 
     if includes(['+', '-', '.', ''], input):
         return False
 
-    float_pattern = re.compile("^(?:[-+])?(?:[0-9]+)?(?:\{}[0-9]*)?(?:[eE][\+\-]?(?:[0-9]+))?$".format(decimal[options["locale"]] if bool(options["locale"]) else '.'))
+    float_pattern = RegEx("^(?:[-+])?(?:[0-9]+)?(?:\{}[0-9]*)?(?:[eE][\+\-]?(?:[0-9]+))?$".format(decimal[options["locale"]] if bool(options["locale"]) else '.'))
 
-    try:
-        transformed_input = re.sub(',', '.', input)
-        transformed_input = re.sub('٫', '.', input)
-        float_input = float(transformed_input)
+    transformed_input = input.sub(',', '.').sub('٫', '.')
 
-        is_valid = bool(float_pattern.match(input))
-        min_valid = (not __default_options["min"]) or float_input >= options["min"]
-        max_valid = (not __default_options["max"]) or float_input <= options["max"]
-        lt_valid = (not __default_options["lt"]) or float_input <= options["lt"]
-        gt_valid = (not __default_options["gt"]) or float_input >= options["gt"]
-        return is_valid and min_valid and max_valid and lt_valid and gt_valid
-    except:
-        return False
+    is_valid = float_pattern.match(input)
+
+    min_valid = grather_then_check(transformed_input, options["min"])
+    max_valid = less_then_check(transformed_input, options["max"])
+    gt_valid = grather_then_check(transformed_input, options["gt"])
+    lt_valid = less_then_check(transformed_input, options["lt"])
+
+    return is_valid and min_valid and max_valid and lt_valid and gt_valid

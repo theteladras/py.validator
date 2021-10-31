@@ -12,3 +12,7 @@ class RegEx(object):
         if not self.pattern:
             return False
         return bool(self.pattern.match(input))
+
+    @staticmethod
+    def sub(pattern: str, replacement: str, input: str) -> str:
+        return re.sub(pattern, replacement, input)
