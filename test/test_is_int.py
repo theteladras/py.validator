@@ -44,3 +44,7 @@ class TestIsInt(unittest.TestCase):
         self.assertFalse(validator.is_int('\n', { "allow_leading_zeroes": False }))
         self.assertFalse(validator.is_int('\t', { "allow_leading_zeroes": False }))
         print('OK - test_invalid_ints_dont_allow_leading_zeroes')
+
+    def test_fail_ints(self):
+        self.assertRaises(Exception, validator.is_int, None)
+        self.assertRaises(Exception, validator.is_int, {})
