@@ -1,5 +1,4 @@
-import re
-
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.includes import includesNot
@@ -11,7 +10,7 @@ def decimal_regexp(options):
     decimal_digits = options["decimal_digits"]
     require_decimal = '' if options["force_decimal"] else '?'
     regex = "^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
-    return re.compile(regex)
+    return RegEx(regex)
 
 default_decimal_options = {
   "force_decimal": False,
@@ -22,7 +21,7 @@ default_decimal_options = {
 blacklist = ['', '-', '+']
 
 def is_decimal(input: str, options = {}) -> bool:
-    assert_string(input)
+    input = assert_string(input)
 
     input = input.rstrip()
 
@@ -31,6 +30,6 @@ def is_decimal(input: str, options = {}) -> bool:
     if options["locale"] not in decimal:
         raise Exception("Invalid locale '{}'".format(options["locale"]))
 
-    without_white_space = re.sub(" ", '', input)
+    without_white_space = input.sub(" ", '')
     return includesNot(blacklist, without_white_space) and bool(decimal_regexp(options).match(input))
 

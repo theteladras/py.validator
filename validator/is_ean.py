@@ -1,6 +1,6 @@
-import re
 from typing import Literal
 
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .utils.slice import slice
 from .utils.Classes.String import String
@@ -8,7 +8,7 @@ from .is_number import is_number
 
 LENGTH_EAN_8 = 8
 LENGTH_EAN_14 = 14
-valid_ean_regex = re.compile("^(\d{8}|\d{13}|\d{14})$")
+valid_ean_regex = RegEx("^(\d{8}|\d{13}|\d{14})$")
 
 def get_position_weight_through_length_and_index(length: int, index: int) -> Literal[1, 3]:
     if length == LENGTH_EAN_8 or length == LENGTH_EAN_14:

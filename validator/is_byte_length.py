@@ -1,6 +1,6 @@
 import urllib.parse as parse
-import re
 
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 
@@ -14,7 +14,11 @@ def is_byte_length(input: str, options = {}) -> bool:
 
     options = merge(options, default_options)
 
-    input_length = len(re.split("%..|.", parse.quote(input, safe='@/:;?&=+$,'))) - 1
+    pattern = RegEx("%..|.")
+
+    split_input = pattern.split(parse.quote(input, safe='@/:;?&=+$,'))
+
+    input_length = len(split_input) - 1
 
     return input_length >= options["min"] and (
         options["max"] == None or input_length <= options["max"]

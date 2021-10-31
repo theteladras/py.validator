@@ -1,12 +1,11 @@
-import re
-
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 
-valid_media_type = re.compile("^[a-z]+\/[a-z0-9\-\+]+$", re.IGNORECASE)
+valid_media_type = RegEx("^[a-z]+\/[a-z0-9\-\+]+$", 'i')
 
-valid_attribute = re.compile("^[a-z\-]+=[a-z0-9\-]+$", re.IGNORECASE)
+valid_attribute = RegEx("^[a-z\-]+=[a-z0-9\-]+$", 'i')
 
-valid_data = re.compile("^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$", re.IGNORECASE)
+valid_data = RegEx("^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$", 'i')
 
 def is_data_uri(input: str) -> bool:
     assert_string(input)
@@ -34,13 +33,13 @@ def is_data_uri(input: str) -> bool:
     for i, attribute in enumerate(attributes):
         is_last_item = i == len(attributes) - 1
         is_base64 = attribute.lower() == 'base64'
-        is_valid_attribute = bool(valid_attribute.match(attribute))
+        is_valid_attribute = valid_attribute.match(attribute)
 
         if not (is_last_item and is_base64) and not is_valid_attribute:
             return False
 
     for item in data:
-        is_valid_data = bool(valid_data.match(item))
+        is_valid_data = valid_data.match(item)
         if not is_valid_data:
             return False
 

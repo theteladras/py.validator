@@ -24,5 +24,11 @@ class String(str):
     def length(self: T):
         return len(self)
 
-    def sub(self: T, pattern: str, replacement: str) -> str:
-        return String(RegEx.sub(pattern, replacement, self.__str__()))
+    def sub(self: T, regex: Union[str, RegEx], replacement: str) -> T:
+        if type(regex).__name__ == 'str':
+            return String(RegEx.sub(regex, replacement, self.__str__()))
+        else:
+            return String(RegEx.sub(regex.pattern, replacement, self.__str__()))
+
+    def rstrip(self) -> T:
+        return String(self.__str__().rstrip())

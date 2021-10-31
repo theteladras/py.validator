@@ -1,26 +1,22 @@
-import re
-
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .alpha import alpha
 
 def is_alpha(input, locale = 'en-US', options = {}):
-    assert_string(input)
-
-    string = input
+    input = assert_string(input)
 
     if 'ignore' in options and options['ignore']:
         ignore = options['ignore']
         if type(ignore).__name__ == 'str':
-            pattern = "[{}]".format(re.escape(ignore))
+            pattern = "[{}]".format(RegEx.escape(ignore))
             
-            string = re.sub(pattern, '', string)
+            input = input.sub(pattern, '')
         else:
             raise Exception('ignore should be instance of a String or RegExp')
 
     if locale in alpha:
-        pattern = re.compile(alpha[locale], re.IGNORECASE)
-        isMatched = pattern.match(string)
-        return bool(isMatched)
+        pattern = RegEx(alpha[locale], 'i')
+        return pattern.match(input)
 
     raise Exception("Invalid locale {}".format(locale))
             

@@ -1,5 +1,4 @@
-import re
-
+from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.join import join
@@ -13,7 +12,7 @@ def currency_regex(options):
     def __match(x):
         return "\\{}".format(x.group(0))
 
-    symbol = "({}){}".format(re.sub("\W", __match, options["symbol"]), '' if options["require_symbol"] else '?')
+    symbol = "({}){}".format(RegEx.sub("\W", __match, options["symbol"]), '' if options["require_symbol"] else '?')
     negative = '-?'
     whole_dollar_amount_without_sep = '[1-9]\d*'
     whole_dollar_amount_with_sep = "[1-9]\d{{0,2}}({}\d{{3}})*".format(options["thousands_separator"])
@@ -53,7 +52,7 @@ def currency_regex(options):
         elif not (options["negative_sign_before_digits"] and options["negative_sign_after_digits"]):
             pattern = negative + pattern
 
-    return re.compile("^(?!-? )(?=.*\d){}$".format(pattern))
+    return RegEx("^(?!-? )(?=.*\d){}$".format(pattern))
 
 default_currency_options = {
   "symbol": "$",
