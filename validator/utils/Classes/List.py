@@ -1,24 +1,17 @@
-from typing import TypeVar
+from typing import TypeVar, Union
 
 from ..reduce import reduce
+from ..map import map
 
 T = TypeVar('T', bound='List')
 
 class List(list):
-    def map(self, cb) -> T:
-        cb_num_arg = cb.__code__.co_argcount
-        if cb_num_arg == 1:
-            return List(map(cb, self))
-        elif cb_num_arg == 2:
-            return List(map(cb, self, range(self.__len__())))
-        else:
-            empty_args = ['None' * self.__len__()] * (cb_num_arg - 2)
-            arguments = [cb, self, range(self.__len__()), *empty_args]
-            return List(map(*arguments))
+    def map(self: T, cb) -> T:
+        return List(map(self, cb))
 
-    def reduce(self, cb, initializer=None):
+    def reduce(self: T, cb, initializer=None) -> Union[str, int, float, bool, None]:
         return reduce(self, cb, initializer)
 
     @property
-    def length(self):
+    def length(self: T):
         return len(self)
