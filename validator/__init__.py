@@ -30,3 +30,4 @@ from .is_hexadecimal import *
 from .is_mongo_id import *
 from .is_uppercase import *
 from .is_slug import *
+from .is_full_width import *
