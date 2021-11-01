@@ -27,3 +27,4 @@ from .is_port import *
 from .is_ip import *
 from .is_semantic_version import *
 from .is_hexadecimal import *
+from .is_mongo_id import *
