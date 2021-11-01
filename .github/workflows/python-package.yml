@@ -27,7 +27,7 @@ jobs:
       - name: Build binary wheel and a source tarball
         run: |
           pip install timestring typing
-          python setup.py sdist bdist_wheel
+          python setup.py sdist
       - name: Publish package to pypi
         uses: pypa/gh-action-pypi-publish@master
         with:
