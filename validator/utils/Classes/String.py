@@ -32,3 +32,10 @@ class String(str):
 
     def rstrip(self) -> T:
         return String(self.__str__().rstrip())
+
+    def match(self: T, regex: Union[str, RegEx]) -> bool:
+        if type(regex).__name__ == 'str':
+            pattern = RegEx(regex)
+            return pattern.match(self.__str__())
+        else:
+            return regex.match(self.__str__())
