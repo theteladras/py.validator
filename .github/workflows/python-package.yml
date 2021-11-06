@@ -25,9 +25,7 @@ jobs:
           # exit-zero treats all errors as warnings.
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Run tests
-        run: |
-          pip install -e .
-          python -m unittest
+        run: python -m unittest
       - name: Build binary wheel and a source tarball
         run: python setup.py sdist
       - name: Publish package to pypi

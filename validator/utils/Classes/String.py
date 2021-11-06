@@ -1,8 +1,8 @@
-from typing import TypeVar, Union
+from typing import TypeVar, Union, Literal
 
 from ..slice import slice
 from .List import List
-from .RegEx import RegEx
+from .RegEx import RegEx, FlagType
 
 T = TypeVar('T', bound='String')
 
@@ -33,9 +33,11 @@ class String(str):
     def rstrip(self) -> T:
         return String(self.__str__().rstrip())
 
-    def match(self: T, regex: Union[str, RegEx]) -> bool:
+    def match(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> bool:
+        if not regex:
+            return False
         if type(regex).__name__ == 'str':
-            pattern = RegEx(regex)
+            pattern = RegEx(regex, flag)
             return pattern.match(self.__str__())
         else:
             return regex.match(self.__str__())

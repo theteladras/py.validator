@@ -1,10 +1,12 @@
 import re
-from typing import Literal
+from typing import Literal, Union, NewType
+
+FlagType = Union[Literal["g"], Literal["i"], Literal["m"], Literal["u"], None]
 
 class RegEx(object):
     pattern = None
 
-    def __init__(self, pattern: str, flag: Literal["i"] = None) -> None:
+    def __init__(self, pattern: str, flag: FlagType = None) -> None:
         if not pattern:
             raise Exception("Pattern not provided")
         if flag == 'i':

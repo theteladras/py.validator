@@ -32,3 +32,4 @@ from validator.is_uppercase import *
 from validator.is_slug import *
 from validator.is_full_width import *
 from validator.is_rgb_color import *
+from validator.is_octal import *
