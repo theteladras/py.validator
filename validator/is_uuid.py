@@ -15,6 +15,8 @@ uuid = {
 def is_uuid(input: str, version: Union["0", "1", "2", "3", "4", "5", "all", None] = "all") -> bool:
     input = assert_string(input)
 
+    version = str(version)
+
     if version not in uuid:
         return False
 

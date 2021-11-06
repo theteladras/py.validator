@@ -23,6 +23,7 @@ class TestIsUuid(unittest.TestCase):
 
     def test_valid_uuid_version_1(self):
         self.assertTrue(is_uuid('E034B584-7D89-11E9-9669-1AECF481A97B', "1"))
+        self.assertTrue(is_uuid('E034B584-7D89-11E9-9669-1AECF481A97B', 1))
         print('OK - test_valid_uuid_version_1')
 
     def test_invalid_uuid_version_1(self):
@@ -32,10 +33,12 @@ class TestIsUuid(unittest.TestCase):
         self.assertFalse(is_uuid('AAAAAAAA-1111-2222-AAAG-111111111111', "1"))
         self.assertFalse(is_uuid('A987FBC9-4BED-4078-8F07-9141BA07C9F3', "1"))
         self.assertFalse(is_uuid('A987FBC9-4BED-5078-AF07-9141BA07C911', "1"))
+        self.assertFalse(is_uuid('A987FBC9-4BED-5078-AF07-9141BA07C911', 1))
         print('OK - test_invalid_uuid_version_1')
 
     def test_valid_uuid_version_2(self):
         self.assertTrue(is_uuid('A117FBC9-4BED-2078-CF07-9141BA07C9F3', "2"))
+        self.assertTrue(is_uuid('A117FBC9-4BED-2078-CF07-9141BA07C9F3', 2))
         print('OK - test_valid_uuid_version_2')
 
     def test_invalid_uuid_version_2(self):
@@ -46,10 +49,12 @@ class TestIsUuid(unittest.TestCase):
         self.assertFalse(is_uuid('934859', "2"))
         self.assertFalse(is_uuid('A987FBC9-4BED-5078-AF07-9141BA07C911', "2"))
         self.assertFalse(is_uuid('A987FBC9-4BED-5078-AF07-9141BA07C9F2', "2"))
+        self.assertFalse(is_uuid('A987FBC9-4BED-5078-AF07-9141BA07C9F2', 2))
         print('OK - test_invalid_uuid_version_2')
 
     def test_valid_uuid_version_3(self):
         self.assertTrue(is_uuid('1987FBC9-4BED-3078-CF07-9141BA07C9F3', "3"))
+        self.assertTrue(is_uuid('1987FBC9-4BED-3078-CF07-9141BA07C9F3', 3))
         print('OK - test_valid_uuid_version_3')
 
     def test_invalid_uuid_version_3(self):
@@ -82,6 +87,7 @@ class TestIsUuid(unittest.TestCase):
         self.assertTrue(is_uuid('987FBC97-4BED-5078-BF07-9141BA07C9F3', "5"))
         self.assertTrue(is_uuid('987FBC97-4BED-5078-8F07-9141BA07C9F3', "5"))
         self.assertTrue(is_uuid('987FBC97-4BED-5078-9F07-9141BA07C9F3', "5"))
+        self.assertTrue(is_uuid('987FBC97-4BED-5078-9F07-9141BA07C9F3', 5))
         print('OK - test_valid_uuid_version_5')
 
     def test_invalid_uuid_version_5(self):

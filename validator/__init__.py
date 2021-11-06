@@ -34,3 +34,4 @@ from validator.is_full_width import *
 from validator.is_rgb_color import *
 from validator.is_octal import *
 from validator.is_passport_number import *
+from validator.is_lowercase import *
