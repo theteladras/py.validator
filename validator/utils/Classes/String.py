@@ -41,3 +41,9 @@ class String(str):
             return pattern.match(self.__str__())
         else:
             return regex.match(self.__str__())
+
+    def upper(self) -> T:
+        return String(self.__str__().upper())
+
+    def lower(self) -> T:
+        return String(self.__str__().lower())
