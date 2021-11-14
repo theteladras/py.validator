@@ -47,3 +47,10 @@ class String(str):
 
     def lower(self) -> T:
         return String(self.__str__().lower())
+
+    def starts_with(self: T, target: str, end: int = None) -> bool:
+        if not end:
+            return self.__str__().startswith(target)
+        else:
+            return self.__str__().startswith(target, 0, end)
+
