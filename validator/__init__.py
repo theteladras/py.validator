@@ -36,3 +36,4 @@ from validator.is_octal import *
 from validator.is_passport_number import *
 from validator.is_lowercase import *
 from validator.is_ip_range import *
+from validator.is_json import *

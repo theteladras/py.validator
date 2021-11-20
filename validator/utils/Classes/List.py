@@ -2,6 +2,7 @@ from typing import TypeVar, Union
 
 from ..reduce import reduce
 from ..map import map
+from ..includes import includes
 
 T = TypeVar('T', bound='List')
 
@@ -15,3 +16,6 @@ class List(list):
     @property
     def length(self: T):
         return len(self)
+
+    def includes(self: T, val: Union[None, bool, str, int, float]) -> bool:
+        return includes(self, val)
