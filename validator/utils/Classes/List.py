@@ -1,4 +1,4 @@
-from typing import TypeVar, Union
+from typing import TypeVar, Union, Any
 
 from ..reduce import reduce
 from ..map import map
@@ -14,8 +14,14 @@ class List(list):
         return reduce(self, cb, initializer)
 
     @property
-    def length(self: T):
+    def length(self: T) -> int:
         return len(self)
 
     def includes(self: T, val: Union[None, bool, str, int, float]) -> bool:
         return includes(self, val)
+
+    def pop(self: T) -> Any:
+        return list(self).pop()
+
+    def join(self: T, join_with: str) -> str: 
+        return join_with.join(self)

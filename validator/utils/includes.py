@@ -1,5 +1,11 @@
-def includes(arr, val):
-    return val in arr
+def includes(list, val):
+    return val in list
 
-def includesNot(arr, val):
-    return val not in arr
+def includesNot(list, val):
+    return val not in list
+
+def includesSome(list, listVal):
+    for item in listVal:
+        if item in list:
+            return True
+    return False

@@ -38,3 +38,5 @@ from validator.is_lowercase import *
 from validator.is_ip_range import *
 from validator.is_json import *
 from validator.is_hash import *
+from validator.is_email import *
+from validator.is_fqdn import *

@@ -1,4 +1,4 @@
-from typing import TypeVar, Union, Literal
+from typing import TypeVar, Union
 
 from ..slice import slice
 from .List import List
@@ -25,27 +25,27 @@ class String(str):
         return len(self)
 
     def sub(self: T, regex: Union[str, RegEx], replacement: str) -> T:
-        if type(regex).__name__ == 'str':
+        if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
             return String(RegEx.sub(regex, replacement, self.__str__()))
         else:
             return String(RegEx.sub(regex.pattern, replacement, self.__str__()))
 
-    def rstrip(self) -> T:
+    def rstrip(self: T) -> T:
         return String(self.__str__().rstrip())
 
     def match(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> bool:
         if not regex:
             return False
-        if type(regex).__name__ == 'str':
+        if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
             pattern = RegEx(regex, flag)
             return pattern.match(self.__str__())
         else:
             return regex.match(self.__str__())
 
-    def upper(self) -> T:
+    def upper(self: T) -> T:
         return String(self.__str__().upper())
 
-    def lower(self) -> T:
+    def lower(self: T) -> T:
         return String(self.__str__().lower())
 
     def starts_with(self: T, target: str, end: int = None) -> bool:
@@ -54,3 +54,26 @@ class String(str):
         else:
             return self.__str__().startswith(target, 0, end)
 
+    def findMatches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
+        if type(regex).__name__ == 'str'  or type(regex).__name__ == 'String':
+            pattern = RegEx(regex, flag)
+            matches = pattern.findall(self.__str__())
+            if not matches:
+                return None
+            return List(matches)
+        else:
+            matches = regex.findall(self.__str__())
+            if not matches:
+                return None
+            return List(matches)
+
+    def trim(self: T) -> T:
+        return String(self.__str__().strip())
+
+    def search(self: T, term: str) -> int:
+        return String(self.__str__().find(term))
+
+    def substring(self: T, start: int, end: int = None) -> T:
+        if not end:
+            return String(self.__str__()[start:])
+        return String(self.__str__()[start: end])
