@@ -40,3 +40,4 @@ from validator.is_json import *
 from validator.is_hash import *
 from validator.is_email import *
 from validator.is_fqdn import *
+from validator.is_imei import *
