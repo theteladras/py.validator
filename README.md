@@ -65,4 +65,17 @@ Validator                                | Description
 **is_semantic_version(str)**          | check if the string is a Semantic Versioning Specification.
 **is_uppercase(str)**                 | check if the string is uppercase.
 **is_slug(str)**                      | Check if the string is of type slug. `Options` allow a single hyphen between string. e.g. [`cn-cn`, `cn-c-c`]
+**is_strong_password(str [, options])**   | Check if a password is strong or not. Allows for custom requirements or scoring rules. If `return_score` is True, then the function returns an integer score for the password rather than a boolean.<br/>Default options: <br/>`{ min_length: 8, min_lowercase: 1, min_uppercase: 1, min_numbers: 1, min_symbols: 1, return_score: False, points_perUnique: 1, points_per_repeat: 0.5, points_for_containing_lower: 10, points_for_containing_upper: 10, points_for_containing_number: 10, points_for_containing_symbol: 10 }`
 **is_uuid(str [, version])**          | check if the string is a UUID (version [string | number] 1, 2, 3, 4 or 5).
+
+## Contributing
+
+1. Fork the repo on GitHub
+2. Create a unique branch with prefixes feat/ for new features or fix/ for any fixes or improvements
+3. Work on your branch
+    - if modifications are chainging the behaviour of an existing validator, do upgrade the tests of it to cover that functionality as well.
+    - tests are the main requirement of any new validators.
+4. Commit changes to your own branch
+5. Pull changes from the origin main branch in order to avoid conflicts.
+6. Push your work back up to your fork
+7. Submit a Pull request so that we can review your changes
