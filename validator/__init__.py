@@ -42,3 +42,4 @@ from validator.is_email import is_email
 from validator.is_fqdn import is_fqdn
 from validator.is_imei import is_imei
 from validator.is_strong_password import is_strong_password
+from validator.is_emoji import is_emoji

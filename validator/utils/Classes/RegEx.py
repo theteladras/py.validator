@@ -1,5 +1,5 @@
 import re
-from typing import Literal, Union
+from typing import AnyStr, Literal, Pattern, Union
 
 from .List import List
 
@@ -43,3 +43,6 @@ class RegEx(object):
         if not len(matches):
             return None
         return re.findall(self.pattern, target)
+
+    def compile(pattern) -> Pattern[AnyStr]:
+        return re.compile(pattern)
