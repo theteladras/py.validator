@@ -1,5 +1,5 @@
 import unittest
-from validator import *
+from pyvalidator import *
 import datetime
 
 class TestIsBefore(unittest.TestCase):

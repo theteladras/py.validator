@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-from validator.utils.Classes.String import String
+from .utils.Classes.String import String
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 

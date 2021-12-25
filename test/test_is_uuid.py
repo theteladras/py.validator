@@ -1,5 +1,5 @@
 import unittest
-from validator import *
+from pyvalidator import *
 
 class TestIsUuid(unittest.TestCase):
 

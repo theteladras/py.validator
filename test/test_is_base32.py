@@ -1,5 +1,5 @@
 import unittest
-from validator import *
+from pyvalidator import *
 
 class TestIsBase32(unittest.TestCase):
 
