@@ -44,3 +44,4 @@ from pyvalidator.is_imei import is_imei
 from pyvalidator.is_strong_password import is_strong_password
 from pyvalidator.is_emoji import is_emoji
 from pyvalidator.is_mobile_number import is_mobile_number
+from pyvalidator.is_date import is_date

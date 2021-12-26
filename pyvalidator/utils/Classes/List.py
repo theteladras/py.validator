@@ -1,4 +1,4 @@
-from typing import TypeVar, Union, Any
+from typing import TypeVar, Union, Any, Callable
 
 from ..reduce import reduce
 from ..map import map
@@ -25,3 +25,9 @@ class List(list):
 
     def join(self: T, join_with: str) -> str: 
         return join_with.join(self)
+
+    def find(self, cb: Callable[[Any, int], bool]) -> Union[Any, None]:
+        for index, item in enumerate(self):
+            if cb(item, index):
+                return item
+        return None
