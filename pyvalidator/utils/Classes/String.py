@@ -24,9 +24,9 @@ class String(str):
     def length(self: T):
         return len(self)
 
-    def sub(self: T, regex: Union[str, RegEx], replacement: str) -> T:
+    def sub(self: T, regex: Union[str, RegEx], replacement: str, flag: FlagType = None) -> T:
         if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
-            return String(RegEx.sub(regex, replacement, self.__str__()))
+            return String(RegEx.sub(RegEx(regex, flag).pattern, replacement, self.__str__()))
         else:
             return String(RegEx.sub(regex.pattern, replacement, self.__str__()))
 
