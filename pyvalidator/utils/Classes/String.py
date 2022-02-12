@@ -14,10 +14,14 @@ class String(str):
     def split(self: T, separator = None) -> List:
         if bool(separator):
             string = self.__str__().split(separator)
+            for index, item in enumerate(string):
+                string[index] = String(item)
             split_string = List(string)
             return split_string
 
         split_string =  List(self)
+        for index, item in enumerate(split_string):
+                split_string[index] = String(item)
         return split_string
 
     @property
