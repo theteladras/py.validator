@@ -48,3 +48,4 @@ from pyvalidator.is_date import is_date
 from pyvalidator.is_hsl import is_hsl
 from pyvalidator.is_ethereum_address import is_ethereum_address
 from pyvalidator.is_lat_long import is_lat_long
+from pyvalidator.is_multibyte import is_multibyte 
