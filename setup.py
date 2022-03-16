@@ -5,7 +5,7 @@ with open('README.md') as f:
 
 MAJOR = 0
 MINOR = 3
-PATCH = 0
+PATCH = 1
 
 VERSION = '{}.{}.{}'.format(MAJOR, MINOR, PATCH)
 DESCRIPTION = 'String validation and sanitization'
@@ -19,7 +19,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=readme,
-    packages=['pyvalidator'],
+    packages=['pyvalidator', 'pyvalidator.utils', 'pyvalidator.utils.Classes'],
     install_requires=['typing', 'timestring'],
     keywords=['python', 'validation', 'string', 'sanitization', 'validator.js'],
     classifiers=[
