@@ -7,7 +7,7 @@ on:
       - completed
 
 jobs:
-  notify:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
