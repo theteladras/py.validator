@@ -4,8 +4,8 @@ with open('README.md') as f:
     readme = f.read()
 
 MAJOR = 0
-MINOR = 3
-PATCH = 3
+MINOR = 4
+PATCH = 0
 
 VERSION = '{}.{}.{}'.format(MAJOR, MINOR, PATCH)
 DESCRIPTION = 'String validation and sanitization'
