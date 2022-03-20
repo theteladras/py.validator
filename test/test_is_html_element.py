@@ -32,6 +32,18 @@ class TestIsHtmlElement(unittest.TestCase):
                 p {color:blue;}
             </style>
         """))
+        self.assertTrue(is_html_element("""
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <title>Page Title</title>
+                </head>
+                <body>
+                    <h1>This is a Heading</h1>
+                    <p>This is a paragraph.</p>
+                </body>
+            </html>
+        """))
         print('OK - test_valid_html_element')
 
     def test_invalid_html_element(self):
@@ -62,6 +74,8 @@ class TestIsHtmlElement(unittest.TestCase):
         self.assertFalse(is_html_element('.'))
         self.assertFalse(is_html_element(''))
         self.assertFalse(is_html_element(' '))
+        self.assertFalse(is_html_element('<p>paragraph</p> some text after'))
+        self.assertFalse(is_html_element('some text before <p>paragraph</p>'))
         self.assertFalse(is_html_element("""
             <style>
                 h1 {color:red;}
@@ -69,3 +83,9 @@ class TestIsHtmlElement(unittest.TestCase):
             <style>
         """))
         print('OK - test_invalid_html_element')
+
+    def test_valid_html_element_contains(self):
+        self.assertTrue(is_html_element('some text <p>paragraph</p>, exactly.', { "contains": True }))
+        self.assertTrue(is_html_element('some text <br>brake, exactly.', { "contains": True }))
+        self.assertTrue(is_html_element('some text <input /> input, exactly.', { "contains": True }))
+        print('OK - test_valid_html_element_contains')

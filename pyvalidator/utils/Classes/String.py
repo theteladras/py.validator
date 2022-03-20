@@ -81,3 +81,6 @@ class String(str):
         if not end:
             return String(self.__str__()[start:])
         return String(self.__str__()[start: end])
+
+    def search(self: T, pattern: str) -> Union[int, None]:
+        return RegEx(pattern).search(self.__str__())

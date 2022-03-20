@@ -46,3 +46,6 @@ class RegEx(object):
 
     def compile(pattern) -> Pattern[AnyStr]:
         return re.compile(pattern)
+
+    def search(self, target: str) -> Union[int, None]:
+        return re.search(self.pattern, target).start()
