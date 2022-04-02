@@ -51,3 +51,4 @@ from pyvalidator.is_lat_long import is_lat_long
 from pyvalidator.is_multibyte import is_multibyte 
 from pyvalidator.is_html_element import is_html_element
 from pyvalidator.is_regex import is_regex
+from pyvalidator.is_css_unit import is_css_unit
