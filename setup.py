@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open('README.md') as f:
+with open('README.md', encoding="utf8") as f:
     readme = f.read()
 
 MAJOR = 0
-MINOR = 4
-PATCH = 1
+MINOR = 5
+PATCH = 0
 
 VERSION = '{}.{}.{}'.format(MAJOR, MINOR, PATCH)
 DESCRIPTION = 'String validation and sanitization'
