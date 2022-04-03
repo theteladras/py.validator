@@ -1,7 +1,7 @@
 import unittest
 from pyvalidator import *
 
-class TestIsRegularExpression(unittest.TestCase):
+class TestIsCssUnit(unittest.TestCase):
 
     def valid_check(self, items):
         for item in items:
