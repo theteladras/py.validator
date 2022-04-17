@@ -51,7 +51,7 @@ def is_url(input: str, options = {}) -> bool:
 
 	protocol_pattern = "" if options["no_scheme"] else r"((http(s)?):\/\/)?"
 
-	limit_domain_length = "{2,255}"
+	limit_domain_length = "{1,255}"
 	base_url_patterm = fr"{protocol_pattern}(www\.)?(?!-)[(\-a-z0-9.]{limit_domain_length}[a-z0-9]{top_level_domain_pattern}"
 
 	path_pattern =  r"\/?" if options["with_no_path"] else r"\b(\/[-a-zA-Z0-9()@:%_\+.~#?&//=]*)?"
