@@ -8,6 +8,7 @@ alpha = {
   'el-GR': '^[Α-ώ]+$',
   'es-ES': '^[A-ZÁÉÍÑÓÚÜ]+$',
   'fa-IR': '^[ابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی]+$',
+  'fi-FI': '^[A-ZÅÄÖ]+$',
   'fr-FR': '^[A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]+$',
   'it-IT': '^[A-ZÀÉÈÌÎÓÒÙ]+$',
   'nb-NO': '^[A-ZÆØÅ]+$',
@@ -43,6 +44,7 @@ alphanumeric = {
   'el-GR': '^[0-9Α-ω]+$',
   'es-ES': '^[0-9A-ZÁÉÍÑÓÚÜ]+$',
   'fr-FR': '^[0-9A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]+$',
+  'fi-FI': '^[0-9A-ZÅÄÖ]+$',
   'it-IT': '^[0-9A-ZÀÉÈÌÎÓÒÙ]+$',
   'hu-HU': '^[0-9A-ZÁÉÍÓÖŐÚÜŰ]+$',
   'nb-NO': '^[0-9A-ZÆØÅ]+$',
@@ -108,7 +110,7 @@ for n, _ in enumerate(farsi_locales):
     decimal[dot_decimal[n]] = decimal['en-US']
 
 comma_decimal = [
-  'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-ZM', 'es-ES', 'fr-CA', 'fr-FR',
+  'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-ZM', 'es-ES', 'fr-CA', 'fr-FR', 'fi-FI',
   'id-ID', 'it-IT', 'ku-IQ', 'hi-IN', 'hu-HU', 'nb-NO', 'nn-NO', 'nl-NL', 'pl-PL', 'pt-PT',
   'ru-RU', 'sl-SI', 'sr-RS@latin', 'sr-RS', 'sv-SE', 'tr-TR', 'uk-UA', 'vi-VN',
 ]

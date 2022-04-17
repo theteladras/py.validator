@@ -5,6 +5,9 @@ from .alpha import alpha
 def is_alpha(input, locale = 'en-US', options = {}):
     input = assert_string(input)
 
+    if locale == None:
+        locale = 'en-US'
+
     if 'ignore' in options and options['ignore']:
         ignore = options['ignore']
         if type(ignore).__name__ == 'str':
