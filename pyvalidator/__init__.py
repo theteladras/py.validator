@@ -53,3 +53,4 @@ from pyvalidator.is_html_element import is_html_element
 from pyvalidator.is_regex import is_regex
 from pyvalidator.is_css_unit import is_css_unit
 from pyvalidator.is_url import is_url
+from pyvalidator.is_mac_address import is_mac_address
