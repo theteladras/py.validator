@@ -56,3 +56,4 @@ from pyvalidator.is_url import is_url
 from pyvalidator.is_mac_address import is_mac_address
 from pyvalidator.is_odd import is_odd
 from pyvalidator.is_even import is_even
+from pyvalidator.is_prime import is_prime
