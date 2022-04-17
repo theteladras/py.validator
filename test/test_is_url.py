@@ -37,7 +37,7 @@ class TestIsUrl(unittest.TestCase):
 			'https://api.twitter.com/1.1/search/tweets.json',
 			'https://api.twitter.com/1.1/search/%20/tweets.json',
 			'http://foo.com/blahblah_(wikipedia)',
-			'https://test-domain.com/'
+			'https://test-domain.com/',
         ]
 		self.valid_check(valid_items)
 		print('OK - test_valid_url')
@@ -66,6 +66,12 @@ class TestIsUrl(unittest.TestCase):
 			'http://test!domain.com',
 			'http://test-domain!.com',
 			'http://test-domain*.com',
+			'hello+world.io',
+			'hello=world.io',
+			'hello@world.io',
+			'hello%world.io',
+			'hello:world.io',
+			'hello~world.io',
         ]
 		self.invalid_check(invalid_items)
 		print('OK - test_invalid_url')
