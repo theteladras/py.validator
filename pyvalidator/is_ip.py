@@ -6,7 +6,6 @@ from .utils.includes import includesNot
 
 ip_v4_segment= "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
 ip_v4_address = "({}[.]){{3}}{}".format(ip_v4_segment, ip_v4_segment)
-ip_v4_address_pattern = RegEx('^' + ip_v4_address + '$')
 
 ip_v6_segment_format = "(?:[0-9a-fA-F]{1,4})"
 ip_v6_address_part_1 = "^((?:{}:){{7}}(?:{}|:)|".format(ip_v6_segment_format, ip_v6_segment_format)
@@ -29,12 +28,14 @@ ip_v6_address = (
     ip_v6_address_part_8 +
     ip_v6_address_part_9
 )
-ip_v6_address_pattern = RegEx(ip_v6_address)
 
 ip_versions = [4, 6, '4', '6']
 
 def is_ip(input: str, version: Literal[4, 6, '4', '6', None] = None) -> bool:
     input = assert_string(input)
+
+    ip_v4_address_pattern = RegEx('^' + ip_v4_address + '$')
+    ip_v6_address_pattern = RegEx(ip_v6_address)
 
     if version == None:
         return is_ip(input, 4) or is_ip(input, 6)

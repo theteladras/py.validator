@@ -26,11 +26,6 @@ class _Analysis(TypedDict):
     number_count: int
     symbol_count: int
 
-upper_case_regex = r"^[A-Z]$"
-lower_case_regex = r"^[a-z]$"
-number_regex = r"^[0-9]$"
-symbol_regex = r"^[-#!$@%^&*()_+|~=`{}\[\]:\";'<>?,.\/ ]$"
-
 default_options: _IsStrongPasswordOptions = {
   "min_length": 8,
   "min_uppercase": 1,
@@ -56,7 +51,13 @@ def count_chars(pw: String):
     return result
 
 def analyze_password(pw: String) -> _Analysis:
+    upper_case_regex = r"^[A-Z]$"
+    lower_case_regex = r"^[a-z]$"
+    number_regex = r"^[0-9]$"
+    symbol_regex = r"^[-#!$@%^&*()_+|~=`{}\[\]:\";'<>?,.\/ ]$"
+
     char_map = count_chars(pw)
+
     analysis: _Analysis = {
         "length": pw.length,
         "unique_chars": len([*char_map]),
@@ -65,6 +66,7 @@ def analyze_password(pw: String) -> _Analysis:
         "number_count": 0,
         "symbol_count": 0,
     }
+
     for char in [*char_map]:
         char = String(char)
         if char.match(upper_case_regex):
@@ -75,6 +77,7 @@ def analyze_password(pw: String) -> _Analysis:
             analysis["number_count"] += char_map[char]
         elif char.match(symbol_regex):
             analysis["symbol_count"] += char_map[char]
+
     return analysis
 
 def score_password(analysis: _Analysis, options: _IsStrongPasswordOptions):

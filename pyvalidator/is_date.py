@@ -7,8 +7,6 @@ from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.to_date import to_date
 
-date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,.\/-](m{1,2})[|:;,.\/-](d{1,2})$)|(^(m{1,2})[|:;,.\/-](d{1,2})[|:;,.\/-]((y{4}|y{2})$))|(^(d{1,2})[|:;,.\/-](m{1,2})[|:;,.\/-]((y{4}|y{2})$))", 'i')
-
 class IsDateOptions(TypedDict):
     format: Union[
         Literal['DD/MM/YYYY'],
@@ -56,6 +54,8 @@ def zip(date_list: ListT[str], format_list: ListT[str]) -> ListT[Tuple[str, str]
 
 def is_date(input: str, options: IsDateOptions = {}) -> bool:
     input = assert_string(input)
+
+    date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,.\/-](m{1,2})[|:;,.\/-](d{1,2})$)|(^(m{1,2})[|:;,.\/-](d{1,2})[|:;,.\/-]((y{4}|y{2})$))|(^(d{1,2})[|:;,.\/-](m{1,2})[|:;,.\/-]((y{4}|y{2})$))", 'i')
 
     options = merge(options, __default_options)
 

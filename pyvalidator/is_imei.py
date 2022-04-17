@@ -11,12 +11,12 @@ default_email_options: IsEmailOptions = {
   "allow_hyphens": False,
 }
 
-imei_regex_without_hypens = r"^[0-9]{15}$"
-imei_regex_with_hypens = r"^\d{2}-\d{6}-\d{6}-\d{1}$"
-
 def is_imei(input: str, options = {}) -> bool:
     input = assert_string(input)
     options = merge(options, default_email_options)
+
+    imei_regex_without_hypens = r"^[0-9]{15}$"
+    imei_regex_with_hypens = r"^\d{2}-\d{6}-\d{6}-\d{1}$"
 
     imei_regex = imei_regex_with_hypens if options["allow_hyphens"] else imei_regex_without_hypens
 

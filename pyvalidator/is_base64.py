@@ -3,15 +3,16 @@ from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.index_of import index_of
 
-not_base64 = RegEx("[^A-Z0-9+\/=]", "i")
-url_safe_base64 = RegEx("^[A-Z0-9_\-]*$", "i")
-
 default_base64_options = {
     "url_safe": False
 }
 
 def is_base64(input: str, options = {}) -> bool:
     assert_string(input)
+
+    not_base64 = RegEx("[^A-Z0-9+\/=]", "i")
+    url_safe_base64 = RegEx("^[A-Z0-9_\-]*$", "i")
+
     options = merge(options, default_base64_options)
     input_length = len(input)
 

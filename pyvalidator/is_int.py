@@ -3,9 +3,6 @@ from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.math import grather_then_check, less_then_check
 
-int_pattern = RegEx("^(?:[-+]?(?:0|[1-9][0-9]*))$")
-int_leading_zero_pattern = RegEx("^[-+]?[0-9]+$")
-
 __default_options = {
     "allow_leading_zeroes": True,
     "min": None,
@@ -16,6 +13,9 @@ __default_options = {
 
 def is_int(input: str, options = __default_options) -> bool:
     input = assert_string(input)
+
+    int_pattern = RegEx("^(?:[-+]?(?:0|[1-9][0-9]*))$")
+    int_leading_zero_pattern = RegEx("^[-+]?[0-9]+$")
 
     options = merge(options, __default_options)
 
