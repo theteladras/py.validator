@@ -36,7 +36,8 @@ class TestIsUrl(unittest.TestCase):
 			'https://id.b2b.yahooinc.com/identity/oauth2/access_token?realm=true_story',
 			'https://api.twitter.com/1.1/search/tweets.json',
 			'https://api.twitter.com/1.1/search/%20/tweets.json',
-			'http://foo.com/blahblah_(wikipedia)'
+			'http://foo.com/blahblah_(wikipedia)',
+			'https://test-domain.com/'
         ]
 		self.valid_check(valid_items)
 		print('OK - test_valid_url')
@@ -55,7 +56,16 @@ class TestIsUrl(unittest.TestCase):
 			'http://mw1.google.com/mw-earth-vectordb/kml-samples/gp/seattle/gigapxl/$[level]/r$[y]_c$[x].jpg',
 			'http://api.google.com/q?exp=a|b',
 			'https://id.b2b.yahooinc.com/identity/oauth2/access_token?realm=true story',
-			'https://api.twitter.com/1.1/search/ /tweets.json'
+			'https://api.twitter.com/1.1/search/ /tweets.json',
+			'http://-test-domain.com',
+			'http://test-domain-.com',
+			'http://test_domain.com',
+			'http://test-domain_.com',
+			'http://_test-domain.com',
+			'http://test*domain.com',
+			'http://test!domain.com',
+			'http://test-domain!.com',
+			'http://test-domain*.com',
         ]
 		self.invalid_check(invalid_items)
 		print('OK - test_invalid_url')
