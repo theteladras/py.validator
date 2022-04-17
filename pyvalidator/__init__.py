@@ -57,3 +57,4 @@ from pyvalidator.is_mac_address import is_mac_address
 from pyvalidator.is_odd import is_odd
 from pyvalidator.is_even import is_even
 from pyvalidator.is_prime import is_prime
+from pyvalidator.is_online import is_online

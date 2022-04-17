@@ -92,6 +92,7 @@ Validator                                | Description
 **is_number(str)**                      | check if the string is a number _(int or float)_.
 **is_octal(str)**                       | check if the string is a valid octal number.
 **is_odd(str/int)**                     | checks if the input is an odd number, it accepts either a string or an int.
+**is_online(str)**                      | checks if internet connection is available, where the input argument is optional but if passed it will check if it is reachable
 **is_passport_number(str, country_code)**                     | check if the string is a valid passport number.<br/><br/>country_code is one of `['AM', 'AR', 'AT', 'AU', 'BA', 'BE', 'BG', 'BY', 'BR', 'CA', 'CH', 'CN', 'CY', 'CZ', 'DE', 'DK', 'DZ', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE' 'IN', 'IR', 'ID', 'IS', 'IT', 'JP', 'KR', 'LT', 'LU', 'LV', 'LY', 'MT', 'MY', 'MZ', 'NL', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE', 'SL', 'SK', 'TR', 'UA', 'US']`.
 **is_port(str)**                        | check if the string is a valid port number.
 **is_prime(str/int)**                   | checks if the input is an prime number, it accepts either a string or an int.

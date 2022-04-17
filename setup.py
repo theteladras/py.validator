@@ -4,7 +4,7 @@ with open('README.md', encoding="utf8") as f:
     readme = f.read()
 
 MAJOR = 0
-MINOR = 11
+MINOR = 12
 PATCH = 0
 
 VERSION = '{}.{}.{}'.format(MAJOR, MINOR, PATCH)
