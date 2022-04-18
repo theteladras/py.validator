@@ -1,0 +1,12 @@
+appdirs==1.4.4
+black==21.5b1
+click==7.1.2
+colorama==0.4.4
+docutils==0.18
+importlib-metadata==4.8.1
+isort==5.7.0
+readme-renderer==30.0
+timestring==1.6.4
+typed-ast==1.4.3
+typing==3.7.4.3
+typing-extensions==3.7.4.3

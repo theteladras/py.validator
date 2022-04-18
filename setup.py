@@ -5,7 +5,7 @@ with open('README.md', encoding="utf8") as f:
 
 MAJOR = 0
 MINOR = 12
-PATCH = 1
+PATCH = 2
 
 VERSION = '{}.{}.{}'.format(MAJOR, MINOR, PATCH)
 DESCRIPTION = 'String validation and sanitization'
