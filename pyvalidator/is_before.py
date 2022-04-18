@@ -1,4 +1,5 @@
-from .utils.to_date import to_date, default_date_string
+from .utils.to_date import default_date_string, to_date
+
 
 def is_before(input, date = default_date_string()):
     comparison = to_date(date)

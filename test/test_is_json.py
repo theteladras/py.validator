@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsJson(unittest.TestCase):
 

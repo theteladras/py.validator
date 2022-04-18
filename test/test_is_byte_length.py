@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsByteLength(unittest.TestCase):
 

@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsCurrency(unittest.TestCase):
 

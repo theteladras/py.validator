@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsMd5(unittest.TestCase):
 

@@ -1,9 +1,9 @@
-from .utils.Classes.RegEx import RegEx
-from .utils.assert_string import assert_string
-from .utils.includes import includes
-from .utils.merge import merge
-from .utils.math import grather_then_check, less_then_check
 from .alpha import decimal
+from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+from .utils.includes import includes
+from .utils.math import grather_then_check, less_then_check
+from .utils.merge import merge
 
 __default_options = {
     "min": None,

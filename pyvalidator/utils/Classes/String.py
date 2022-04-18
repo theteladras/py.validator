@@ -2,7 +2,7 @@ from typing import TypeVar, Union
 
 from ..slice import slice
 from .List import List
-from .RegEx import RegEx, FlagType
+from .RegEx import FlagType, RegEx
 
 T = TypeVar('T', bound='String')
 

@@ -1,5 +1,6 @@
 from typing import List
 
+
 def join(array: List[str], join_with: str = '') -> str:
     string = ""
     for i, item in enumerate(array):

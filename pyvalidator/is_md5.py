@@ -1,6 +1,7 @@
 from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
 
+
 def is_md5(input: str) -> bool:
     input = assert_string(input)
 

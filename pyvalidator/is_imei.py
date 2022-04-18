@@ -1,8 +1,9 @@
 from typing import TypedDict
 
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
 from .utils.merge import merge
+
 
 class IsEmailOptions(TypedDict):
     allow_hyphens: bool

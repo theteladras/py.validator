@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsEven(unittest.TestCase):
 	def valid_check(self, items):

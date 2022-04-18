@@ -1,5 +1,6 @@
-from .utils.assert_string import assert_string
 from .is_base64 import is_base64
+from .utils.assert_string import assert_string
+
 
 def is_jwt(input: str) -> bool:
     input = assert_string(input)

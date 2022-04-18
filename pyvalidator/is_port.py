@@ -1,5 +1,6 @@
-from .utils.assert_string import assert_string
 from .is_int import is_int
+from .utils.assert_string import assert_string
+
 
 def is_port(input: str) -> bool:
     input = assert_string(input)

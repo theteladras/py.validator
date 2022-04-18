@@ -1,5 +1,6 @@
 from typing import Union
 
+
 def slice(val: str, start: int, end: Union[int, None]) -> str:
     if end == None:
         return val[start:]

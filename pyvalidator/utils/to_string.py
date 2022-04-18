@@ -1,5 +1,6 @@
 import inspect
 
+
 def to_string(input):
     if type(input).__name__ == 'str':
         return input

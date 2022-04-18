@@ -1,8 +1,8 @@
 from typing import Union
 
+from .is_ip import is_ip
 from .utils.assert_string import assert_string
 from .utils.Classes.String import String
-from .is_ip import is_ip
 
 subnet_maybe = "^\d{1,3}$"
 subnet_v4 = 32

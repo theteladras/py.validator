@@ -1,9 +1,10 @@
 import json
 from typing import TypedDict
 
-from .utils.Classes.List import List
 from .utils.assert_string import assert_string
+from .utils.Classes.List import List
 from .utils.merge import merge
+
 
 class IsJsonOptions(TypedDict):
     allow_primitives: str

@@ -1,5 +1,6 @@
 from .utils.assert_string import assert_string
 
+
 def is_css_unit(input: str) -> bool:
     input = assert_string(input)
 

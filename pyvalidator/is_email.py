@@ -1,14 +1,15 @@
 from typing import TypedDict
 
+from .is_byte_length import is_byte_length
+from .is_fqdn import is_fqdn
+from .is_ip import is_ip
+from .utils.assert_string import assert_string
+from .utils.Classes.List import List
 from .utils.Classes.RegEx import RegEx
 from .utils.Classes.String import String
-from .utils.Classes.List import List
-from .utils.assert_string import assert_string
-from .utils.merge import merge
 from .utils.includes import includesSome
-from .is_byte_length import is_byte_length
-from .is_ip import is_ip
-from .is_fqdn import is_fqdn
+from .utils.merge import merge
+
 
 class IsEmailOptions(TypedDict):
     allow_display_name: bool

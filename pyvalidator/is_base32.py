@@ -1,5 +1,6 @@
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+
 
 def is_base32(input: str) -> bool:
     base32 = RegEx("^[A-Z2-7]+=*$")

@@ -1,6 +1,7 @@
-from .utils.Classes.RegEx import RegEx
-from .utils.assert_string import assert_string
 from .alpha import alpha
+from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+
 
 def is_alpha(input, locale = 'en-US', options = {}):
     input = assert_string(input)

@@ -1,5 +1,6 @@
 from .Classes.String import String
 
+
 def assert_string(input: str) -> String:
     is_string = type(input).__name__ == 'str' or isinstance(input, str)
 

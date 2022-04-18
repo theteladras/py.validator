@@ -3,6 +3,7 @@ from typing import List, Literal, Tuple, TypedDict
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 
+
 class IsMobileNumberOptions(TypedDict):
   strict_mode: bool
 

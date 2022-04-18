@@ -1,9 +1,10 @@
-import urllib.request
 import http.client as httplib
+import urllib.request
 from typing import Union
 
-from .utils.assert_string import assert_string
 from .is_url import is_url
+from .utils.assert_string import assert_string
+
 
 def is_online(input: Union[str, None] = None) -> bool:
     if not bool(input):

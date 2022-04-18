@@ -1,7 +1,8 @@
-from typing import TypedDict, List
+from typing import List, TypedDict
 
 from .utils.assert_string import assert_string
 from .utils.merge import merge
+
 
 class IsUrlOptions(TypedDict):
 	no_scheme: bool

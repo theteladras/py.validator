@@ -1,9 +1,10 @@
 from typing import TypedDict
 
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
-from .utils.merge import merge
+from .utils.Classes.RegEx import RegEx
 from .utils.join import join
+from .utils.merge import merge
+
 
 class IsRegExpOptions(TypedDict):
     with_flags: bool

@@ -1,7 +1,8 @@
 from typing import Union
 
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+
 
 def is_uuid(input: str, version: Union["0", "1", "2", "3", "4", "5", "all", None] = "all") -> bool:
     uuid = {

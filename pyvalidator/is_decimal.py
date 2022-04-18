@@ -1,8 +1,9 @@
-from .utils.Classes.RegEx import RegEx
-from .utils.assert_string import assert_string
-from .utils.merge import merge
-from .utils.includes import includesNot
 from .alpha import decimal
+from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+from .utils.includes import includesNot
+from .utils.merge import merge
+
 
 def decimal_regexp(options):
     local = options["locale"]

@@ -1,7 +1,7 @@
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
-from .utils.merge import merge
+from .utils.Classes.RegEx import RegEx
 from .utils.index_of import index_of
+from .utils.merge import merge
 
 default_base64_options = {
     "url_safe": False

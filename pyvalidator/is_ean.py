@@ -1,10 +1,10 @@
 from typing import Literal
 
-from .utils.Classes.RegEx import RegEx
-from .utils.assert_string import assert_string
-from .utils.slice import slice
-from .utils.Classes.String import String
 from .is_number import is_number
+from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
+from .utils.Classes.String import String
+from .utils.slice import slice
 
 LENGTH_EAN_8 = 8
 LENGTH_EAN_14 = 14

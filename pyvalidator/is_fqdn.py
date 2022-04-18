@@ -1,9 +1,10 @@
 from typing import TypedDict
 
+from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
 from .utils.Classes.String import String
-from .utils.assert_string import assert_string
 from .utils.merge import merge
+
 
 class IsFqdnOptions(TypedDict):
     require_tld: bool

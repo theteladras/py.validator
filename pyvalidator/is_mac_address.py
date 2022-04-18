@@ -1,7 +1,8 @@
-from typing import TypedDict, Union, Literal
+from typing import Literal, TypedDict, Union
 
 from .utils.assert_string import assert_string
 from .utils.merge import merge
+
 
 class IsMacAddressOptions(TypedDict):
     no_separators: bool

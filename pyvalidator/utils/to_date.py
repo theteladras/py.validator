@@ -1,6 +1,9 @@
-import timestring
 import datetime
+
+import timestring
+
 from .assert_string import assert_string
+
 
 def __parse_date(input: str):
     try:

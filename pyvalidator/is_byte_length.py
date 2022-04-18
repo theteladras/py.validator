@@ -1,7 +1,7 @@
 import urllib.parse as parse
 
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
 from .utils.merge import merge
 
 default_options = {

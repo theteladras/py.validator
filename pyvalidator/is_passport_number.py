@@ -1,5 +1,5 @@
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
+from .utils.Classes.RegEx import RegEx
 
 passport_regex_by_country_code = {
   "AM": "^[A-Z]{2}\d{7}$", # ARMENIA

@@ -1,8 +1,8 @@
-from typing import TypeVar, Union, Any, Callable
+from typing import Any, Callable, TypeVar, Union
 
-from ..reduce import reduce
-from ..map import map
 from ..includes import includes
+from ..map import map
+from ..reduce import reduce
 
 T = TypeVar('T', bound='List')
 

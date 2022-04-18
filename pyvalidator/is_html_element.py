@@ -2,6 +2,7 @@ from typing import TypedDict
 
 from .utils.assert_string import assert_string
 
+
 class IsHtmlElementOptions(TypedDict):
     contains: bool
 

@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsMacAddress(unittest.TestCase):
 	def valid_check(self, items, options = {}):

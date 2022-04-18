@@ -1,5 +1,7 @@
 import unittest
+
 from pyvalidator import *
+
 
 class TestIsDivisibleBy(unittest.TestCase):
 

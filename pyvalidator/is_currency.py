@@ -1,7 +1,8 @@
-from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
-from .utils.merge import merge
+from .utils.Classes.RegEx import RegEx
 from .utils.join import join
+from .utils.merge import merge
+
 
 def currency_regex(options):
     decimal_digits = "\d{" + str(options["digits_after_decimal"][0]) + "}"
