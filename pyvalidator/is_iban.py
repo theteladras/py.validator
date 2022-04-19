@@ -80,7 +80,7 @@ iban_patterns = {
 }
 
 def is_iban(input: str) -> bool:
-    input = assert_string(input.replace(' ', ''))
+    input = assert_string(input.replace(' ', '')).trim()
 
     if not input:
         return False
