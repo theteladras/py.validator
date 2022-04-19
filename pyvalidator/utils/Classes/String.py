@@ -84,3 +84,9 @@ class String(str):
 
     def search(self: T, pattern: str) -> Union[int, None]:
         return RegEx(pattern).search(self.__str__())
+
+    def prefix(self: T, string: str) -> T:
+        return String('' + string + self.__str__())
+
+    def sufix(self: T, string: str) -> T:
+        return String(self.__str__() + string)

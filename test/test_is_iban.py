@@ -4,113 +4,216 @@ from pyvalidator import *
 
 
 class TestIsIban(unittest.TestCase):
+	def valid_check(self, items, country_code = None, options = {}):
+		for item in items:
+			try:
+				self.assertTrue(is_iban(item, country_code, options))
+			except Exception as e:
+				print(f'failed for input: {item}')
+				raise e
 
-	def test_valid_odd(self):
-		self.assertTrue(is_iban('AD12 0001 2030 2003 5910 0100'))
-		self.assertTrue(is_iban('AD1200012030200359100100'))
-		self.assertTrue(is_iban('DE89370400440532013000'))
-		self.assertTrue(is_iban('HU42117730161111101800000000'))
-		self.assertTrue(is_iban('FR14 2004 1010 0505 0001 3M02 606'))
-		self.assertTrue(is_iban('ES9121000418450200051332'))
-		self.assertTrue(is_iban('UA213223130000026007233566001'))
-		self.assertTrue(is_iban('NO93 8601 1117 947'))
-		self.assertTrue(is_iban('RS35 2600 0560 1001 6113 79'))
-		self.assertTrue(is_iban('GB29 NWBK 6016 1331 9268 19'))
-		self.assertTrue(is_iban('SE4550000000058398257466'))
-		self.assertTrue(is_iban('BE68 5390 0754 7034'))
-		self.assertTrue(is_iban('HR1210010051863000160'))
-		self.assertTrue(is_iban('HR 1210010051863000160'))
-		self.assertTrue(is_iban('EE38 2200 2210 2014 5682'))
-		self.assertTrue(is_iban('BA39 1290 07940102 8494'))
-		self.assertTrue(is_iban('IL620108000000099999999'))
-		self.assertTrue(is_iban('GR16 0110 1250 0000 0001 2300 695'))
-		self.assertTrue(is_iban(' GR16 0110 1250 0000 0001 2300 695 '))
-		self.assertTrue(is_iban(' PL61109010140000071219812874'))
-		self.assertTrue(is_iban('TR330006100519786457841326'))
-		self.assertTrue(is_iban('MK07 250A 2000 0058 984'))
-		self.assertTrue(is_iban('MK07 2501 2000 0058 A84'))
-		self.assertTrue(is_iban('AL47212110090000000235698741'))
-		self.assertTrue(is_iban('AZ21NABZ00000000137010001944'))
-		self.assertTrue(is_iban('MT84MALT011000012345MTLCAST001S'))
-		self.assertTrue(is_iban('PT50000201231234567890154'))
-		self.assertTrue(is_iban('AT483200000012345864'))
-		self.assertTrue(is_iban('LU280019400644750000'))
-		self.assertTrue(is_iban('LU28001A400644750000'))
-		self.assertTrue(is_iban('CY17002001280000001200527600'))
-		self.assertTrue(is_iban('DO22ACAU00000000000123456789'))
-		self.assertTrue(is_iban('DO22AC1U00000000000123456789'))
-		self.assertTrue(is_iban('IT60X0542811101000000123456'))
-		self.assertTrue(is_iban('KW81CBKU0000000000001234560101'))
-		self.assertTrue(is_iban('LT121000011101001000'))
-		self.assertTrue(is_iban('FI2112345600000785'))
-		self.assertTrue(is_iban('LV80BANK0000435195001'))
-		self.assertTrue(is_iban('MD24AG000225100013104168'))
-		self.assertTrue(is_iban('RO49AAAA1B31007593840000'))
-		self.assertTrue(is_iban('ME25505000012345678951'))
-		print('OK - test_valid_odd')
+	def invalid_check(self, items, country_code = None, options = {}):
+		for item in items:
+			try:
+				self.assertFalse(is_iban(item, country_code, options))
+			except Exception as e:
+				print(f'failed for input: {item}')
+				raise e
 
-	def test_invalid_odd(self):
-		self.assertFalse(is_iban('AD12 0001 2030 2003 5910 01001'))
-		self.assertFalse(is_iban('HU421177301611111018000000001'))
-		self.assertFalse(is_iban('FR14 2004 1010 0505 000 3M02 606'))
-		self.assertFalse(is_iban('ES912000418450200051332'))
-		self.assertFalse(is_iban('UAA213223130000026007233566001'))
-		self.assertFalse(is_iban('NO93 8601 117 947'))
-		self.assertFalse(is_iban('RS35 063 0560 1001 6113 79'))
-		self.assertFalse(is_iban('GB29 NWBKA 6016 1331 9268 19'))
-		self.assertFalse(is_iban('GB29 NWB 6016 1331 9268 19'))
-		self.assertFalse(is_iban('SE45500000000583982574A6'))
-		self.assertFalse(is_iban('BE68 5390 0754'))
-		self.assertFalse(is_iban('BE68 5390 0754 7034 1111'))
-		self.assertFalse(is_iban('HR121001005186300016'))
-		self.assertFalse(is_iban('EE38 2200 2210 2014'))
-		self.assertFalse(is_iban('E38 2200 2210 2014'))
-		self.assertFalse(is_iban('IL62010800000009999999#'))
-		self.assertFalse(is_iban('IL62010800000009999999'))
-		self.assertFalse(is_iban('IL62010800000009999999a'))
-		self.assertFalse(is_iban('GR16 0110 12$0 0000 0001 2300 695'))
-		self.assertFalse(is_iban('PL6110901014000007121981287A'))
-		self.assertFalse(is_iban('PL611090101400000712198128755'))
-		self.assertFalse(is_iban('TR330A06100519786457841326'))
-		self.assertFalse(is_iban('TR33000610051978645784132#'))
-		self.assertFalse(is_iban('MK07 2501 200# 0058 984#'))
-		self.assertFalse(is_iban('MK07 2501 2000 0058 A8A'))
-		self.assertFalse(is_iban('AL472121100A0000000235698741'))
-		self.assertFalse(is_iban('AL472121100100000002#5698741'))
-		self.assertFalse(is_iban('AZDDNABZ00000000137010001944'))
-		self.assertFalse(is_iban('AZ21NAB100000000137010001944'))
-		self.assertFalse(is_iban('MT8AMALT011000012345MTLCAST001S'))
-		self.assertFalse(is_iban('MT82MAL4011000012345MTLCAST001S'))
-		self.assertFalse(is_iban('MT82MALB01A000012345MTLCAST001S'))
-		self.assertFalse(is_iban('MT82MALB011000012345MTLC$ST001S'))
-		self.assertFalse(is_iban('PT500002012312345678901542'))
-		self.assertFalse(is_iban('PT5000020123123456789015'))
-		self.assertFalse(is_iban('PT5000020123123456789015A'))
-		self.assertFalse(is_iban('AT48320000001234586'))
-		self.assertFalse(is_iban('AT4832000000123458644'))
-		self.assertFalse(is_iban('AT48320000001234586A'))
-		self.assertFalse(is_iban('LU2800A9400644750000'))
-		self.assertFalse(is_iban('LU28001@400644750000'))
-		self.assertFalse(is_iban('CY170020012A0000001200527600'))
-		self.assertFalse(is_iban('CY170020012810000001200527600'))
-		self.assertFalse(is_iban('DO2AACAU00000000000123456789'))
-		self.assertFalse(is_iban('DO22ACAUA0000000000123456789'))
-		self.assertFalse(is_iban('DO22ACAU000000000001234567899'))
-		self.assertFalse(is_iban('IT6010542811101000000123456'))
-		self.assertFalse(is_iban('IT6XX0542811101000000123456'))
-		self.assertFalse(is_iban('IT61X054281110A000000123456'))
-		self.assertFalse(is_iban('KW8ACBKU0000000000001234560101'))
-		self.assertFalse(is_iban('KW81CBK10000000000001234560101'))
-		self.assertFalse(is_iban('KW81CBKA10000000000001234560101'))
-		self.assertFalse(is_iban('LT12100001110100100A'))
-		self.assertFalse(is_iban('LT1210000111010010001'))
-		self.assertFalse(is_iban('FI211234560000078A'))
-		self.assertFalse(is_iban('LV8ABANK0000435195001'))
-		self.assertFalse(is_iban('LV81BAN10000435195001'))
-		self.assertFalse(is_iban('LV81BANK00004351950012'))
-		self.assertFalse(is_iban('MDA4AG000225100013104168'))
-		self.assertFalse(is_iban('MD$4AG0002251000131041681'))
-		self.assertFalse(is_iban('RO49AAA11B31007593840000'))
-		self.assertFalse(is_iban('RO1AAAAA1B31007593840000'))
-		self.assertFalse(is_iban('ME2550500001234567895A'))
-		print('OK - test_invalid_odd')
+	def test_valid_iban(self):
+		valid = [
+			'AD12 0001 2030 2003 5910 0100',
+			'AD1200012030200359100100',
+			'DE89370400440532013000',
+			'HU42117730161111101800000000',
+			'FR14 2004 1010 0505 0001 3M02 606',
+			'ES9121000418450200051332',
+			'UA213223130000026007233566001',
+			'NO93 8601 1117 947',
+			'RS35 2600 0560 1001 6113 79',
+			'GB29 NWBK 6016 1331 9268 19',
+			'SE4550000000058398257466',
+			'BE68 5390 0754 7034',
+			'HR1210010051863000160',
+			'HR 1210010051863000160',
+			'EE38 2200 2210 2014 5682',
+			'BA39 1290 07940102 8494',
+			'IL620108000000099999999',
+			'GR16 0110 1250 0000 0001 2300 695',
+			' GR16 0110 1250 0000 0001 2300 695 ',
+			' PL61109010140000071219812874',
+			'TR330006100519786457841326',
+			'MK07 250A 2000 0058 984',
+			'MK07 2501 2000 0058 A84',
+			'AL47212110090000000235698741',
+			'AZ21NABZ00000000137010001944',
+			'MT84MALT011000012345MTLCAST001S',
+			'PT50000201231234567890154',
+			'AT483200000012345864',
+			'LU280019400644750000',
+			'LU28001A400644750000',
+			'CY17002001280000001200527600',
+			'DO22ACAU00000000000123456789',
+			'DO22AC1U00000000000123456789',
+			'IT60X0542811101000000123456',
+			'KW81CBKU0000000000001234560101',
+			'LT121000011101001000',
+			'FI2112345600000785',
+			'LV80BANK0000435195001',
+			'MD24AG000225100013104168',
+			'RO49AAAA1B31007593840000',
+			'ME25505000012345678951',
+		]
+		self.valid_check(valid)
+		print('OK - test_valid_iban')
+
+	def test_invalid_iban(self):
+		invalid = [
+			'AD12 0001 2030 2003 5910 01001',
+			'HU421177301611111018000000001',
+			'FR14 2004 1010 0505 000 3M02 606',
+			'ES912000418450200051332',
+			'UAA213223130000026007233566001',
+			'NO93 8601 117 947',
+			'RS35 063 0560 1001 6113 79',
+			'GB29 NWBKA 6016 1331 9268 19',
+			'GB29 NWB 6016 1331 9268 19',
+			'SE45500000000583982574A6',
+			'BE68 5390 0754',
+			'BE68 5390 0754 7034 1111',
+			'HR121001005186300016',
+			'EE38 2200 2210 2014',
+			'E38 2200 2210 2014',
+			'IL62010800000009999999#',
+			'IL62010800000009999999',
+			'IL62010800000009999999a',
+			'GR16 0110 12$0 0000 0001 2300 695',
+			'PL6110901014000007121981287A',
+			'PL611090101400000712198128755',
+			'TR330A06100519786457841326',
+			'TR33000610051978645784132#',
+			'MK07 2501 200# 0058 984#',
+			'MK07 2501 2000 0058 A8A',
+			'AL472121100A0000000235698741',
+			'AL472121100100000002#5698741',
+			'AZDDNABZ00000000137010001944',
+			'AZ21NAB100000000137010001944',
+			'MT8AMALT011000012345MTLCAST001S',
+			'MT82MAL4011000012345MTLCAST001S',
+			'MT82MALB01A000012345MTLCAST001S',
+			'MT82MALB011000012345MTLC$ST001S',
+			'PT500002012312345678901542',
+			'PT5000020123123456789015',
+			'PT5000020123123456789015A',
+			'AT48320000001234586',
+			'AT4832000000123458644',
+			'AT48320000001234586A',
+			'LU2800A9400644750000',
+			'LU28001@400644750000',
+			'CY170020012A0000001200527600',
+			'CY170020012810000001200527600',
+			'DO2AACAU00000000000123456789',
+			'DO22ACAUA0000000000123456789',
+			'DO22ACAU000000000001234567899',
+			'IT6010542811101000000123456',
+			'IT6XX0542811101000000123456',
+			'IT61X054281110A000000123456',
+			'KW8ACBKU0000000000001234560101',
+			'KW81CBK10000000000001234560101',
+			'KW81CBKA10000000000001234560101',
+			'LT12100001110100100A',
+			'LT1210000111010010001',
+			'FI211234560000078A',
+			'LV8ABANK0000435195001',
+			'LV81BAN10000435195001',
+			'LV81BANK00004351950012',
+			'MDA4AG000225100013104168',
+			'MD$4AG0002251000131041681',
+			'RO49AAA11B31007593840000',
+			'RO1AAAAA1B31007593840000',
+			'ME2550500001234567895A',
+			'XX2550500001234567895A',
+			'me25505000012345678951',
+			'ch9300762011623852957'
+		]
+		self.invalid_check(invalid)
+		print('OK - test_invalid_iban')
+
+	def test_valid_iban_DE(self):
+		valid = [
+			'DE89370400440532013000',
+			'89370400440532013000',
+		]
+		self.valid_check(valid, 'DE')
+		print('OK - test_valid_iban_DE')
+
+	def test_invalid_iban_DE(self):
+		invalid = [
+			'DE189370400440532013000',
+			'819370400440532013000',
+		]
+		self.invalid_check(invalid, 'DE')
+		print('OK - test_invalid_iban_DE')
+
+	def test_valid_iban_IT(self):
+		valid = [
+			'IT60X0542811101000000123456',
+			'60X0542811101000000123456',
+			' 60X0542811101000000123456',
+		]
+		self.valid_check(valid, 'IT')
+		print('OK - test_valid_iban_IT')
+
+	def test_valid_iban_IT_lc(self):
+		valid = [
+			'IT60X0542811101000000123456',
+			'60X0542811101000000123456',
+			' 60X0542811101000000123456',
+		]
+		self.valid_check(valid, 'it')
+		print('OK - test_valid_iban_IT_lc')
+
+	def test_invalid_iban_IT(self):
+		invalid = [
+			'IT61X054281110A000000123456',
+			'61X054281110A000000123456',
+		]
+		self.invalid_check(invalid, 'IT')
+		print('OK - test_invalid_iban_IT')
+
+	def test_valid_iban_MT(self):
+		valid = [
+			'MT84MALT011000012345MTLCAST001S',
+			'84MALT011000012345MTLCAST001S',
+		]
+		self.valid_check(valid, 'MT')
+		print('OK - test_valid_iban_MT')
+
+	def test_invalid_iban_MT(self):
+		invalid = [
+			'MT82MALB01A000012345MTLCAST001S',
+			'DE89370400440532013000',
+			'60X0542811101000000123456'
+		]
+		self.invalid_check(invalid, 'MT')
+		print('OK - test_invalid_iban_MT')
+
+	def test_invalid_iban_unknown_country_code(self):
+		invalid = [
+			'MT84MALT011000012345MTLCAST001S',
+			'DE89370400440532013000',
+			'60X0542811101000000123456'
+		]
+		self.invalid_check(invalid, 'XX')
+		print('OK - test_invalid_iban_unknown_country_code')
+
+
+	def test_valid_iban_case_insensitive(self):
+		valid = [
+			'rs35 2600 0560 1001 6113 79',
+			'gb29 nwbk 6016 1331 9268 19',
+			'ch9300762011623852957',
+			'sI 56263300012039086'
+		]
+		self.valid_check(valid, options = { "insensitive": True })
+		print('OK - test_valid_iban_case_insensitive')

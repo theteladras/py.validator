@@ -1,4 +1,13 @@
+from typing import TypedDict
 from .utils.assert_string import assert_string
+from .utils.merge import merge
+
+class IsIbanOptions(TypedDict):
+    insensitive: bool
+
+default_options: IsIbanOptions = {
+  "insensitive": False,
+}
 
 iban_patterns = {
     "AD": "^AD\\d{10}[A-Z0-9]{12}$",
@@ -79,13 +88,27 @@ iban_patterns = {
     "VG": "^VG\\d{2}[A-Z]{4}\\d{16}$",
 }
 
-def is_iban(input: str) -> bool:
+def is_iban(input: str, country_code: str = None, options: IsIbanOptions = {}) -> bool:
     input = assert_string(input.replace(' ', '')).trim()
+
+    options = merge(options, default_options)
+
+    if options["insensitive"]:
+        input = input.upper()
+        if country_code:
+            country_code = country_code.upper()
 
     if not input:
         return False
 
-    country_code = input[:2]
+    country_code_from_input = input[:2]
+
+    if not country_code:
+        country_code = country_code_from_input
+    else:
+        country_code = country_code.upper()
+        if country_code_from_input != country_code:
+            input = input.prefix(country_code)
 
     if country_code not in iban_patterns:
         return False
