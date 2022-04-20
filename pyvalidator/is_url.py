@@ -48,7 +48,7 @@ def is_url(input: str, options = {}) -> bool:
 				top_level_domain_pattern = f"{top_level_domain_pattern}|{domain}"
 		top_level_domain_pattern = f"(\.({top_level_domain_pattern}))"
 	else:
-		top_level_domain_pattern = r"\.[a-z]{2,6}"
+		top_level_domain_pattern = r"\.[a-z]{2,63}"
 
 	protocol_pattern = "" if options["no_scheme"] else r"((http(s)?):\/\/)?"
 
