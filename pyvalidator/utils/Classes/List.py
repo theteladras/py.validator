@@ -6,6 +6,7 @@ from ..reduce import reduce
 
 T = TypeVar('T', bound='List')
 
+
 class List(list):
     def map(self: T, cb) -> T:
         return List(map(self, cb))
@@ -23,7 +24,7 @@ class List(list):
     def pop(self: T) -> Any:
         return list(self).pop()
 
-    def join(self: T, join_with: str) -> str: 
+    def join(self: T, join_with: str) -> str:
         return join_with.join(self)
 
     def find(self, cb: Callable[[Any, int], bool]) -> Union[Any, None]:

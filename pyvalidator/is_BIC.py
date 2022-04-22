@@ -1,6 +1,6 @@
 from .is_ISO31661_alpha2 import country_codes
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.slice import slice_and_upper_case
 
 

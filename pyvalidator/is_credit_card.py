@@ -1,6 +1,6 @@
 from .is_number import is_number
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 
 
 def is_credit_card(input: str) -> bool:

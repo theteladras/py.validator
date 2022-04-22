@@ -1,5 +1,5 @@
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.index_of import index_of
 from .utils.merge import merge
 
@@ -7,7 +7,8 @@ default_base64_options = {
     "url_safe": False
 }
 
-def is_base64(input: str, options = {}) -> bool:
+
+def is_base64(input: str, options={}) -> bool:
     assert_string(input)
 
     not_base64 = RegEx("[^A-Z0-9+\/=]", "i")
@@ -27,7 +28,7 @@ def is_base64(input: str, options = {}) -> bool:
         first_padding_char == -1 or
         first_padding_char == input_length - 1 or
         (
-            first_padding_char == input_length - 2 and 
+            first_padding_char == input_length - 2 and
             input[input_length - 1] == "="
         )
     )

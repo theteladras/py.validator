@@ -2,7 +2,7 @@ from typing import Literal, Union
 
 from .utils.assert_string import assert_string
 
-HashAlgorithms = Union [
+HashAlgorithms = Union[
     Literal["md5"],
     Literal["md4"],
     Literal["sha1"],
@@ -19,20 +19,21 @@ HashAlgorithms = Union [
 ]
 
 hash_lengths = {
-  "md5": 32,
-  "md4": 32,
-  "sha1": 40,
-  "sha256": 64,
-  "sha384": 96,
-  "sha512": 128,
-  "ripemd128": 32,
-  "ripemd160": 40,
-  "tiger128": 32,
-  "tiger160": 40,
-  "tiger192": 48,
-  "crc32": 8,
-  "crc32b": 8,
+    "md5": 32,
+    "md4": 32,
+    "sha1": 40,
+    "sha256": 64,
+    "sha384": 96,
+    "sha512": 128,
+    "ripemd128": 32,
+    "ripemd160": 40,
+    "tiger128": 32,
+    "tiger160": 40,
+    "tiger192": 48,
+    "crc32": 8,
+    "crc32b": 8,
 }
+
 
 def is_hash(input: str, algorithm: HashAlgorithms) -> bool:
     input = assert_string(input)

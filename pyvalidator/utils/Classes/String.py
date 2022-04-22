@@ -1,17 +1,18 @@
 from typing import TypeVar, Union
 
-from ..slice import slice
 from .List import List
 from .RegEx import FlagType, RegEx
+from ..slice import slice
 
 T = TypeVar('T', bound='String')
+
 
 class String(str):
     def slice(self: T, start: int, end: Union[int, None] = None) -> T:
         sliced_string = slice(self, start, end)
         return String(sliced_string)
 
-    def split(self: T, separator = None) -> List:
+    def split(self: T, separator=None) -> List:
         if bool(separator):
             string = self.__str__().split(separator)
             for index, item in enumerate(string):
@@ -19,9 +20,9 @@ class String(str):
             split_string = List(string)
             return split_string
 
-        split_string =  List(self)
+        split_string = List(self)
         for index, item in enumerate(split_string):
-                split_string[index] = String(item)
+            split_string[index] = String(item)
         return split_string
 
     @property
@@ -59,7 +60,7 @@ class String(str):
             return self.__str__().startswith(target, 0, end)
 
     def findMatches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
-        if type(regex).__name__ == 'str'  or type(regex).__name__ == 'String':
+        if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
             pattern = RegEx(regex, flag)
             matches = pattern.findall(self.__str__())
             if not matches:

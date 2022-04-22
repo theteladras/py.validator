@@ -3,10 +3,10 @@ from typing import TypedDict
 from .is_byte_length import is_byte_length
 from .is_fqdn import is_fqdn
 from .is_ip import is_ip
-from .utils.assert_string import assert_string
 from .utils.Classes.List import List
 from .utils.Classes.RegEx import RegEx
 from .utils.Classes.String import String
+from .utils.assert_string import assert_string
 from .utils.includes import includesSome
 from .utils.merge import merge
 
@@ -22,16 +22,17 @@ class IsEmailOptions(TypedDict):
     blacklisted_chars: str
     host_blacklist: List
 
+
 default_email_options: IsEmailOptions = {
-  "allow_display_name": False,
-  "require_display_name": False,
-  "allow_utf8_local_part": True,
-  "require_tld": True,
-  "ignore_max_length": False,
-  "domain_specific_validation": False,
-  "allow_ip_domain": False,
-  "blacklisted_chars": '',
-  "host_blacklist": [],
+    "allow_display_name": False,
+    "require_display_name": False,
+    "allow_utf8_local_part": True,
+    "require_tld": True,
+    "ignore_max_length": False,
+    "domain_specific_validation": False,
+    "allow_ip_domain": False,
+    "blacklisted_chars": '',
+    "host_blacklist": [],
 }
 
 
@@ -47,7 +48,7 @@ def validate_display_name(display_name: String):
     contains_illegal = includesSome(display_name_without_quotes, illegal_chars)
 
     if contains_illegal:
-        
+
         if display_name_without_quotes == display_name:
             return False
 
@@ -59,6 +60,7 @@ def validate_display_name(display_name: String):
             return False
 
     return True
+
 
 def is_email(input: str, options: IsEmailOptions = {}) -> bool:
     input = assert_string(input)
@@ -79,8 +81,8 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
 
             input = input.sub(RegEx.escape(display_name), '').sub(r"(^<|>$)", '')
             if display_name.endswith(' '):
-                display_name = display_name.substring(0, display_name.length-1)
-            
+                display_name = display_name.substring(0, display_name.length - 1)
+
             if not validate_display_name(display_name):
                 return False
         elif options["require_display_name"]:
@@ -103,7 +105,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
         user = user.lower()
         username = String(user.split('+')[0])
 
-        if not is_byte_length(username.sub(RegEx('\.', 'g'), ''), { "min": 6, "max": 30 }):
+        if not is_byte_length(username.sub(RegEx('\.', 'g'), ''), {"min": 6, "max": 30}):
             return False
 
         user_parts = username.split('.')
@@ -112,16 +114,16 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
                 return False
 
     if (
-        (not options["ignore_max_length"]) and  (
-            not is_byte_length(user, { "max": 64 }) or
-            not is_byte_length(domain, { "max": 254 })
+        not options["ignore_max_length"] and (
+            not is_byte_length(user, {"max": 64}) or
+            not is_byte_length(domain, {"max": 254})
         )
     ):
         return False
 
-    if not is_fqdn(domain, { "require_tld": options["require_tld"] }):
+    if not is_fqdn(domain, {"require_tld": options["require_tld"]}):
 
-        if (not options["allow_ip_domain"]):
+        if not options["allow_ip_domain"]:
             return False
 
         if not is_ip(domain):
@@ -144,7 +146,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
     user_parts = user.split('.')
     for user_part in user_parts:
         if not String(user_part).match(pattern, 'i'):
-                return False
+            return False
 
     if options["blacklisted_chars"]:
         if user.findMatches(RegEx("[" + options["blacklisted_chars"] + "]+", 'g')):

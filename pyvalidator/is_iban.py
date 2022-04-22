@@ -1,12 +1,15 @@
 from typing import TypedDict
+
 from .utils.assert_string import assert_string
 from .utils.merge import merge
+
 
 class IsIbanOptions(TypedDict):
     insensitive: bool
 
+
 default_options: IsIbanOptions = {
-  "insensitive": False,
+    "insensitive": False,
 }
 
 iban_patterns = {
@@ -87,6 +90,7 @@ iban_patterns = {
     "VA": "^VA\\d{20}$",
     "VG": "^VG\\d{2}[A-Z]{4}\\d{16}$",
 }
+
 
 def is_iban(input: str, country_code: str = None, options: IsIbanOptions = {}) -> bool:
     input = assert_string(input.replace(' ', '')).trim()

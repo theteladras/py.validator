@@ -6,9 +6,11 @@ from .utils.assert_string import assert_string
 class IsHtmlElementOptions(TypedDict):
     contains: bool
 
+
 default_email_options: IsHtmlElementOptions = {
-  "contains": False
+    "contains": False
 }
+
 
 def is_html_element(input: str, options: IsHtmlElementOptions = default_email_options) -> bool:
     input = assert_string(input).trim()

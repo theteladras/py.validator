@@ -2,6 +2,7 @@ from typing import Union
 
 __map = map
 
+
 def map(item: Union[str, list], cb):
     cb_num_arg = cb.__code__.co_argcount
     if cb_num_arg == 1:

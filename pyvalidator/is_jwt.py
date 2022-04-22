@@ -12,6 +12,6 @@ def is_jwt(input: str) -> bool:
         return False
 
     def reducer(acc: bool, curr: bool) -> bool:
-        return acc and is_base64(curr, { "url_safe": True })
+        return acc and is_base64(curr, {"url_safe": True})
 
     return dot_split.reduce(reducer, True)

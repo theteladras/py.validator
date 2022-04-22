@@ -8,7 +8,7 @@ from .utils.assert_string import assert_string
 
 def is_online(input: Union[str, None] = None) -> bool:
     if not bool(input):
-        conn = httplib.HTTPSConnection('8.8.8.8', timeout = 5)
+        conn = httplib.HTTPSConnection('8.8.8.8', timeout=5)
         try:
             conn.request('HEAD', '/')
             return True
@@ -28,7 +28,7 @@ def is_online(input: Union[str, None] = None) -> bool:
         contains_protocol = input.match(r"^http(s)?://.*")
         if not contains_protocol:
             input = "http://{}".format(input)
-        urllib.request.urlopen(input, timeout = 100).getcode()
+        urllib.request.urlopen(input, timeout=100).getcode()
         return True
     except Exception:
         return False

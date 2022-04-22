@@ -1,5 +1,5 @@
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.join import join
 from .utils.merge import merge
 
@@ -9,7 +9,7 @@ def currency_regex(options):
     for index, digit in enumerate(options["digits_after_decimal"]):
         if index != 0:
             decimal_digits = "{}|\d{}{}{}".format(decimal_digits, '{', digit, '}')
-    
+
     def __match(x):
         return "\\{}".format(x.group(0))
 
@@ -55,25 +55,27 @@ def currency_regex(options):
 
     return RegEx("^(?!-? )(?=.*\d){}$".format(pattern))
 
+
 default_currency_options = {
-  "symbol": "$",
-  "require_symbol": False,
-  "allow_space_after_symbol": False,
-  "symbol_after_digits": False,
-  "allow_negatives": True,
-  "parens_for_negatives": False,
-  "negative_sign_before_digits": False,
-  "negative_sign_after_digits": False,
-  "allow_negative_sign_placeholder": False,
-  "thousands_separator": ',',
-  "decimal_separator": '.',
-  "allow_decimal": True,
-  "require_decimal": False,
-  "digits_after_decimal": [2],
-  "allow_space_after_digits": False,
+    "symbol": "$",
+    "require_symbol": False,
+    "allow_space_after_symbol": False,
+    "symbol_after_digits": False,
+    "allow_negatives": True,
+    "parens_for_negatives": False,
+    "negative_sign_before_digits": False,
+    "negative_sign_after_digits": False,
+    "allow_negative_sign_placeholder": False,
+    "thousands_separator": ',',
+    "decimal_separator": '.',
+    "allow_decimal": True,
+    "require_decimal": False,
+    "digits_after_decimal": [2],
+    "allow_space_after_digits": False,
 }
 
-def is_currency(input: str, options = {}) -> bool:
+
+def is_currency(input: str, options={}) -> bool:
     assert_string(input)
     options = merge(options, default_currency_options)
     return bool(currency_regex(options).match(input))

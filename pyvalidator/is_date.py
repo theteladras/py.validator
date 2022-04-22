@@ -1,10 +1,10 @@
 from typing import List as ListT
 from typing import Literal, Tuple, TypedDict, Union
 
-from .utils.assert_string import assert_string
 from .utils.Classes.List import List
 from .utils.Classes.RegEx import RegEx
 from .utils.Classes.String import String
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 from .utils.to_date import to_date
 
@@ -41,11 +41,13 @@ class IsDateOptions(TypedDict):
     ]]
     strict_mode: bool
 
+
 __default_options: IsDateOptions = {
-  "format": 'YYYY/MM/DD',
-  "delimiters": ['/', '-'],
-  "strict_mode": False,
+    "format": 'YYYY/MM/DD',
+    "delimiters": ['/', '-'],
+    "strict_mode": False,
 }
+
 
 def zip(date_list: ListT[str], format_list: ListT[str]) -> ListT[Tuple[str, str]]:
     zipped = []
@@ -53,6 +55,7 @@ def zip(date_list: ListT[str], format_list: ListT[str]) -> ListT[Tuple[str, str]
     for i, _ in enumerate(smaller_list):
         zipped.append([date_list[i], format_list[i]])
     return zipped
+
 
 def is_date(input: str, options: IsDateOptions = {}) -> bool:
     input = assert_string(input)

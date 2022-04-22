@@ -1,16 +1,18 @@
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
 class IsLatLongOptions(TypedDict):
     check_dms: bool
 
+
 __default_options: IsLatLongOptions = {
     "check_dms": False
 }
+
 
 def is_lat_long(input: str, options: IsLatLongOptions = {}) -> bool:
     input = assert_string(input)
@@ -24,12 +26,12 @@ def is_lat_long(input: str, options: IsLatLongOptions = {}) -> bool:
 
     if ',' not in input:
         return False
-    
+
     pair = input.split(',')
 
     if pair.length != 2 or (
-        pair[0].startswith('(') and not pair[1].endswith(')') or
-        pair[1].endswith(')') and not pair[0].startswith('(')
+            pair[0].startswith('(') and not pair[1].endswith(')') or
+            pair[1].endswith(')') and not pair[0].startswith('(')
     ):
         return False
 
@@ -37,4 +39,3 @@ def is_lat_long(input: str, options: IsLatLongOptions = {}) -> bool:
         return pair[0].match(lat_dms_pattern) and pair[1].match(long_dms_pattern)
 
     return pair[0].match(lat_pattern) and pair[1].match(long_pattern)
-

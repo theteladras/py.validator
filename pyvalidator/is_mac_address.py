@@ -12,12 +12,14 @@ class IsMacAddressOptions(TypedDict):
         Literal[None],
     ]
 
+
 default_mac_address_options: IsMacAddressOptions = {
     "no_separators": False,
     "eui": None
 }
 
-def is_mac_address(input: str, options = {}) -> bool:
+
+def is_mac_address(input: str, options={}) -> bool:
     input = assert_string(input)
 
     options = merge(options, default_mac_address_options)

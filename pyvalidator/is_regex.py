@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.join import join
 from .utils.merge import merge
 
@@ -9,11 +9,13 @@ from .utils.merge import merge
 class IsRegExpOptions(TypedDict):
     with_flags: bool
 
+
 default_email_options: IsRegExpOptions = {
-  "with_flags": False
+    "with_flags": False
 }
 
-def is_regex(input: str, options = {}) -> bool:
+
+def is_regex(input: str, options={}) -> bool:
     input = assert_string(input)
 
     if not input:
