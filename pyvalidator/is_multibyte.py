@@ -1,5 +1,5 @@
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 
 
 def is_multibyte(input: str) -> bool:
@@ -8,5 +8,3 @@ def is_multibyte(input: str) -> bool:
     multibyte_pattern = RegEx(r"[^\x00-\x7F]", 'i')
 
     return any(ord(char) > 127 for char in input)
-
-

@@ -1,5 +1,5 @@
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 
 
 def is_ethereum_address(input: str) -> bool:

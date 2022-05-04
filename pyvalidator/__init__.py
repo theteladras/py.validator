@@ -28,6 +28,7 @@ from pyvalidator.is_hash import is_hash
 from pyvalidator.is_hexadecimal import is_hexadecimal
 from pyvalidator.is_hsl import is_hsl
 from pyvalidator.is_html_element import is_html_element
+from pyvalidator.is_iban import is_iban
 from pyvalidator.is_imei import is_imei
 from pyvalidator.is_int import is_int
 from pyvalidator.is_ip import is_ip
@@ -58,4 +59,3 @@ from pyvalidator.is_strong_password import is_strong_password
 from pyvalidator.is_uppercase import is_uppercase
 from pyvalidator.is_url import is_url
 from pyvalidator.is_uuid import is_uuid
-from pyvalidator.is_iban import is_iban

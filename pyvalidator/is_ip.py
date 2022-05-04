@@ -1,10 +1,10 @@
 from typing import Literal
 
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.includes import includesNot
 
-ip_v4_segment= "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
+ip_v4_segment = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"
 ip_v4_address = "({}[.]){{3}}{}".format(ip_v4_segment, ip_v4_segment)
 
 ip_v6_segment_format = "(?:[0-9a-fA-F]{1,4})"
@@ -31,6 +31,7 @@ ip_v6_address = (
 
 ip_versions = [4, 6, '4', '6']
 
+
 def is_ip(input: str, version: Literal[4, 6, '4', '6', None] = None) -> bool:
     input = assert_string(input)
 
@@ -56,6 +57,3 @@ def is_ip(input: str, version: Literal[4, 6, '4', '6', None] = None) -> bool:
         return int(parts[3]) <= 255
     except:
         return False
-
-
-

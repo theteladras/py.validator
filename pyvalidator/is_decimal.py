@@ -1,6 +1,6 @@
 from .alpha import decimal
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.includes import includesNot
 from .utils.merge import merge
 
@@ -13,15 +13,17 @@ def decimal_regexp(options):
     regex = "^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
     return RegEx(regex)
 
+
 default_decimal_options = {
-  "force_decimal": False,
-  "decimal_digits": '1,',
-  "locale": 'en-US',
+    "force_decimal": False,
+    "decimal_digits": '1,',
+    "locale": 'en-US',
 }
 
 blacklist = ['', '-', '+']
 
-def is_decimal(input: str, options = {}) -> bool:
+
+def is_decimal(input: str, options={}) -> bool:
     input = assert_string(input)
 
     input = input.rstrip()
@@ -33,4 +35,3 @@ def is_decimal(input: str, options = {}) -> bool:
 
     without_white_space = input.sub(" ", '')
     return includesNot(blacklist, without_white_space) and bool(decimal_regexp(options).match(input))
-

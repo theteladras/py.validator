@@ -1,17 +1,19 @@
 import json
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.List import List
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
 class IsJsonOptions(TypedDict):
     allow_primitives: str
 
+
 default_json_options: IsJsonOptions = {
-  "allow_primitives": False,
+    "allow_primitives": False,
 }
+
 
 def is_json(input: str, options: IsJsonOptions = {}) -> bool:
     input = assert_string(input)

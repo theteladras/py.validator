@@ -1,5 +1,5 @@
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.math import grather_then_check, less_then_check
 from .utils.merge import merge
 
@@ -11,7 +11,8 @@ __default_options = {
     "gt": None,
 }
 
-def is_int(input: str, options = __default_options) -> bool:
+
+def is_int(input: str, options=__default_options) -> bool:
     input = assert_string(input)
 
     int_pattern = RegEx("^(?:[-+]?(?:0|[1-9][0-9]*))$")

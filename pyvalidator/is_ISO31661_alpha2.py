@@ -28,8 +28,10 @@ valid_ISO31661_alpha2_countries_codes = {
     'ZA', 'ZM', 'ZW',
 }
 
+
 def is_ISO31661_alpha2(input):
     assert_string(input)
     return input in valid_ISO31661_alpha2_countries_codes
+
 
 country_codes = valid_ISO31661_alpha2_countries_codes

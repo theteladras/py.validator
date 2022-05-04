@@ -1,18 +1,20 @@
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
 class IsEmailOptions(TypedDict):
     allow_hyphens: bool
 
+
 default_email_options: IsEmailOptions = {
-  "allow_hyphens": False,
+    "allow_hyphens": False,
 }
 
-def is_imei(input: str, options = {}) -> bool:
+
+def is_imei(input: str, options={}) -> bool:
     input = assert_string(input)
     options = merge(options, default_email_options)
 

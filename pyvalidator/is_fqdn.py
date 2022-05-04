@@ -1,8 +1,8 @@
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.RegEx import RegEx
 from .utils.Classes.String import String
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
@@ -13,13 +13,15 @@ class IsFqdnOptions(TypedDict):
     allow_numeric_tld: bool
     allow_wildcard: bool
 
+
 default_fqdn_options: IsFqdnOptions = {
-  "require_tld": True,
-  "allow_underscores": False,
-  "allow_trailing_dot": False,
-  "allow_numeric_tld": False,
-  "allow_wildcard": False,
+    "require_tld": True,
+    "allow_underscores": False,
+    "allow_trailing_dot": False,
+    "allow_numeric_tld": False,
+    "allow_wildcard": False,
 }
+
 
 def is_fqdn(input: str, options: IsFqdnOptions = {}) -> bool:
     input = assert_string(input)

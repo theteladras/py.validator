@@ -5,6 +5,7 @@ from .List import List
 
 FlagType = Union[Literal["g"], Literal["i"], Literal["m"], Literal["u"], None]
 
+
 class RegEx(object):
     pattern = None
 

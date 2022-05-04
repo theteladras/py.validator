@@ -1,12 +1,13 @@
 from typing import Union
 
 from .is_ip import is_ip
-from .utils.assert_string import assert_string
 from .utils.Classes.String import String
+from .utils.assert_string import assert_string
 
 subnet_maybe = "^\d{1,3}$"
 subnet_v4 = 32
 subnet_v6 = 128
+
 
 def is_ip_range(input: str, version: Union[str, int] = None) -> bool:
     try:
@@ -25,7 +26,7 @@ def is_ip_range(input: str, version: Union[str, int] = None) -> bool:
 
         if not is_subnet_maybe:
             return False
-        
+
         if subnet_part.length > 1 and subnet_part.starts_with('0'):
             return False
 

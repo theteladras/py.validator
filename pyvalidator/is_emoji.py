@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-from .utils.assert_string import assert_string
 from .utils.Classes.String import String
+from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 empji_patterns = (
@@ -20,12 +20,15 @@ empji_patterns = (
     "]$"
 )
 
+
 class IsEmojiOptions(TypedDict):
     omit_rule: str
 
+
 default_emoji_options: IsEmojiOptions = {
-  "omit_rule": None,
+    "omit_rule": None,
 }
+
 
 def is_emoji(input: str, options: IsEmojiOptions = {}) -> bool:
     input = assert_string(input)
@@ -34,7 +37,8 @@ def is_emoji(input: str, options: IsEmojiOptions = {}) -> bool:
 
     def is_flag_emoji(c):
         return (
-            "\U0001F1E6\U0001F1E8" <= c <= "\U0001F1FF\U0001F1FC" or (
+            "\U0001F1E6\U0001F1E8" <= c <= "\U0001F1FF\U0001F1FC"
+            or (
                 c in [
                     "\U0001F3F4\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f",
                     "\U0001F3F4\U000e0067\U000e0062\U000e0073\U000e0063\U000e0074\U000e007f",
