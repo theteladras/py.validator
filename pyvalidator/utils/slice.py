@@ -2,7 +2,7 @@ from typing import Union
 
 
 def slice(val: str, start: int, end: Union[int, None]) -> str:
-    if end == None:
+    if end is None:
         return val[start:]
     return val[start:end]
 

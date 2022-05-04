@@ -6,7 +6,7 @@ from .utils.assert_string import assert_string
 def is_alpha(input, locale='en-US', options={}):
     input = assert_string(input)
 
-    if locale == None:
+    if locale is None:
         locale = 'en-US'
 
     if 'ignore' in options and options['ignore']:

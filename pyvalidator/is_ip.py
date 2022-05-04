@@ -38,7 +38,7 @@ def is_ip(input: str, version: Literal[4, 6, '4', '6', None] = None) -> bool:
     ip_v4_address_pattern = RegEx('^' + ip_v4_address + '$')
     ip_v6_address_pattern = RegEx(ip_v6_address)
 
-    if version == None:
+    if version is None:
         return is_ip(input, 4) or is_ip(input, 6)
 
     if includesNot(ip_versions, version):

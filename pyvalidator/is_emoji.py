@@ -47,7 +47,7 @@ def is_emoji(input: str, options: IsEmojiOptions = {}) -> bool:
             )
         )
 
-    if options["omit_rule"] != None:
+    if options["omit_rule"] is not None:
         input = input.sub(options["omit_rule"], '')
 
     if not input.length:
