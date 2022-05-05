@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, Union
 
 from .is_byte_length import is_byte_length
 from .is_fqdn import is_fqdn
@@ -20,7 +20,7 @@ class IsEmailOptions(TypedDict):
     domain_specific_validation: bool
     allow_ip_domain: bool
     blacklisted_chars: str
-    host_blacklist: List
+    host_blacklist: Union[List, list]
 
 
 default_email_options: IsEmailOptions = {
