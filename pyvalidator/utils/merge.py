@@ -1,7 +1,2 @@
-from typing import TypeVar
-
-T = TypeVar('T')
-
-
-def merge(main_dict: T, default_dict: T) -> T:
+def merge(main_dict: dict, default_dict: dict) -> dict:
     return {**default_dict, **main_dict}
