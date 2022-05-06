@@ -12,7 +12,7 @@ class String(str):
         sliced_string = slice(self, start, end)
         return String(sliced_string)
 
-    def split(self: T, separator=None) -> List:
+    def split(self: T, separator=None, *args, **kwargs) -> List:
         if bool(separator):
             string = self.__str__().split(separator)
             for index, item in enumerate(string):
@@ -35,7 +35,7 @@ class String(str):
         else:
             return String(RegEx.sub(regex.pattern, replacement, self.__str__()))
 
-    def rstrip(self: T) -> T:
+    def rstrip(self: T, *args, **kwargs) -> T:
         return String(self.__str__().rstrip())
 
     def match(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> bool:
