@@ -22,7 +22,7 @@ def is_float(input: str, options=__default_options) -> bool:
     if includes(['+', '-', '.', ''], input):
         return False
 
-    float_pattern = RegEx("^(?:[-+])?(?:[0-9]+)?(?:\{}[0-9]*)?(?:[eE][\+\-]?(?:[0-9]+))?$".format(decimal[options["locale"]] if bool(options["locale"]) else '.'))
+    float_pattern = RegEx(r"^(?:[-+])?(?:[0-9]+)?(?:\{}[0-9]*)?(?:[eE][\+\-]?(?:[0-9]+))?$".format(decimal[options["locale"]] if bool(options["locale"]) else '.'))
 
     transformed_input = input.sub(',', '.').sub('٫', '.')
 

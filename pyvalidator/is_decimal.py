@@ -10,7 +10,7 @@ def decimal_regexp(options):
     local_decimal = decimal[local]
     decimal_digits = options["decimal_digits"]
     require_decimal = '' if options["force_decimal"] else '?'
-    regex = "^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
+    regex = r"^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
     return RegEx(regex)
 
 

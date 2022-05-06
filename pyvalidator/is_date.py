@@ -80,8 +80,8 @@ def is_date(input: str, options: IsDateOptions = {}) -> bool:
     if not input_delimiter:
         return False
 
-    format = format if options['strict_mode'] else format.sub("\{}".format(input_delimiter), '/')
-    input = input if options['strict_mode'] else input.sub("\{}".format(input_delimiter), '/')
+    format = format if options['strict_mode'] else format.sub(r"\{}".format(input_delimiter), '/')
+    input = input if options['strict_mode'] else input.sub(r"\{}".format(input_delimiter), '/')
 
     format_tupples = zip(
         input.split(date_delimiter),

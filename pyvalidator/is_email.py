@@ -105,7 +105,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
         user = user.lower()
         username = String(user.split('+')[0])
 
-        if not is_byte_length(username.sub(RegEx('\.', 'g'), ''), {"min": 6, "max": 30}):
+        if not is_byte_length(username.sub(RegEx(r'\.', 'g'), ''), {"min": 6, "max": 30}):
             return False
 
         user_parts = username.split('.')
