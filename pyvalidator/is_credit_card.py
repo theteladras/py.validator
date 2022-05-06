@@ -14,11 +14,11 @@ def is_credit_card(input: str) -> bool:
     if not credit_card.match(sanitized):
         return False
 
-    sum = 0
+    _sum = 0
     should_double = False
-    reversed_sanetized_input = sanitized[::-1]
+    reversed_sanitized_input = sanitized[::-1]
 
-    for digit in reversed_sanetized_input:
+    for digit in reversed_sanitized_input:
         if not is_number(digit):
             return False
 
@@ -27,11 +27,11 @@ def is_credit_card(input: str) -> bool:
         if should_double:
             tmp_num = tmp_num * 2
             if tmp_num >= 10:
-                sum += ((tmp_num % 10) + 1)
+                _sum += ((tmp_num % 10) + 1)
             else:
-                sum += tmp_num
+                _sum += tmp_num
         else:
-            sum += tmp_num
+            _sum += tmp_num
         should_double = not should_double
 
-    return bool(sanitized if (sum % 10) == 0 else False)
+    return bool(sanitized if (_sum % 10) == 0 else False)
