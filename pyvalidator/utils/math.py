@@ -1,7 +1,7 @@
 from typing import Union
 
 
-def grather_then_check(input: str, min: Union[str, int, float, None]) -> bool:
+def gather_then_check(input: str, min: Union[str, int, float, None]) -> bool:
     try:
         if min is None:
             return True
