@@ -11,7 +11,7 @@ class RegEx(object):
 
     def __init__(self, pattern: str, flag: FlagType = None) -> None:
         if not pattern:
-            raise Exception("Pattern not provided")
+            raise ValueError("Pattern not provided")
         if flag == 'i':
             self.pattern = re.compile(pattern, re.IGNORECASE)
         elif flag == 'g':

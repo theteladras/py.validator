@@ -67,7 +67,7 @@ def is_date(input: str, options: IsDateOptions = {}) -> bool:
     format = String(options['format'])
 
     if not date_format_pattern.match(format):
-        raise Exception('Not supported format provided: ', format)
+        raise ValueError('Not supported format provided: ', format)
 
     format_delimiter: Union[str, None] = List(options['delimiters']).find(lambda delimiter, _: delimiter in format)
 

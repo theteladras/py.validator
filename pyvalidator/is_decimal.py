@@ -31,7 +31,7 @@ def is_decimal(input: str, options={}) -> bool:
     options = merge(options, default_decimal_options)
 
     if options["locale"] not in decimal:
-        raise Exception("Invalid locale '{}'".format(options["locale"]))
+        raise ValueError("Invalid locale '{}'".format(options["locale"]))
 
     without_white_space = input.sub(" ", '')
     return includesNot(blacklist, without_white_space) and bool(decimal_regexp(options).match(input))

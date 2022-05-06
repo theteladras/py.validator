@@ -16,13 +16,13 @@ def is_alpha(input, locale='en-US', options={}):
 
             input = input.sub(pattern, '')
         else:
-            raise Exception('ignore should be instance of a String or RegExp')
+            raise TypeError('ignore should be instance of a String or RegExp')
 
     if locale in alpha:
         pattern = RegEx(alpha[locale], 'i')
         return pattern.match(input)
 
-    raise Exception("Invalid locale {}".format(locale))
+    raise ValueError("Invalid locale {}".format(locale))
 
 
 locales = list(alpha.keys())

@@ -301,4 +301,4 @@ def is_mobile_number(
         return False
     elif pattern := mobile_number_patterns.get(locale):
         return input.match(pattern)
-    raise Exception('Invalid locale provided: {}'.format(locale))
+    raise ValueError('Invalid locale provided: {}'.format(locale))
