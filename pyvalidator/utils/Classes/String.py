@@ -75,9 +75,6 @@ class String(str):
     def trim(self: T) -> T:
         return String(self.__str__().strip())
 
-    def search(self: T, term: str) -> int:
-        return String(self.__str__().find(term))
-
     def substring(self: T, start: int, end: int = None) -> T:
         if not end:
             return String(self.__str__()[start:])
