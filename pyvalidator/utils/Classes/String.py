@@ -59,7 +59,7 @@ class String(str):
         else:
             return self.__str__().startswith(target, 0, end)
 
-    def findMatches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
+    def find_matches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
         if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
             pattern = RegEx(regex, flag)
             matches = pattern.findall(self.__str__())

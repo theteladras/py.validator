@@ -75,7 +75,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
     default_max_email_length = 254
 
     if options["require_display_name"] or options["allow_display_name"]:
-        display_email = input.findMatches(split_name_address, 'i')
+        display_email = input.find_matches(split_name_address, 'i')
         if display_email:
             display_name = String(display_email[0])
 
@@ -149,7 +149,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
             return False
 
     if options["blacklisted_chars"]:
-        if user.findMatches(RegEx("[" + options["blacklisted_chars"] + "]+", 'g')):
+        if user.find_matches(RegEx("[" + options["blacklisted_chars"] + "]+", 'g')):
             return False
 
     return True
