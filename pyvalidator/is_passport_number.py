@@ -49,7 +49,7 @@ passport_regex_by_country_code = {
     "RS": r"^\d{9}$",  # SERBIA,
     "RU": r"^\d{9}$",  # RUSSIAN FEDERATION
     "SE": r"^\d{8}$",  # SWEDEN
-    "SL": r"^(P)[A-Z]\d{7}$",  # SLOVANIA
+    "SL": r"^(P)[A-Z]\d{7}$",  # SLOVENIA
     "SK": r"^[0-9A-Z]\d{7}$",  # SLOVAKIA
     "TR": r"^[A-Z]\d{8}$",  # TURKEY
     "UA": r"^[A-Z]{2}\d{6}$",  # UKRAINE
