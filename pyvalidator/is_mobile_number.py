@@ -289,19 +289,16 @@ def is_mobile_number(
         return False
 
     if locale == 'any':
-        for item in mobile_number_patterns:
-            pattern = mobile_number_patterns[item]
+        for item, pattern in mobile_number_patterns.items():
             if input.match(pattern):
                 return True
         return False
     elif isinstance(locale, list):
         for item in locale:
-            if item in mobile_number_patterns:
-                pattern = mobile_number_patterns[item]
+            if pattern := mobile_number_patterns.get(item):
                 if input.match(pattern):
                     return True
         return False
-    elif locale in mobile_number_patterns:
-        pattern = mobile_number_patterns[locale]
+    elif pattern := mobile_number_patterns.get(locale):
         return input.match(pattern)
     raise Exception('Invalid locale provided: {}'.format(locale))
