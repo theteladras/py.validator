@@ -48,6 +48,7 @@ from pyvalidator.is_number import is_number
 from pyvalidator.is_octal import is_octal
 from pyvalidator.is_odd import is_odd
 from pyvalidator.is_online import is_online
+from pyvalidator.is_palindrome import is_palindrome
 from pyvalidator.is_passport_number import is_passport_number
 from pyvalidator.is_port import is_port
 from pyvalidator.is_prime import is_prime

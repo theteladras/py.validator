@@ -94,6 +94,7 @@ Validator                                | Description
 **is_octal(str)**                       | check if the string is a valid octal number.
 **is_odd(str/int)**                     | checks if the input is an odd number, it accepts either a string or an int.
 **is_online(str)**                      | checks if the internet connection is available, where the input argument is an optional url, if passed it will be check if it is reachable _(if it is reachable it will evaluate to *True*)_.
+**is_palindrome(str, options)**         | checks if the string is a palindrom. The options argument is a optional dictionary which can contain a `insensitive` boolean property that will enable / disable case sensitivity, the default value is *True*. Special character that are contained in the string are ignored.
 **is_passport_number(str, country_code)**                     | check if the string is a valid passport number.<br/><br/>country_code is one of `['AM', 'AR', 'AT', 'AU', 'BA', 'BE', 'BG', 'BY', 'BR', 'CA', 'CH', 'CN', 'CY', 'CZ', 'DE', 'DK', 'DZ', 'EE', 'ES', 'FI', 'FR', 'GB', 'GR', 'HR', 'HU', 'IE' 'IN', 'IR', 'ID', 'IS', 'IT', 'JP', 'KR', 'LT', 'LU', 'LV', 'LY', 'MT', 'MY', 'MZ', 'NL', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE', 'SL', 'SK', 'TR', 'UA', 'US']`.
 **is_port(str)**                        | check if the string is a valid port number.
 **is_prime(str/int)**                   | checks if the input is an prime number, it accepts either a string or an int.
