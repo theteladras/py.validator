@@ -6,6 +6,6 @@ def to_string(input):
         return input
     elif type(input).__name__ == 'int' or type(input).__name__ == 'float':
         return str(input)
-    elif type(input).__name__ == 'dict' or type(input).__name__ == 'list' or inspect(input):
+    elif type(input).__name__ == 'dict' or type(input).__name__ == 'list' or inspect.ismodule(input):
         return '[object Object]'
     return ''
