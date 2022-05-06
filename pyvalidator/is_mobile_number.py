@@ -4,10 +4,6 @@ from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
-class IsMobileNumberOptions(dict):
-    strict_mode: bool
-
-
 Locals = Literal[
     'am-AM',
     'ar-AE',
@@ -271,7 +267,7 @@ mobile_number_patterns['ga-IE'] = mobile_number_patterns['en-IE']
 mobile_number_patterns['fr-CH'] = mobile_number_patterns['de-CH']
 mobile_number_patterns['it-CH'] = mobile_number_patterns['fr-CH']
 
-__default_options: IsMobileNumberOptions = {
+__default_options = {
     'strict_mode': False
 }
 
@@ -279,11 +275,11 @@ __default_options: IsMobileNumberOptions = {
 def is_mobile_number(
         input: str,
         locale: Tuple[List[Locals], Locals, 'any'] = 'any',
-        options: IsMobileNumberOptions = {}
+        options: dict = None
 ) -> bool:
     input = assert_string(input)
 
-    options = merge(options, __default_options)
+    options = merge(options or {}, __default_options)
 
     if options['strict_mode'] and not input.startswith('+'):
         return False
