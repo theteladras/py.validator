@@ -4,7 +4,7 @@ from .utils.Classes.String import String
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 
-empji_patterns = (
+emoji_patterns = (
     "^["
     r"\U0001F1E0-\U0001F1FF"  # flags (iOS)
     r"\U0001F300-\U0001F5FF"  # symbols & pictographs
@@ -55,7 +55,7 @@ def is_emoji(input: str, options: IsEmojiOptions = {}) -> bool:
 
     for char in input:
         char = String(char)
-        if not (char.match(empji_patterns) or is_flag_emoji(char)):
+        if not (char.match(emoji_patterns) or is_flag_emoji(char)):
             return False
 
     return True
