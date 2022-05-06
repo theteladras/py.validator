@@ -45,6 +45,7 @@ class RegEx(object):
             return None
         return re.findall(self.pattern, target)
 
+    @staticmethod
     def compile(pattern) -> Pattern[AnyStr]:
         return re.compile(pattern)
 
