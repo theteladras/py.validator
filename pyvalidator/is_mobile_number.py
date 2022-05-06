@@ -1,10 +1,10 @@
-from typing import List, Literal, Tuple, TypedDict
+from typing import List, Literal, Tuple
 
 from .utils.assert_string import assert_string
 from .utils.merge import merge
 
 
-class IsMobileNumberOptions(TypedDict):
+class IsMobileNumberOptions(dict):
     strict_mode: bool
 
 
