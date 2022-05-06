@@ -5,9 +5,9 @@ from .utils.assert_string import assert_string
 def is_data_uri(input: str) -> bool:
     assert_string(input)
 
-    valid_media_type = RegEx(r"^[a-z]+\/[a-z0-9\-\+]+$", 'i')
+    valid_media_type = RegEx(r"^[a-z]+/[a-z0-9\-\+]+$", 'i')
     valid_attribute = RegEx(r"^[a-z\-]+=[a-z0-9\-]+$", 'i')
-    valid_data = RegEx(r"^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@\/\?%\s]*$", 'i')
+    valid_data = RegEx(r"^[a-z0-9!\$&'\(\)\*\+,;=\-\._~:@/\?%\s]*$", 'i')
 
     data = input.split(',')
 

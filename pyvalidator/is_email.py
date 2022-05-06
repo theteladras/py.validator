@@ -67,10 +67,10 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
     options = merge(options, default_email_options)
 
     split_name_address = r"^([^\x00-\x1F\x7F-\x9F]+)<"
-    email_user_part = r"^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$"
+    email_user_part = r"^[a-z\d!#\$%&'\*\+\-/=\?\^_`{\|}~]+$"
     gmail_user_part = r"^[a-z\d]+$"
     quoted_email_user = r"^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$"
-    email_user_utf8_part = r"^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$"
+    email_user_utf8_part = r"^[a-z\d!#\$%&'\*\+\-/=\?\^_`{\|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$"
     quoted_email_user_utf8 = r"^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$"
     default_max_email_length = 254
 

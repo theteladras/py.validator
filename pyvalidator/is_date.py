@@ -60,7 +60,7 @@ def zip(date_list: ListT[str], format_list: ListT[str]) -> ListT[Tuple[str, str]
 def is_date(input: str, options: IsDateOptions = {}) -> bool:
     input = assert_string(input)
 
-    date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,.\/-](m{1,2})[|:;,.\/-](d{1,2})$)|(^(m{1,2})[|:;,.\/-](d{1,2})[|:;,.\/-]((y{4}|y{2})$))|(^(d{1,2})[|:;,.\/-](m{1,2})[|:;,.\/-]((y{4}|y{2})$))", 'i')
+    date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,./-](m{1,2})[|:;,./-](d{1,2})$)|(^(m{1,2})[|:;,./-](d{1,2})[|:;,./-]((y{4}|y{2})$))|(^(d{1,2})[|:;,./-](m{1,2})[|:;,./-]((y{4}|y{2})$))", 'i')
 
     options = merge(options, __default_options)
 

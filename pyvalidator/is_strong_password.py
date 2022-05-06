@@ -59,7 +59,7 @@ def analyze_password(pw: String) -> _Analysis:
     upper_case_regex = r"^[A-Z]$"
     lower_case_regex = r"^[a-z]$"
     number_regex = r"^[0-9]$"
-    symbol_regex = r"^[-#!$@%^&*()_+|~=`{}\[\]:\";'<>?,.\/ ]$"
+    symbol_regex = r"^[-#!$@%^&*()_+|~=`{}\[\]:\";'<>?,./ ]$"
 
     char_map = count_chars(pw)
 

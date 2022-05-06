@@ -11,7 +11,7 @@ default_base64_options = {
 def is_base64(input: str, options={}) -> bool:
     assert_string(input)
 
-    not_base64 = RegEx(r"[^A-Z0-9+\/=]", "i")
+    not_base64 = RegEx(r"[^A-Z0-9+/=]", "i")
     url_safe_base64 = RegEx(r"^[A-Z0-9_\-]*$", "i")
 
     options = merge(options, default_base64_options)
