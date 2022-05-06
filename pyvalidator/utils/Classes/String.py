@@ -89,5 +89,5 @@ class String(str):
     def prefix(self: T, string: str) -> T:
         return String('' + string + self.__str__())
 
-    def sufix(self: T, string: str) -> T:
+    def suffix(self: T, string: str) -> T:
         return String(self.__str__() + string)
