@@ -4,3 +4,4 @@ dist
 build
 py.validator.egg-info
 *.pyc
+*.tmp
