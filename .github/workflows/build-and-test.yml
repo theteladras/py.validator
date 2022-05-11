@@ -1,12 +1,13 @@
 name: Build and Test
 
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: [ main, dev ]
 
 jobs:
-  build-n-publish:
-    name: Build and publish Python distribution
+  build-and-test:
+    name: Build and test Python distribution
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -21,7 +22,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 timestring typing
+          pip install flake8
+          pip install -r requirements.txt
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -29,4 +31,6 @@ jobs:
           # exit-zero treats all errors as warnings.
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Run tests
-        run: python -m unittest
+        run: |
+          coverage run -m unittest discover
+          coverage report --fail-under=95
