@@ -32,7 +32,7 @@ def calculate_check_digit(ean: String) -> int:
 def is_ean(input: str) -> bool:
     input = assert_string(input)
 
-    valid_ean_regex = RegEx("^(\d{8}|\d{13}|\d{14})$")
+    valid_ean_regex = RegEx(r"^(\d{8}|\d{13}|\d{14})$")
 
     actual_check_digit = input.slice(-1)
     if not is_number(actual_check_digit):

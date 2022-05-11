@@ -22,5 +22,5 @@ def is_byte_length(input: str, options={}) -> bool:
     input_length = len(split_input) - 1
 
     return input_length >= options["min"] and (
-        options["max"] == None or input_length <= options["max"]
+        options["max"] is None or input_length <= options["max"]
     )

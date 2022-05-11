@@ -2,10 +2,11 @@ import inspect
 
 
 def to_string(input):
-    if type(input).__name__ == 'str':
-        return input
-    elif type(input).__name__ == 'int' or type(input).__name__ == 'float':
+    if isinstance(input, str):
+        # in case a custom string type is passed, return as an actual str
         return str(input)
-    elif type(input).__name__ == 'dict' or type(input).__name__ == 'list' or inspect(input):
+    elif isinstance(input, (int, float)):
+        return str(input)
+    elif isinstance(input, (dict, list)) or inspect.ismodule(input):
         return '[object Object]'
     return ''

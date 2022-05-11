@@ -10,7 +10,7 @@ def decimal_regexp(options):
     local_decimal = decimal[local]
     decimal_digits = options["decimal_digits"]
     require_decimal = '' if options["force_decimal"] else '?'
-    regex = "^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
+    regex = r"^[-+]?([0-9]+)?(\{}[0-9]{{".format(local_decimal) + "{}}}){}$".format(decimal_digits, require_decimal)
     return RegEx(regex)
 
 
@@ -31,7 +31,7 @@ def is_decimal(input: str, options={}) -> bool:
     options = merge(options, default_decimal_options)
 
     if options["locale"] not in decimal:
-        raise Exception("Invalid locale '{}'".format(options["locale"]))
+        raise ValueError("Invalid locale '{}'".format(options["locale"]))
 
     without_white_space = input.sub(" ", '')
     return includesNot(blacklist, without_white_space) and bool(decimal_regexp(options).match(input))

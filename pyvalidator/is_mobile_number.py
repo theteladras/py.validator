@@ -1,11 +1,7 @@
-from typing import List, Literal, Tuple, TypedDict
+from typing import List, Literal, Tuple
 
 from .utils.assert_string import assert_string
 from .utils.merge import merge
-
-
-class IsMobileNumberOptions(TypedDict):
-    strict_mode: bool
 
 
 Locals = Literal[
@@ -243,7 +239,7 @@ mobile_number_patterns = {
     'pt-BR': r'^((\+?55\ ?[1-9]{2}\ ?)|(\+?55\ ?\([1-9]{2}\)\ ?)|(0[1-9]{2}\ ?)|(\([1-9]{2}\)\ ?)|([1-9]{2}\ ?))((\d{4}\-?\d{4})|(9[2-9]{1}\d{3}\-?\d{4}))$',
     'pt-PT': r'^(\+?351)?9[1236]\d{7}$',
     'pt-AO': r'^(\+244)\d{9}$',
-    'ro-RO': r'^(\+?4?0)\s?7\d{2}(\/|\s|\.|\-)?\d{3}(\s|\.|\-)?\d{3}$',
+    'ro-RO': r'^(\+?4?0)\s?7\d{2}(/|\s|\.|\-)?\d{3}(\s|\.|\-)?\d{3}$',
     'ru-RU': r'^(\+?7|8)?9\d{9}$',
     'si-LK': r'^(?:0|94|\+94)?(7(0|1|2|4|5|6|7|8)( |-)?)\d{7}$',
     'sl-SI': r'^(\+386\s?|0)(\d{1}\s?\d{3}\s?\d{2}\s?\d{2}|\d{2}\s?\d{3}\s?\d{3})$',
@@ -271,7 +267,7 @@ mobile_number_patterns['ga-IE'] = mobile_number_patterns['en-IE']
 mobile_number_patterns['fr-CH'] = mobile_number_patterns['de-CH']
 mobile_number_patterns['it-CH'] = mobile_number_patterns['fr-CH']
 
-__default_options: IsMobileNumberOptions = {
+__default_options = {
     'strict_mode': False
 }
 
@@ -279,29 +275,26 @@ __default_options: IsMobileNumberOptions = {
 def is_mobile_number(
         input: str,
         locale: Tuple[List[Locals], Locals, 'any'] = 'any',
-        options: IsMobileNumberOptions = {}
+        options: dict = None
 ) -> bool:
     input = assert_string(input)
 
-    options = merge(options, __default_options)
+    options = merge(options or {}, __default_options)
 
     if options['strict_mode'] and not input.startswith('+'):
         return False
 
     if locale == 'any':
-        for item in mobile_number_patterns:
-            pattern = mobile_number_patterns[item]
+        for item, pattern in mobile_number_patterns.items():
             if input.match(pattern):
                 return True
         return False
     elif isinstance(locale, list):
         for item in locale:
-            if item in mobile_number_patterns:
-                pattern = mobile_number_patterns[item]
+            if pattern := mobile_number_patterns.get(item):
                 if input.match(pattern):
                     return True
         return False
-    elif locale in mobile_number_patterns:
-        pattern = mobile_number_patterns[locale]
+    elif pattern := mobile_number_patterns.get(locale):
         return input.match(pattern)
-    raise Exception('Invalid locale provided: {}'.format(locale))
+    raise ValueError('Invalid locale provided: {}'.format(locale))

@@ -39,13 +39,13 @@ def is_fqdn(input: str, options: IsFqdnOptions = {}) -> bool:
     if options["require_tld"]:
         if parts.length < 2:
             return False
-        if not tld.match(RegEx("^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$", 'i')):
+        if not tld.match(RegEx(r"^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$", 'i')):
             return False
 
-        if RegEx('\s').findall(tld):
+        if RegEx(r'\s').findall(tld):
             return False
 
-    if not options["allow_numeric_tld"] and tld.match("^\d+$"):
+    if not options["allow_numeric_tld"] and tld.match(r"^\d+$"):
         return False
 
     for part in parts:

@@ -60,14 +60,14 @@ def zip(date_list: ListT[str], format_list: ListT[str]) -> ListT[Tuple[str, str]
 def is_date(input: str, options: IsDateOptions = {}) -> bool:
     input = assert_string(input)
 
-    date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,.\/-](m{1,2})[|:;,.\/-](d{1,2})$)|(^(m{1,2})[|:;,.\/-](d{1,2})[|:;,.\/-]((y{4}|y{2})$))|(^(d{1,2})[|:;,.\/-](m{1,2})[|:;,.\/-]((y{4}|y{2})$))", 'i')
+    date_format_pattern = RegEx(r"(^(y{4}|y{2})[|:;,./-](m{1,2})[|:;,./-](d{1,2})$)|(^(m{1,2})[|:;,./-](d{1,2})[|:;,./-]((y{4}|y{2})$))|(^(d{1,2})[|:;,./-](m{1,2})[|:;,./-]((y{4}|y{2})$))", 'i')
 
     options = merge(options, __default_options)
 
     format = String(options['format'])
 
     if not date_format_pattern.match(format):
-        raise Exception('Not supported format provided: ', format)
+        raise ValueError('Not supported format provided: ', format)
 
     format_delimiter: Union[str, None] = List(options['delimiters']).find(lambda delimiter, _: delimiter in format)
 
@@ -80,20 +80,20 @@ def is_date(input: str, options: IsDateOptions = {}) -> bool:
     if not input_delimiter:
         return False
 
-    format = format if options['strict_mode'] else format.sub("\{}".format(input_delimiter), '/')
-    input = input if options['strict_mode'] else input.sub("\{}".format(input_delimiter), '/')
+    format = format if options['strict_mode'] else format.sub(r"\{}".format(input_delimiter), '/')
+    input = input if options['strict_mode'] else input.sub(r"\{}".format(input_delimiter), '/')
 
-    format_tupples = zip(
+    format_tuples = zip(
         input.split(date_delimiter),
         format.lower().split(date_delimiter)
     )
 
     date_dict = {}
 
-    for format_tupple in format_tupples:
-        if len(format_tupple[0]) != len(format_tupple[1]):
+    for format_tuple in format_tuples:
+        if len(format_tuple[0]) != len(format_tuple[1]):
             return False
-        format_char = format_tupple[1][0]
-        date_dict[format_char] = format_tupple[0]
+        format_char = format_tuple[1][0]
+        date_dict[format_char] = format_tuple[0]
 
     return bool(to_date("{}/{}/{}".format(date_dict['m'], date_dict['d'], date_dict['y'])))

@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, Union
 
 from .is_byte_length import is_byte_length
 from .is_fqdn import is_fqdn
@@ -20,7 +20,7 @@ class IsEmailOptions(TypedDict):
     domain_specific_validation: bool
     allow_ip_domain: bool
     blacklisted_chars: str
-    host_blacklist: List
+    host_blacklist: Union[List, list]
 
 
 default_email_options: IsEmailOptions = {
@@ -67,15 +67,15 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
     options = merge(options, default_email_options)
 
     split_name_address = r"^([^\x00-\x1F\x7F-\x9F]+)<"
-    email_user_part = r"^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$"
+    email_user_part = r"^[a-z\d!#\$%&'\*\+\-/=\?\^_`{\|}~]+$"
     gmail_user_part = r"^[a-z\d]+$"
     quoted_email_user = r"^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$"
-    email_user_utf8_part = r"^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$"
+    email_user_utf8_part = r"^[a-z\d!#\$%&'\*\+\-/=\?\^_`{\|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$"
     quoted_email_user_utf8 = r"^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$"
     default_max_email_length = 254
 
     if options["require_display_name"] or options["allow_display_name"]:
-        display_email = input.findMatches(split_name_address, 'i')
+        display_email = input.find_matches(split_name_address, 'i')
         if display_email:
             display_name = String(display_email[0])
 
@@ -105,7 +105,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
         user = user.lower()
         username = String(user.split('+')[0])
 
-        if not is_byte_length(username.sub(RegEx('\.', 'g'), ''), {"min": 6, "max": 30}):
+        if not is_byte_length(username.sub(RegEx(r'\.', 'g'), ''), {"min": 6, "max": 30}):
             return False
 
         user_parts = username.split('.')
@@ -149,7 +149,7 @@ def is_email(input: str, options: IsEmailOptions = {}) -> bool:
             return False
 
     if options["blacklisted_chars"]:
-        if user.findMatches(RegEx("[" + options["blacklisted_chars"] + "]+", 'g')):
+        if user.find_matches(RegEx("[" + options["blacklisted_chars"] + "]+", 'g')):
             return False
 
     return True

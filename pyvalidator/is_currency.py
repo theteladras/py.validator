@@ -5,25 +5,25 @@ from .utils.merge import merge
 
 
 def currency_regex(options):
-    decimal_digits = "\d{" + str(options["digits_after_decimal"][0]) + "}"
+    decimal_digits = r"\d{" + str(options["digits_after_decimal"][0]) + "}"
     for index, digit in enumerate(options["digits_after_decimal"]):
         if index != 0:
-            decimal_digits = "{}|\d{}{}{}".format(decimal_digits, '{', digit, '}')
+            decimal_digits = r"{}|\d{}{}{}".format(decimal_digits, '{', digit, '}')
 
     def __match(x):
         return "\\{}".format(x.group(0))
 
-    symbol = "({}){}".format(RegEx.sub("\W", __match, options["symbol"]), '' if options["require_symbol"] else '?')
+    symbol = "({}){}".format(RegEx.sub(r"\W", __match, options["symbol"]), '' if options["require_symbol"] else '?')
     negative = '-?'
-    whole_dollar_amount_without_sep = '[1-9]\d*'
-    whole_dollar_amount_with_sep = "[1-9]\d{{0,2}}({}\d{{3}})*".format(options["thousands_separator"])
+    whole_dollar_amount_without_sep = r'[1-9]\d*'
+    whole_dollar_amount_with_sep = r"[1-9]\d{{0,2}}({}\d{{3}})*".format(options["thousands_separator"])
     valid_whole_dollar_amounts = [
         '0',
         whole_dollar_amount_without_sep,
         whole_dollar_amount_with_sep
     ]
     whole_dollar_amount = "({})?".format(join(valid_whole_dollar_amounts, '|'))
-    decimal_amount = "(\{}({})){}".format(options["decimal_separator"], decimal_digits, '' if options["require_decimal"] else '?')
+    decimal_amount = r"(\{}({})){}".format(options["decimal_separator"], decimal_digits, '' if options["require_decimal"] else '?')
     pattern = "{}{}".format(
         whole_dollar_amount,
         decimal_amount if (options["allow_decimal"] or options["require_decimal"]) else ''
@@ -36,7 +36,7 @@ def currency_regex(options):
             pattern = negative + pattern
 
     if options["allow_negative_sign_placeholder"]:
-        pattern = "( (?!\-))?" + pattern
+        pattern = r"( (?!\-))?" + pattern
     elif options["allow_space_after_symbol"]:
         pattern = " ?" + pattern
     elif options["allow_space_after_digits"]:
@@ -53,7 +53,7 @@ def currency_regex(options):
         elif not (options["negative_sign_before_digits"] and options["negative_sign_after_digits"]):
             pattern = negative + pattern
 
-    return RegEx("^(?!-? )(?=.*\d){}$".format(pattern))
+    return RegEx(r"^(?!-? )(?=.*\d){}$".format(pattern))
 
 
 default_currency_options = {

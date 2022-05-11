@@ -12,7 +12,7 @@ class String(str):
         sliced_string = slice(self, start, end)
         return String(sliced_string)
 
-    def split(self: T, separator=None) -> List:
+    def split(self: T, separator=None, *args, **kwargs) -> List:
         if bool(separator):
             string = self.__str__().split(separator)
             for index, item in enumerate(string):
@@ -35,7 +35,7 @@ class String(str):
         else:
             return String(RegEx.sub(regex.pattern, replacement, self.__str__()))
 
-    def rstrip(self: T) -> T:
+    def rstrip(self: T, *args, **kwargs) -> T:
         return String(self.__str__().rstrip())
 
     def match(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> bool:
@@ -59,7 +59,7 @@ class String(str):
         else:
             return self.__str__().startswith(target, 0, end)
 
-    def findMatches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
+    def find_matches(self: T, regex: Union[str, RegEx], flag: FlagType = None) -> Union[List, None]:
         if type(regex).__name__ == 'str' or type(regex).__name__ == 'String':
             pattern = RegEx(regex, flag)
             matches = pattern.findall(self.__str__())
@@ -75,9 +75,6 @@ class String(str):
     def trim(self: T) -> T:
         return String(self.__str__().strip())
 
-    def search(self: T, term: str) -> int:
-        return String(self.__str__().find(term))
-
     def substring(self: T, start: int, end: int = None) -> T:
         if not end:
             return String(self.__str__()[start:])
@@ -89,5 +86,5 @@ class String(str):
     def prefix(self: T, string: str) -> T:
         return String('' + string + self.__str__())
 
-    def sufix(self: T, string: str) -> T:
+    def suffix(self: T, string: str) -> T:
         return String(self.__str__() + string)

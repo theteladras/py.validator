@@ -1,9 +1,9 @@
 from typing import Union
 
 
-def grather_then_check(input: str, min: Union[str, int, float, None]) -> bool:
+def gather_then_check(input: str, min: Union[str, int, float, None]) -> bool:
     try:
-        if min == None:
+        if min is None:
             return True
 
         input_num = float(input)
@@ -16,7 +16,7 @@ def grather_then_check(input: str, min: Union[str, int, float, None]) -> bool:
 
 def less_then_check(input: str, max: Union[str, int, float, None]) -> bool:
     try:
-        if max == None:
+        if max is None:
             return True
 
         input_num = float(input)

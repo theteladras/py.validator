@@ -20,6 +20,6 @@ def is_html_element(input: str, options: IsHtmlElementOptions = default_email_op
 
     if options["contains"]:
         index = input.search(html_contains_pattern)
-        return True if index != None else False
+        return True if index is not None else False
 
     return input.match(html_strict)

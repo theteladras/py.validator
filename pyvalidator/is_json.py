@@ -7,7 +7,7 @@ from .utils.merge import merge
 
 
 class IsJsonOptions(TypedDict):
-    allow_primitives: str
+    allow_primitives: bool
 
 
 default_json_options: IsJsonOptions = {

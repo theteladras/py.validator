@@ -1,6 +1,6 @@
 from .utils.Classes.RegEx import RegEx
 from .utils.assert_string import assert_string
-from .utils.math import grather_then_check, less_then_check
+from .utils.math import gather_then_check, less_then_check
 from .utils.merge import merge
 
 __default_options = {
@@ -26,9 +26,9 @@ def is_int(input: str, options=__default_options) -> bool:
 
     input_valid = bool(picked_regex.match(input))
 
-    min_check_passed = grather_then_check(input, options["min"])
+    min_check_passed = gather_then_check(input, options["min"])
     max_check_passed = less_then_check(input, options["max"])
-    lt_check_passed = grather_then_check(input, options["lt"])
+    lt_check_passed = gather_then_check(input, options["lt"])
     gt_check_passed = less_then_check(input, options["gt"])
 
     return input_valid and min_check_passed and max_check_passed and lt_check_passed and gt_check_passed

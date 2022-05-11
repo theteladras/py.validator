@@ -6,7 +6,7 @@ from .utils.to_int import to_int
 def is_prime(input: Union[int, str]) -> bool:
     input = to_int(input)
 
-    if input == None:
+    if input is None:
         return False
 
     if input <= 1:
