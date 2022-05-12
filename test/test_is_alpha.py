@@ -1,10 +1,11 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_alpha import is_alpha
+from . import print_test_ok
 
 
 class TestIsAlpha(unittest.TestCase):
-    def valid_check(self, items, locale = None, options = {}):
+    def valid_check(self, items, locale=None, options={}):
         for item in items:
             try:
                 self.assertTrue(is_alpha(item, locale, options))
@@ -12,7 +13,7 @@ class TestIsAlpha(unittest.TestCase):
                 print(f'failed for input: {item}')
                 raise e
 
-    def invalid_check(self, items, locale = None, options = {}):
+    def invalid_check(self, items, locale=None, options={}):
         for item in items:
             try:
                 self.assertFalse(is_alpha(item, locale, options))
@@ -28,7 +29,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid)
-        print('OK - test_valid_alpha_strings')
+        print_test_ok()
 
     def test_invalid_alpha_strings(self):
         invalid = [
@@ -39,7 +40,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid)
-        print('OK - test_invalid_alpha_strings')
+        print_test_ok()
 
     def test_valid_alpha_strings_with_ignored_characters(self):
         valid = [
@@ -47,8 +48,8 @@ class TestIsAlpha(unittest.TestCase):
             'this is a valid alpha string',
             'us/usa',
         ]
-        self.valid_check(valid, 'en-US', { "ignore": '- /' })
-        print('OK - test_valid_alpha_strings_with_ignored_characters')
+        self.valid_check(valid, 'en-US', {"ignore": '- /'})
+        print_test_ok()
 
     def test_invalid_alpha_strings_with_ignored_characters(self):
         invalid = [
@@ -56,12 +57,12 @@ class TestIsAlpha(unittest.TestCase):
             'this$is also not a valid.alpha string',
             'this is also not a valid alpha string.',
         ]
-        self.invalid_check(invalid, 'en-US', { "ignore": '- /' })
-        print('OK - test_invalid_alpha_strings_with_ignored_characters', 'en-US', { "ignore": '- /' })
+        self.invalid_check(invalid, 'en-US', {"ignore": '- /'})
+        print_test_ok()
 
     def test_should_throw_for_invalid_ignore_matcher(self):
-        self.assertRaises(Exception, is_alpha, ['this is also not a valid alpha string.', 'en-US', { "ignore": 123 }])
-        print('OK - test_should_throw_for_invalid_ignore_matcher')
+        self.assertRaises(Exception, is_alpha, ['this is also not a valid alpha string.', 'en-US', {"ignore": 123}])
+        print_test_ok()
 
     def test_valid_azerbaijani_string(self):
         valid = [
@@ -74,7 +75,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'az-AZ')
-        print('OK - test_valid_azerbaijani_alpha_strings')
+        print_test_ok()
 
     def test_invalid_azerbaijani_string(self):
         invalid = [
@@ -87,7 +88,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'az-AZ')
-        print('OK - test_invalid_azerbaijani_alpha_strings')
+        print_test_ok()
 
     def test_valid_bulgarian_string(self):
         valid = [
@@ -98,7 +99,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'bg-BG')
-        print('OK - test_valid_bulgarian_alpha_strings')
+        print_test_ok()
 
     def test_invalid_bulgarian_string(self):
         invalid = [
@@ -111,7 +112,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'bg-BG')
-        print('OK - test_invalid_bulgarian_alpha_strings')
+        print_test_ok()
 
     def test_valid_czech_string(self):
         valid = [
@@ -123,7 +124,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'cs-CZ')
-        print('OK - test_valid_czech_alpha_strings')
+        print_test_ok()
 
     def test_invalid_czech_string(self):
         invalid = [
@@ -133,7 +134,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'cs-CZ')
-        print('OK - test_invalid_czech_alpha_strings')
+        print_test_ok()
 
     def test_valid_slovak_string(self):
         valid = [
@@ -150,7 +151,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'sk-SK')
-        print('OK - test_valid_slovak_alpha_strings')
+        print_test_ok()
 
     def test_invalid_slovak_string(self):
         invalid = [
@@ -161,7 +162,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'sk-SK')
-        print('OK - test_invalid_slovak_alpha_strings')
+        print_test_ok()
 
     def test_valid_danish_string(self):
         valid = [
@@ -172,7 +173,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'da-DK')
-        print('OK - test_valid_danish_alpha_strings')
+        print_test_ok()
 
     def test_invalid_danish_string(self):
         invalid = [
@@ -182,7 +183,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'da-DK')
-        print('OK - test_invalid_danish_alpha_strings')
+        print_test_ok()
 
     def test_valid_dutch_string(self):
         valid = [
@@ -194,7 +195,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'nl-NL')
-        print('OK - test_valid_dutch_alpha_strings')
+        print_test_ok()
 
     def test_invalid_dutch_string(self):
         invalid = [
@@ -204,7 +205,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'nl-NL')
-        print('OK - test_invalid_dutch_alpha_strings')
+        print_test_ok()
 
     def test_valid_german_string(self):
         valid = [
@@ -215,7 +216,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'de-DE')
-        print('OK - test_valid_german_alpha_strings')
+        print_test_ok()
 
     def test_invalid_german_string(self):
         invalid = [
@@ -225,7 +226,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'de-DE')
-        print('OK - test_invalid_german_alpha_strings')
+        print_test_ok()
 
     def test_valid_hungarian_string(self):
         valid = [
@@ -234,7 +235,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'hu-HU')
-        print('OK - test_valid_hungarian_alpha_strings')
+        print_test_ok()
 
     def test_invalid_hungarian_string(self):
         invalid = [
@@ -245,7 +246,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'hu-HU')
-        print('OK - test_invalid_hungarian_alpha_strings')
+        print_test_ok()
 
     def test_valid_portuguese_string(self):
         valid = [
@@ -256,7 +257,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'pt-PT')
-        print('OK - test_valid_portuguese_alpha_strings')
+        print_test_ok()
 
     def test_invalid_portuguese_string(self):
         invalid = [
@@ -268,7 +269,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'pt-PT')
-        print('OK - test_invalid_portuguese_alpha_strings')
+        print_test_ok()
 
     def test_valid_italian_string(self):
         valid = [
@@ -283,7 +284,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'it-IT')
-        print('OK - test_valid_italian_alpha_strings')
+        print_test_ok()
 
     def test_invalid_italian_string(self):
         invalid = [
@@ -294,7 +295,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'it-IT')
-        print('OK - test_invalid_italian_alpha_strings')
+        print_test_ok()
 
     def test_valid_vietnamese_string(self):
         valid = [
@@ -307,7 +308,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'vi-VN')
-        print('OK - test_valid_vietnamese_alpha_strings')
+        print_test_ok()
 
     def test_invalid_vietnamese_string(self):
         invalid = [
@@ -317,7 +318,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'vi-VN')
-        print('OK - test_invalid_vietnamese_alpha_strings')
+        print_test_ok()
 
     def test_valid_arabic_string(self):
         valid = [
@@ -326,7 +327,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'ar')
-        print('OK - test_valid_arabic_alpha_strings')
+        print_test_ok()
 
     def test_invalid_arabic_string(self):
         invalid = [
@@ -342,7 +343,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'ar')
-        print('OK - test_invalid_arabic_alpha_strings')
+        print_test_ok()
 
     def test_valid_finnish_string(self):
         valid = [
@@ -353,7 +354,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'fi-FI')
-        print('OK - test_valid_finnish_alpha_strings')
+        print_test_ok()
 
     def test_invalid_finnish_string(self):
         invalid = [
@@ -363,7 +364,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'fi-FI')
-        print('OK - test_invalid_finnish_alpha_strings')
+        print_test_ok()
 
     def test_valid_polish_string(self):
         valid = [
@@ -377,7 +378,7 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.valid_check(valid, 'pl-PL')
-        print('OK - test_valid_polish_alpha_strings')
+        print_test_ok()
 
     def test_invalid_polish_string(self):
         invalid = [
@@ -387,4 +388,4 @@ class TestIsAlpha(unittest.TestCase):
         ]
 
         self.invalid_check(invalid, 'pl-PL')
-        print('OK - test_invalid_polish_alpha_strings')
+        print_test_ok()

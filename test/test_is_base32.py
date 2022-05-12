@@ -1,23 +1,30 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_base32 import is_base32
+from . import print_test_ok
 
 
 class TestIsBase32(unittest.TestCase):
 
     def test_valid_base32(self):
-        self.assertTrue(is_base32('ZG======'))
-        self.assertTrue(is_base32('JBSQ===='))
-        self.assertTrue(is_base32('JBSWY==='))
-        self.assertTrue(is_base32('K5SWYY3PNVSSA5DPEBXG6ZA='))
-        self.assertTrue(is_base32('K5SWYY3PNVSSA5DPEBXG6==='))
-        print('OK - test_valid_base32')
+        for i in [
+            'ZG======',
+            'JBSQ====',
+            'JBSWY===',
+            'K5SWYY3PNVSSA5DPEBXG6ZA=',
+            'K5SWYY3PNVSSA5DPEBXG6===',
+        ]:
+            self.assertTrue(is_base32(i))
+        print_test_ok()
 
     def test_invalid_base32(self):
-        self.assertFalse(is_base32('12345'))
-        self.assertFalse(is_base32(''))
-        self.assertFalse(is_base32('ZG====='))
-        self.assertFalse(is_base32('Zm=8JBSWY3DP'))
-        self.assertFalse(is_base32('=m9vYg=='))
-        self.assertFalse(is_base32('Zm9vYm/y===='))
-        print('OK - test_invalid_base32')
+        for i in [
+            '12345',
+            '',
+            'ZG=====',
+            'Zm=8JBSWY3DP',
+            '=m9vYg==',
+            'Zm9vYm/y====',
+        ]:
+            self.assertFalse(is_base32(i))
+        print_test_ok()

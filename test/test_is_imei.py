@@ -1,37 +1,50 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_imei import is_imei
+from . import print_test_ok
 
 
 class TestIsImei(unittest.TestCase):
 
     def test_valid_imei(self):
-        self.assertTrue(is_imei('352099001761481'))
-        self.assertTrue(is_imei('868932036356090'))
-        self.assertTrue(is_imei('490154203237518'))
-        self.assertTrue(is_imei('546918475942169'))
-        self.assertTrue(is_imei('998227667144730'))
-        self.assertTrue(is_imei('532729766805999'))
-        print('OK - test_valid_imei')
+        for i in [
+            '352099001761481',
+            '868932036356090',
+            '490154203237518',
+            '546918475942169',
+            '998227667144730',
+            '532729766805999',
+        ]:
+            self.assertTrue(is_imei(i))
+        print_test_ok()
 
     def test_invalid_imei(self):
-        self.assertFalse(is_imei('490154203237517'))
-        self.assertFalse(is_imei('3568680000414120'))
-        self.assertFalse(is_imei('3520990017614823'))
-        print('OK - test_invalid_imei')
+        for i in [
+            '490154203237517',
+            '3568680000414120',
+            '3520990017614823',
+        ]:
+            self.assertFalse(is_imei(i))
+        print_test_ok()
 
     def test_valid_imei_with_hyphens(self):
-        self.assertTrue(is_imei('35-209900-176148-1', { "allow_hyphens": True }))
-        self.assertTrue(is_imei('86-893203-635609-0', { "allow_hyphens": True }))
-        self.assertTrue(is_imei('49-015420-323751-8', { "allow_hyphens": True }))
-        self.assertTrue(is_imei('54-691847-594216-9', { "allow_hyphens": True }))
-        self.assertTrue(is_imei('99-822766-714473-0', { "allow_hyphens": True }))
-        self.assertTrue(is_imei('53-272976-680599-9', { "allow_hyphens": True }))
-        print('OK - test_valid_imei_with_hyphens')
+        for i in [
+            '35-209900-176148-1',
+            '86-893203-635609-0',
+            '49-015420-323751-8',
+            '54-691847-594216-9',
+            '99-822766-714473-0',
+            '53-272976-680599-9',
+        ]:
+            self.assertTrue(is_imei(i, {"allow_hyphens": True}))
+        print_test_ok()
 
     def test_invalid_imei_with_hyphens(self):
-        self.assertFalse(is_imei('49-015420-323751-7', { "allow_hyphens": True }))
-        self.assertFalse(is_imei('35-686800-0041412-0', { "allow_hyphens": True }))
-        self.assertFalse(is_imei('35-209900-1761482-3', { "allow_hyphens": True }))
-        self.assertFalse(is_imei('3520990017614823', { "allow_hyphens": True }))
-        print('OK - test_invalid_imei_with_hyphens')
+        for i in [
+            '49-015420-323751-7',
+            '35-686800-0041412-0',
+            '35-209900-1761482-3',
+            '3520990017614823',
+        ]:
+            self.assertFalse(is_imei(i, {"allow_hyphens": True}))
+        print_test_ok()

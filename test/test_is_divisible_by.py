@@ -1,22 +1,29 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_divisible_by import is_divisible_by
+from . import print_test_ok
 
 
 class TestIsDivisibleBy(unittest.TestCase):
 
     def test_valid_divisible(self):
-        self.assertTrue(is_divisible_by('2', 2))
-        self.assertTrue(is_divisible_by('4', 2))
-        self.assertTrue(is_divisible_by('100', 2))
-        self.assertTrue(is_divisible_by('1000', 2))
-        print('OK - test_valid_divisible')
+        for i in [
+            ['2', 2],
+            ['4', 2],
+            ['100', 2],
+            ['1000', 2],
+        ]:
+            self.assertTrue(is_divisible_by(*i))
+        print_test_ok()
 
     def test_invalid_divisible(self):
-        self.assertFalse(is_divisible_by('1', 2))
-        self.assertFalse(is_divisible_by('2.5', 2))
-        self.assertFalse(is_divisible_by('101', 2))
-        self.assertFalse(is_divisible_by('foo', 2))
-        self.assertFalse(is_divisible_by('', 2))
-        self.assertFalse(is_divisible_by('2020-01-06T14:31:00.135Z', 2))
-        print('OK - test_invalid_divisible')
+        for i in [
+            ['1', 2],
+            ['2.5', 2],
+            ['101', 2],
+            ['foo', 2],
+            ['', 2],
+            ['2020-01-06T14:31:00.135Z', 2],
+        ]:
+            self.assertFalse(is_divisible_by(*i))
+        print_test_ok()

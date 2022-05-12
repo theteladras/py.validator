@@ -1,20 +1,27 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_uppercase import is_uppercase
+from . import print_test_ok
 
 
 class TestIsUppercase(unittest.TestCase):
 
     def test_valid_uppercase(self):
-        self.assertTrue(is_uppercase('CCC'))
-        self.assertTrue(is_uppercase('UYTREWQ'))
-        self.assertTrue(is_uppercase('ASD123'))
-        self.assertTrue(is_uppercase('HELLO WORLD'))
-        self.assertTrue(is_uppercase('   .'))
-        print('OK - test_valid_uppercase')
+        for i in [
+            'CCC',
+            'UYTREWQ',
+            'ASD123',
+            'HELLO WORLD',
+            '   .',
+        ]:
+            self.assertTrue(is_uppercase(i))
+        print_test_ok()
 
     def test_invalid_uppercase(self):
-        self.assertFalse(is_uppercase('hello world'))
-        self.assertFalse(is_uppercase('HELLO WORLd'))
-        self.assertFalse(is_uppercase('asd123'))
-        print('OK - test_invalid_uppercase')
+        for i in [
+            'hello world',
+            'HELLO WORLd',
+            'asd123',
+        ]:
+            self.assertFalse(is_uppercase(i))
+        print_test_ok()
