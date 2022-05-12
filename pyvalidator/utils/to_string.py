@@ -1,5 +1,8 @@
 import inspect
 
+# Storing as an object so that tests will continue to function properly if this string is ever changed
+obj_str = '[object Object]'
+
 
 def to_string(input):
     if isinstance(input, str):
@@ -8,5 +11,5 @@ def to_string(input):
     elif isinstance(input, (int, float)):
         return str(input)
     elif isinstance(input, (dict, list)) or inspect.ismodule(input):
-        return '[object Object]'
+        return obj_str
     return ''
