@@ -1,15 +1,16 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_regex import is_regex
+from . import print_test_ok
 
 
 class TestIsRegularExpression(unittest.TestCase):
 
-    def valid_check(self, items, opts = {}):
+    def valid_check(self, items, opts={}):
         for item in items:
             self.assertTrue(is_regex(item, opts))
 
-    def invalid_check(self, items, opts = {}):
+    def invalid_check(self, items, opts={}):
         for item in items:
             self.assertFalse(is_regex(item, opts))
 
@@ -37,7 +38,7 @@ class TestIsRegularExpression(unittest.TestCase):
             r'^(0x)[0-9a-f]{40}$'
         ]
         self.valid_check(valid_items)
-        print('OK - test_valid_regex')
+        print_test_ok()
 
     def test_invalid_regex(self):
         invalid_items = [
@@ -50,13 +51,13 @@ class TestIsRegularExpression(unittest.TestCase):
             '[asd',
             '?1',
             'AA(C)B)A',
-            '[[a--z]{1:}',
+            r'[[a--z]{1:}',
             '\d{5}(-\d{4})???',
             '^(\\3)?[0-9]+{3}-[0-9]{4}$',
             '(?:(?:[^?+*{}()[\]\\|]+|\\.|\[(?:\^?\\.|\^[^\\]|[^\\^]))',
         ]
         self.invalid_check(invalid_items)
-        print('OK - test_invalid_regex')
+        print_test_ok()
 
     def test_valid_regex_with_flags(self):
         valid_items = [
@@ -72,8 +73,8 @@ class TestIsRegularExpression(unittest.TestCase):
             '/(?:asd)!/imsu',
             '/^(0x)[0-9a-f]{40}$/'
         ]
-        self.valid_check(valid_items, { "with_flags": True })
-        print('OK - test_valid_regex_with_flags')
+        self.valid_check(valid_items, {"with_flags": True})
+        print_test_ok()
 
     def test_invalid_regex_with_flags(self):
         invalid_items = [
@@ -84,5 +85,5 @@ class TestIsRegularExpression(unittest.TestCase):
             '/Hello\nworld/s',
             '/BOOM\\/u',
         ]
-        self.invalid_check(invalid_items, { "with_flags": True })
-        print('OK - test_invalid_regex_with_flags')
+        self.invalid_check(invalid_items, {"with_flags": True})
+        print_test_ok()

@@ -1,139 +1,170 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_decimal import is_decimal
+from . import print_test_ok
 
 
 class TestIsDecimal(unittest.TestCase):
 
-    def test_valid_decimale(self):
-        self.assertTrue(is_decimal('123'))
-        self.assertTrue(is_decimal('00123'))
-        self.assertTrue(is_decimal('-00123'))
-        self.assertTrue(is_decimal('0'))
-        self.assertTrue(is_decimal('-0'))
-        self.assertTrue(is_decimal('+123'))
-        self.assertTrue(is_decimal('0.01'))
-        self.assertTrue(is_decimal('.1'))
-        self.assertTrue(is_decimal('1.0'))
-        self.assertTrue(is_decimal('-.25'))
-        self.assertTrue(is_decimal('-0'))
-        self.assertTrue(is_decimal('0.0000000000001'))
-        print('OK - test_valid_decimale')
+    def test_valid_decimal(self):
+        for i in [
+            '123',
+            '00123',
+            '-00123',
+            '0',
+            '-0',
+            '+123',
+            '0.01',
+            '.1',
+            '1.0',
+            '-.25',
+            '-0',
+            '0.0000000000001',
+        ]:
+            self.assertTrue(is_decimal(i))
+        print_test_ok()
 
-    def test_invalid_decimale(self):
-        self.assertFalse(is_decimal('0,01'))
-        self.assertFalse(is_decimal(',1'))
-        self.assertFalse(is_decimal('1,0'))
-        self.assertFalse(is_decimal('-,25'))
-        self.assertFalse(is_decimal('0,0000000000001'))
-        self.assertFalse(is_decimal('0٫01'))
-        self.assertFalse(is_decimal('٫1'))
-        self.assertFalse(is_decimal('1٫0'))
-        self.assertFalse(is_decimal('-٫25'))
-        self.assertFalse(is_decimal('0٫0000000000001'))
-        self.assertFalse(is_decimal('....'))
-        self.assertFalse(is_decimal(' '))
-        self.assertFalse(is_decimal('-'))
-        self.assertFalse(is_decimal('+'))
-        self.assertFalse(is_decimal('.'))
-        self.assertFalse(is_decimal('0.1a'))
-        self.assertFalse(is_decimal('a'))
-        self.assertFalse(is_decimal('\n'))
-        print('OK - test_invalid_decimale')
+    def test_invalid_decimal(self):
+        for i in [
+            '0,01',
+            ',1',
+            '1,0',
+            '-,25',
+            '0,0000000000001',
+            '0٫01',
+            '٫1',
+            '1٫0',
+            '-٫25',
+            '0٫0000000000001',
+            '....',
+            ' ',
+            '-',
+            '+',
+            '.',
+            '0.1a',
+            'a',
+            '\n',
+        ]:
+            self.assertFalse(is_decimal(i))
+        print_test_ok()
 
-    def test_valid_decimale_locale_en_au(self):
-        self.assertTrue(is_decimal('123', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('00123', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('-00123', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('0', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('-0', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('+123', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('0.01', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('.1', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('1.0', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('-.25', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('-0', { "locale": "en-AU" }))
-        self.assertTrue(is_decimal('0.0000000000001', { "locale": "en-AU" }))
-        print('OK - test_valid_decimale_locale_en_au')
+    def test_valid_decimal_locale_en_au(self):
+        for i in [
+            '123',
+            '00123',
+            '-00123',
+            '0',
+            '-0',
+            '+123',
+            '0.01',
+            '.1',
+            '1.0',
+            '-.25',
+            '-0',
+            '0.0000000000001',
+        ]:
+            self.assertTrue(is_decimal(i, {"locale": "en-AU"}))
+        print_test_ok()
 
-    def test_invalid_decimale_locale_en_au(self):
-        self.assertFalse(is_decimal('0,01', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal(',1', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('1,0', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('-,25', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('0,0000000000001', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('0٫01', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('٫1', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('1٫0', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('-٫25', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('0٫0000000000001', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('....', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal(' ', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('-', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('+', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('.', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('0.1a', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('a', { "locale": "en-AU" }))
-        self.assertFalse(is_decimal('\n', { "locale": "en-AU" }))
-        print('OK - test_invalid_decimale_locale_en_au')
+    def test_invalid_decimal_locale_en_au(self):
+        for i in [
+            '0,01',
+            ',1',
+            '1,0',
+            '-,25',
+            '0,0000000000001',
+            '0٫01',
+            '٫1',
+            '1٫0',
+            '-٫25',
+            '0٫0000000000001',
+            '....',
+            ' ',
+            '-',
+            '+',
+            '.',
+            '0.1a',
+            'a',
+            '\n',
+        ]:
+            self.assertFalse(is_decimal(i, {"locale": "en-AU"}))
+        print_test_ok()
 
-    def test_valid_decimale_locale_ar(self):
-        self.assertTrue(is_decimal('123', { "locale": "ar" }))
-        self.assertTrue(is_decimal('00123', { "locale": "ar" }))
-        self.assertTrue(is_decimal('-00123', { "locale": "ar" }))
-        self.assertTrue(is_decimal('0٫01', { "locale": "ar" }))
-        self.assertTrue(is_decimal('٫1', { "locale": "ar" }))
-        self.assertTrue(is_decimal('1٫0', { "locale": "ar" }))
-        self.assertTrue(is_decimal('-٫25', { "locale": "ar" }))
-        print('OK - test_valid_decimale_locale_ar')
+    def test_valid_decimal_locale_ar(self):
+        for i in [
+            '123',
+            '00123',
+            '-00123',
+            '0٫01',
+            '٫1',
+            '1٫0',
+            '-٫25',
+        ]:
+            self.assertTrue(is_decimal(i, {"locale": "ar"}))
+        print_test_ok()
 
-    def test_invalid_decimale_locale_ar(self):
-        self.assertFalse(is_decimal('0.01', { "locale": "ar" }))
-        self.assertFalse(is_decimal('.1', { "locale": "ar" }))
-        self.assertFalse(is_decimal('1.0', { "locale": "ar" }))
-        self.assertFalse(is_decimal('-.25', { "locale": "ar" }))
-        self.assertFalse(is_decimal('0.0000000000001', { "locale": "ar" }))
-        self.assertFalse(is_decimal('0.01', { "locale": "ar" }))
-        self.assertFalse(is_decimal('.1', { "locale": "ar" }))
-        self.assertFalse(is_decimal('1.0', { "locale": "ar" }))
-        self.assertFalse(is_decimal('-.25', { "locale": "ar" }))
-        self.assertFalse(is_decimal('0.0000000000001', { "locale": "ar" }))
-        print('OK - test_invalid_decimale_locale_ar')
+    def test_invalid_decimal_locale_ar(self):
+        for i in [
+            '0.01',
+            '.1',
+            '1.0',
+            '-.25',
+            '0.0000000000001',
+            '0.01',
+            '.1',
+            '1.0',
+            '-.25',
+            '0.0000000000001',
+        ]:
+            self.assertFalse(is_decimal(i, {"locale": "ar"}))
+        print_test_ok()
 
-    def test_valid_decimale_locale_force_decimal(self):
-        self.assertTrue(is_decimal('0.01', { "force_decimal": True }))
-        self.assertTrue(is_decimal('.1', { "force_decimal": True }))
-        self.assertTrue(is_decimal('1.0', { "force_decimal": True }))
-        self.assertTrue(is_decimal('-.25', { "force_decimal": True }))
-        self.assertTrue(is_decimal('0.0000000000001', { "force_decimal": True }))
-        print('OK - test_valid_decimale_locale_force_decimal')
+    def test_valid_decimal_locale_force_decimal(self):
+        for i in [
+            '0.01',
+            '.1',
+            '1.0',
+            '-.25',
+            '0.0000000000001',
+        ]:
+            self.assertTrue(is_decimal(i, {"force_decimal": True}))
+        print_test_ok()
 
-    def test_invalid_decimale_locale_force_decimal(self):
-        self.assertFalse(is_decimal('-0', { "force_decimal": True }))
-        self.assertFalse(is_decimal('123', { "force_decimal": True }))
-        self.assertFalse(is_decimal('00123', { "force_decimal": True }))
-        self.assertFalse(is_decimal('0', { "force_decimal": True }))
-        self.assertFalse(is_decimal('+123', { "force_decimal": True }))
-        print('OK - test_invalid_decimale_locale_force_decimal')
+    def test_invalid_decimal_locale_force_decimal(self):
+        for i in [
+            '-0',
+            '123',
+            '00123',
+            '0',
+            '+123',
+        ]:
+            self.assertFalse(is_decimal(i, {"force_decimal": True}))
+        print_test_ok()
 
-    def test_valid_decimale_locale_decimal_digits_2_3(self):
-        self.assertTrue(is_decimal('123', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('00123', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('-00123', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('0', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('-0', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('+123', { "decimal_digits": "2,3" }))
-        self.assertTrue(is_decimal('-.255', { "decimal_digits": "2,3" }))
-        print('OK - test_valid_decimale_locale_decimal_digits_2_3')
+    def test_valid_decimal_locale_decimal_digits_2_3(self):
+        for i in [
+            '123',
+            '00123',
+            '-00123',
+            '0',
+            '-0',
+            '+123',
+            '-.255',
+        ]:
+            self.assertTrue(is_decimal(i, {"decimal_digits": "2,3"}))
+        print_test_ok()
 
-    def test_invalid_decimale_locale_decimal_digits_2_3(self):
-        self.assertFalse(is_decimal('0.0000000000001', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('0.0', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('.1', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('1.0', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('-.2564', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('0.0', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('٫1', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('1٫0', { "decimal_digits": "2,3" }))
-        self.assertFalse(is_decimal('-٫25', { "decimal_digits": "2,3" }))
-        print('OK - test_valid_decimale_locale_decimal_digits_2_3')
+    def test_invalid_decimal_locale_decimal_digits_2_3(self):
+        for i in [
+            '0.0000000000001',
+            '0.0',
+            '.1',
+            '1.0',
+            '-.2564',
+            '0.0',
+            '٫1',
+            '1٫0',
+            '-٫25',
+        ]:
+            self.assertFalse(is_decimal(i, {"decimal_digits": "2,3"}))
+        print_test_ok()

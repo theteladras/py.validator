@@ -1,6 +1,7 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_css_unit import is_css_unit
+from . import print_test_ok
 
 
 class TestIsCssUnit(unittest.TestCase):
@@ -39,7 +40,7 @@ class TestIsCssUnit(unittest.TestCase):
             '1.1pc',
         ]
         self.valid_check(valid_items)
-        print('OK - test_valid_css_unit')
+        print_test_ok()
 
     def test_invalid_css_unit(self):
         invalid_items = [
@@ -53,4 +54,4 @@ class TestIsCssUnit(unittest.TestCase):
             '00',
         ]
         self.invalid_check(invalid_items)
-        print('OK - test_invalid_css_unit')
+        print_test_ok()

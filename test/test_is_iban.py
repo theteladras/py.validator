@@ -1,6 +1,7 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_iban import is_iban
+from . import print_test_ok
 
 
 class TestIsIban(unittest.TestCase):
@@ -65,7 +66,7 @@ class TestIsIban(unittest.TestCase):
 			'ME25505000012345678951',
 		]
 		self.valid_check(valid)
-		print('OK - test_valid_iban')
+		print_test_ok()
 
 	def test_invalid_iban(self):
 		invalid = [
@@ -137,7 +138,7 @@ class TestIsIban(unittest.TestCase):
 			'ch9300762011623852957'
 		]
 		self.invalid_check(invalid)
-		print('OK - test_invalid_iban')
+		print_test_ok()
 
 	def test_valid_iban_DE(self):
 		valid = [
@@ -145,7 +146,7 @@ class TestIsIban(unittest.TestCase):
 			'89370400440532013000',
 		]
 		self.valid_check(valid, 'DE')
-		print('OK - test_valid_iban_DE')
+		print_test_ok()
 
 	def test_invalid_iban_DE(self):
 		invalid = [
@@ -153,7 +154,7 @@ class TestIsIban(unittest.TestCase):
 			'819370400440532013000',
 		]
 		self.invalid_check(invalid, 'DE')
-		print('OK - test_invalid_iban_DE')
+		print_test_ok()
 
 	def test_valid_iban_IT(self):
 		valid = [
@@ -162,7 +163,7 @@ class TestIsIban(unittest.TestCase):
 			' 60X0542811101000000123456',
 		]
 		self.valid_check(valid, 'IT')
-		print('OK - test_valid_iban_IT')
+		print_test_ok()
 
 	def test_valid_iban_IT_lc(self):
 		valid = [
@@ -171,7 +172,7 @@ class TestIsIban(unittest.TestCase):
 			' 60X0542811101000000123456',
 		]
 		self.valid_check(valid, 'it')
-		print('OK - test_valid_iban_IT_lc')
+		print_test_ok()
 
 	def test_invalid_iban_IT(self):
 		invalid = [
@@ -179,7 +180,7 @@ class TestIsIban(unittest.TestCase):
 			'61X054281110A000000123456',
 		]
 		self.invalid_check(invalid, 'IT')
-		print('OK - test_invalid_iban_IT')
+		print_test_ok()
 
 	def test_valid_iban_MT(self):
 		valid = [
@@ -187,7 +188,7 @@ class TestIsIban(unittest.TestCase):
 			'84MALT011000012345MTLCAST001S',
 		]
 		self.valid_check(valid, 'MT')
-		print('OK - test_valid_iban_MT')
+		print_test_ok()
 
 	def test_invalid_iban_MT(self):
 		invalid = [
@@ -196,7 +197,7 @@ class TestIsIban(unittest.TestCase):
 			'60X0542811101000000123456'
 		]
 		self.invalid_check(invalid, 'MT')
-		print('OK - test_invalid_iban_MT')
+		print_test_ok()
 
 	def test_invalid_iban_unknown_country_code(self):
 		invalid = [
@@ -205,8 +206,7 @@ class TestIsIban(unittest.TestCase):
 			'60X0542811101000000123456'
 		]
 		self.invalid_check(invalid, 'XX')
-		print('OK - test_invalid_iban_unknown_country_code')
-
+		print_test_ok()
 
 	def test_valid_iban_case_insensitive(self):
 		valid = [
@@ -215,5 +215,5 @@ class TestIsIban(unittest.TestCase):
 			'ch9300762011623852957',
 			'sI 56263300012039086'
 		]
-		self.valid_check(valid, options = { "insensitive": True })
-		print('OK - test_valid_iban_case_insensitive')
+		self.valid_check(valid, options={"insensitive": True})
+		print_test_ok()

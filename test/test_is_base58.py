@@ -1,26 +1,33 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_base58 import is_base58
+from . import print_test_ok
 
 
 class TestIsBase58(unittest.TestCase):
 
     def test_valid_base58(self):
-        self.assertTrue(is_base58('BukQL'))
-        self.assertTrue(is_base58('3KMUV89zab'))
-        self.assertTrue(is_base58('91GHkLMNtyo98'))
-        self.assertTrue(is_base58('YyjKm3H'))
-        self.assertTrue(is_base58('Mkhss145TRFg'))
-        self.assertTrue(is_base58('7678765677'))
-        self.assertTrue(is_base58('abcodpq'))
-        self.assertTrue(is_base58('AAVHJKLPY'))
-        print('OK - test_valid_base58')
+        for i in [
+            'BukQL',
+            '3KMUV89zab',
+            '91GHkLMNtyo98',
+            'YyjKm3H',
+            'Mkhss145TRFg',
+            '7678765677',
+            'abcodpq',
+            'AAVHJKLPY',
+        ]:
+            self.assertTrue(is_base58(i))
+        print_test_ok()
 
     def test_invalid_base58(self):
-        self.assertFalse(is_base58('0OPLJH'))
-        self.assertFalse(is_base58('IMKLP23'))
-        self.assertFalse(is_base58('KLMOmk986'))
-        self.assertFalse(is_base58('LL1l1985hG'))
-        self.assertFalse(is_base58('*MP9K'))
-        self.assertFalse(is_base58(')()(=9292929MKL'))
-        print('OK - test_invalid_base58')
+        for i in [
+            '0OPLJH',
+            'IMKLP23',
+            'KLMOmk986',
+            'LL1l1985hG',
+            '*MP9K',
+            ')()(=9292929MKL',
+        ]:
+            self.assertFalse(is_base58(i))
+        print_test_ok()

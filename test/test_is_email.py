@@ -1,245 +1,303 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_email import is_email
+from . import print_test_ok
 
 
 class TestIsEmail(unittest.TestCase):
 
     def test_valid_email(self):
-        self.assertTrue(is_email('foo@bar.com'))
-        self.assertTrue(is_email('x@x.au'))
-        self.assertTrue(is_email('foo@bar.com.au'))
-        self.assertTrue(is_email('foo+bar@bar.com'))
-        self.assertTrue(is_email('hans.m端ller@test.com'))
-        self.assertTrue(is_email('hans@m端ller.com'))
-        self.assertTrue(is_email('test|123@m端ller.com'))
-        self.assertTrue(is_email('test123+ext@gmail.com'))
-        self.assertTrue(is_email('some.name.midd.leNa.me.and.locality+extension@GoogleMail.com'))
-        self.assertTrue(is_email('"foobar"@example.com'))
-        self.assertTrue(is_email('"  foo  m端ller "@example.com'))
-        self.assertTrue(is_email('"foo\\@bar"@example.com'))
-        self.assertTrue(is_email("{}@{}.com".format(('a' * 64), ('a' * 63))))
-        self.assertTrue(is_email("{}@{}.com".format(('a' * 64), ('a' * 63))))
-        self.assertTrue(is_email("{}@gmail.com".format(('a' * 31))))
-        self.assertTrue(is_email('test@gmail.com'))
-        self.assertTrue(is_email('test.1@gmail.com'))
-        self.assertTrue(is_email('test@1337.com'))
-        print('OK - test_valid_email')
+        for i in [
+            'foo@bar.com',
+            'x@x.au',
+            'foo@bar.com.au',
+            'foo+bar@bar.com',
+            'hans.m端ller@test.com',
+            'hans@m端ller.com',
+            'test|123@m端ller.com',
+            'test123+ext@gmail.com',
+            'some.name.midd.leNa.me.and.locality+extension@GoogleMail.com',
+            '"foobar"@example.com',
+            '"  foo  m端ller "@example.com',
+            '"foo\\@bar"@example.com',
+            "{}@{}.com".format(('a' * 64), ('a' * 63)),
+            "{}@{}.com".format(('a' * 64), ('a' * 63)),
+            "{}@gmail.com".format(('a' * 31)),
+            'test@gmail.com',
+            'test.1@gmail.com',
+            'test@1337.com',
+        ]:
+            self.assertTrue(is_email(i))
+        print_test_ok()
 
     def test_invalid_email(self):
-        self.assertFalse(is_email('invalidemail@'))
-        self.assertFalse(is_email('invalid.com'))
-        self.assertFalse(is_email('@invalid.com'))
-        self.assertFalse(is_email('foo@bar.com.'))
-        self.assertFalse(is_email('somename@ｇｍａｉｌ.com'))
-        self.assertFalse(is_email('foo@bar.co.uk.'))
-        self.assertFalse(is_email('z@co.c'))
-        self.assertFalse(is_email('ｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌ@gmail.com'))
-        self.assertFalse(is_email("{}@{}.com".format('a' * 64, 'a' * 251)))
-        self.assertFalse(is_email("{}@{}.com".format('a' * 65, 'a' * 250)))
-        self.assertFalse(is_email("{}@{}.com".format('a' * 64, 'a' * 64)))
-        self.assertFalse(is_email("{}@{}.{}.{}.{}.com".format('a' * 64, 'b' * 63, 'b' * 63, 'c' * 63, 'd' * 58)))
-        self.assertFalse(is_email('test1@invalid.co m'))
-        self.assertFalse(is_email('test2@invalid.co m'))
-        self.assertFalse(is_email('test3@invalid.co m'))
-        self.assertFalse(is_email('test4@invalid.co m'))
-        self.assertFalse(is_email('test5@invalid.co m'))
-        self.assertFalse(is_email('test6@invalid.co m'))
-        self.assertFalse(is_email('test7@invalid.co m'))
-        self.assertFalse(is_email('test8@invalid.co m'))
-        self.assertFalse(is_email('test9@invalid.co m'))
-        self.assertFalse(is_email('test10@invalid.co m'))
-        self.assertFalse(is_email('test11@invalid.co m'))
-        self.assertFalse(is_email('test12@invalid.co　m'))
-        self.assertFalse(is_email('test13@invalid.co　m'))
-        self.assertFalse(is_email('multiple..dots@stillinvalid.com'))
-        self.assertFalse(is_email('test123+invalid! sub_address@gmail.com'))
-        self.assertFalse(is_email('gmail...ignores...dots...@gmail.com'))
-        self.assertFalse(is_email('ends.with.dot.@gmail.com'))
-        self.assertFalse(is_email('multiple..dots@gmail.com'))
-        self.assertFalse(is_email('wrong()[]",:;<>@@gmail.com'))
-        self.assertFalse(is_email('"wrong()[]",:;<>@@gmail.com'))
-        self.assertFalse(is_email('username@domain.com�'))
-        self.assertFalse(is_email('username@domain.com©'))
-        print('OK - test_invalid_email')
+        for i in [
+            'invalidemail@',
+            'invalid.com',
+            '@invalid.com',
+            'foo@bar.com.',
+            'somename@ｇｍａｉｌ.com',
+            'foo@bar.co.uk.',
+            'z@co.c',
+            'ｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌｇｍａｉｌ@gmail.com',
+            "{}@{}.com".format('a' * 64, 'a' * 251),
+            "{}@{}.com".format('a' * 65, 'a' * 250),
+            "{}@{}.com".format('a' * 64, 'a' * 64),
+            "{}@{}.{}.{}.{}.com".format('a' * 64, 'b' * 63, 'b' * 63, 'c' * 63, 'd' * 58),
+            'test1@invalid.co m',
+            'test2@invalid.co m',
+            'test3@invalid.co m',
+            'test4@invalid.co m',
+            'test5@invalid.co m',
+            'test6@invalid.co m',
+            'test7@invalid.co m',
+            'test8@invalid.co m',
+            'test9@invalid.co m',
+            'test10@invalid.co m',
+            'test11@invalid.co m',
+            'test12@invalid.co　m',
+            'test13@invalid.co　m',
+            'multiple..dots@stillinvalid.com',
+            'test123+invalid! sub_address@gmail.com',
+            'gmail...ignores...dots...@gmail.com',
+            'ends.with.dot.@gmail.com',
+            'multiple..dots@gmail.com',
+            'wrong()[]",:;<>@@gmail.com',
+            '"wrong()[]",:;<>@@gmail.com',
+            'username@domain.com�',
+            'username@domain.com©',
+        ]:
+            self.assertFalse(is_email(i))
+        print_test_ok()
 
     def test_valid_domain_specific_email(self):
-        self.assertTrue(is_email('foobar@gmail.com', { "domain_specific_validation": True }))
-        self.assertTrue(is_email('foo.bar@gmail.com', { "domain_specific_validation": True }))
-        self.assertTrue(is_email('foo.bar@googlemail.com', { "domain_specific_validation": True }))
-        self.assertTrue(is_email('{}@gmail.com'.format('a' * 30), { "domain_specific_validation": True }))
-        print('OK - test_valid_domain_specific_email')
+        for i in [
+            'foobar@gmail.com',
+            'foo.bar@gmail.com',
+            'foo.bar@googlemail.com',
+            '{}@gmail.com'.format('a' * 30),
+        ]:
+            self.assertTrue(is_email(i, {"domain_specific_validation": True}))
+        print_test_ok()
 
     def test_invalid_domain_specific_email(self):
-        self.assertFalse(is_email('test.1@gmail.com', { "domain_specific_validation": True }))
-        self.assertFalse(is_email('.foobar@gmail.com', { "domain_specific_validation": True }))
-        self.assertFalse(is_email("{}@gmail.com".format('s' * 31), { "domain_specific_validation": True }))
-        print('OK - test_invalid_domain_specific_email')
+        for i in [
+            'test.1@gmail.com',
+            '.foobar@gmail.com',
+            "{}@gmail.com".format('s' * 31),
+        ]:
+            self.assertFalse(is_email(i, {"domain_specific_validation": True}))
+        print_test_ok()
 
     def test_valid_email_with_utf8_char_in_local_part(self):
-        self.assertTrue(is_email('foo@bar.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('x@x.au', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('foo@bar.com.au', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('foo+bar@bar.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('hans@m端ller.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('test|123@m端ller.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('test123+ext@gmail.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('some.name.midd.leNa.me+extension@GoogleMail.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('"foobar"@example.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('"foo\\@bar"@example.com', { "allow_utf8_local_part": False }))
-        self.assertTrue(is_email('"  foo  bar  "@example.com', { "allow_utf8_local_part": False }))
-        print('OK - test_valid_email_with_utf8_char_in_local_part')
+        for i in [
+            'foo@bar.com',
+            'x@x.au',
+            'foo@bar.com.au',
+            'foo+bar@bar.com',
+            'hans@m端ller.com',
+            'test|123@m端ller.com',
+            'test123+ext@gmail.com',
+            'some.name.midd.leNa.me+extension@GoogleMail.com',
+            '"foobar"@example.com',
+            '"foo\\@bar"@example.com',
+            '"  foo  bar  "@example.com',
+        ]:
+            self.assertTrue(is_email(i, {"allow_utf8_local_part": False}))
+        print_test_ok()
 
     def test_invalid_email_with_utf8_char_in_local_part(self):
-        self.assertFalse(is_email('invalidemail@', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('invalid.com', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('@invalid.com', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('foo@bar.com.', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('foo@bar.co.uk.', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('somename@ｇｍａｉｌ.com', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('hans.m端ller@test.com', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('z@co.c', { "allow_utf8_local_part": False }))
-        self.assertFalse(is_email('tüst@invalid.com', { "allow_utf8_local_part": False }))
-        print('OK - test_invalid_email_with_utf8_char_in_local_part')
+        for i in [
+            'invalidemail@',
+            'invalid.com',
+            '@invalid.com',
+            'foo@bar.com.',
+            'foo@bar.co.uk.',
+            'somename@ｇｍａｉｌ.com',
+            'hans.m端ller@test.com',
+            'z@co.c',
+            'tüst@invalid.com',
+        ]:
+            self.assertFalse(is_email(i, {"allow_utf8_local_part": False}))
+        print_test_ok()
 
     def test_valid_email_with_display_name(self):
-        self.assertTrue(is_email('foo@bar.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('x@x.au', { "allow_display_name": True }))
-        self.assertTrue(is_email('foo@bar.com.au', { "allow_display_name": True }))
-        self.assertTrue(is_email('foo+bar@bar.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('hans.m端ller@test.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('hans@m端ller.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('test|123@m端ller.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('test123+ext@gmail.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('some.name.midd.leNa.me+extension@GoogleMail.com', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo@bar.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <x@x.au>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo@bar.com.au>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo+bar@bar.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <hans.m端ller@test.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <hans@m端ller.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <test|123@m端ller.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <test123+ext@gmail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('\'Foo Bar, Esq\'<foo@bar.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Middle Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Name<some.name.midd.leNa.me+extension@GoogleMail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo@gmail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('Name🍓With🍑Emoji🚴‍♀️🏆<test@aftership.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('🍇🍗🍑<only_emoji@aftership.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('"<displayNameInBrackets>"<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('"\\"quotes\\""<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('"name;"<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertTrue(is_email('"name;" <jh@gmail.com>', { "allow_display_name": True }))
-        print('OK - test_valid_email_with_display_name')
+        for i in [
+            'foo@bar.com',
+            'x@x.au',
+            'foo@bar.com.au',
+            'foo+bar@bar.com',
+            'hans.m端ller@test.com',
+            'hans@m端ller.com',
+            'test|123@m端ller.com',
+            'test123+ext@gmail.com',
+            'some.name.midd.leNa.me+extension@GoogleMail.com',
+            'Some Name <foo@bar.com>',
+            'Some Name <x@x.au>',
+            'Some Name <foo@bar.com.au>',
+            'Some Name <foo+bar@bar.com>',
+            'Some Name <hans.m端ller@test.com>',
+            'Some Name <hans@m端ller.com>',
+            'Some Name <test|123@m端ller.com>',
+            'Some Name <test123+ext@gmail.com>',
+            '\'Foo Bar, Esq\'<foo@bar.com>',
+            'Some Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Some Middle Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Name<some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Some Name <foo@gmail.com>',
+            'Name🍓With🍑Emoji🚴‍♀️🏆<test@aftership.com>',
+            '🍇🍗🍑<only_emoji@aftership.com>',
+            '"<displayNameInBrackets>"<jh@gmail.com>',
+            '"\\"quotes\\""<jh@gmail.com>',
+            '"name;"<jh@gmail.com>',
+            '"name;" <jh@gmail.com>',
+        ]:
+            self.assertTrue(is_email(i, {"allow_display_name": True}))
+        print_test_ok()
 
     def test_invalid_email_with_display_name(self):
-        self.assertFalse(is_email('invalidemail@', { "allow_display_name": True }))
-        self.assertFalse(is_email('invalid.com', { "allow_display_name": True }))
-        self.assertFalse(is_email('@invalid.com', { "allow_display_name": True }))
-        self.assertFalse(is_email('foo@bar.com.', { "allow_display_name": True }))
-        self.assertFalse(is_email('foo@bar.co.uk.', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <invalidemail@>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <invalid.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <@invalid.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.com.>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.co.uk.>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name foo@bar.co.uk.>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.co.uk.', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name < foo@bar.co.uk >', { "allow_display_name": True }))
-        self.assertFalse(is_email('Name foo@bar.co.uk', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name <some..name@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('Some Name<emoji_in_address🍈@aftership.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('invisibleCharacter\u001F<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('<displayNameInBrackets><jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('\\"quotes\\"<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('""quotes""<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('name;<jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('    <jh@gmail.com>', { "allow_display_name": True }))
-        self.assertFalse(is_email('"    "<jh@gmail.com>', { "allow_display_name": True }))
-        print('OK - test_invalid_email_with_display_name')
+        for i in [
+            'invalidemail@',
+            'invalid.com',
+            '@invalid.com',
+            'foo@bar.com.',
+            'foo@bar.co.uk.',
+            'Some Name <invalidemail@>',
+            'Some Name <invalid.com>',
+            'Some Name <@invalid.com>',
+            'Some Name <foo@bar.com.>',
+            'Some Name <foo@bar.co.uk.>',
+            'Some Name foo@bar.co.uk.>',
+            'Some Name <foo@bar.co.uk.',
+            'Some Name < foo@bar.co.uk >',
+            'Name foo@bar.co.uk',
+            'Some Name <some..name@gmail.com>',
+            'Some Name<emoji_in_address🍈@aftership.com>',
+            'invisibleCharacter\u001F<jh@gmail.com>',
+            '<displayNameInBrackets><jh@gmail.com>',
+            '\\"quotes\\"<jh@gmail.com>',
+            '""quotes""<jh@gmail.com>',
+            'name;<jh@gmail.com>',
+            '    <jh@gmail.com>',
+            '"    "<jh@gmail.com>',
+        ]:
+            self.assertFalse(is_email(i, {"allow_display_name": True}))
+        print_test_ok()
 
     def test_valid_email_with_required_display_name(self):
-        self.assertTrue(is_email('Some Name <foo@bar.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <x@x.au>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo@bar.com.au>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <foo+bar@bar.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <hans.m端ller@test.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <hans@m端ller.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <test|123@m端ller.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <test123+ext@gmail.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Some Middle Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Name <some.name.midd.leNa.me+extension@GoogleMail.com>', { "require_display_name": True }))
-        self.assertTrue(is_email('Name<some.name.midd.leNa.me+extension@GoogleMail.com>', { "require_display_name": True }))
-        print('OK - test_valid_email_with_required_display_name')
+        for i in [
+            'Some Name <foo@bar.com>',
+            'Some Name <x@x.au>',
+            'Some Name <foo@bar.com.au>',
+            'Some Name <foo+bar@bar.com>',
+            'Some Name <hans.m端ller@test.com>',
+            'Some Name <hans@m端ller.com>',
+            'Some Name <test|123@m端ller.com>',
+            'Some Name <test123+ext@gmail.com>',
+            'Some Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Some Middle Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Name <some.name.midd.leNa.me+extension@GoogleMail.com>',
+            'Name<some.name.midd.leNa.me+extension@GoogleMail.com>',
+        ]:
+            self.assertTrue(is_email(i, {"require_display_name": True}))
+        print_test_ok()
 
     def test_invalid_email_with_required_display_name(self):
-        self.assertFalse(is_email('some.name.midd.leNa.me+extension@GoogleMail.com', { "require_display_name": True }))
-        self.assertFalse(is_email('foo@bar.com', { "require_display_name": True }))
-        self.assertFalse(is_email('x@x.au', { "require_display_name": True }))
-        self.assertFalse(is_email('foo@bar.com.au', { "require_display_name": True }))
-        self.assertFalse(is_email('foo+bar@bar.com', { "require_display_name": True }))
-        self.assertFalse(is_email('hans.m端ller@test.com', { "require_display_name": True }))
-        self.assertFalse(is_email('hans@m端ller.com', { "require_display_name": True }))
-        self.assertFalse(is_email('test|123@m端ller.com', { "require_display_name": True }))
-        self.assertFalse(is_email('test123+ext@gmail.com', { "require_display_name": True }))
-        self.assertFalse(is_email('invalidemail@', { "require_display_name": True }))
-        self.assertFalse(is_email('invalid.com', { "require_display_name": True }))
-        self.assertFalse(is_email('@invalid.com', { "require_display_name": True }))
-        self.assertFalse(is_email('foo@bar.com.', { "require_display_name": True }))
-        self.assertFalse(is_email('foo@bar.co.uk.', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <invalidemail@>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <invalid.com>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <@invalid.com>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.com.>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.co.uk.>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name foo@bar.co.uk.>', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name <foo@bar.co.uk.', { "require_display_name": True }))
-        self.assertFalse(is_email('Some Name < foo@bar.co.uk >', { "require_display_name": True }))
-        self.assertFalse(is_email('Name foo@bar.co.uk', { "require_display_name": True }))
-        print('OK - test_invalid_email_with_required_display_name')
+        for i in [
+            'some.name.midd.leNa.me+extension@GoogleMail.com',
+            'foo@bar.com',
+            'x@x.au',
+            'foo@bar.com.au',
+            'foo+bar@bar.com',
+            'hans.m端ller@test.com',
+            'hans@m端ller.com',
+            'test|123@m端ller.com',
+            'test123+ext@gmail.com',
+            'invalidemail@',
+            'invalid.com',
+            '@invalid.com',
+            'foo@bar.com.',
+            'foo@bar.co.uk.',
+            'Some Name <invalidemail@>',
+            'Some Name <invalid.com>',
+            'Some Name <@invalid.com>',
+            'Some Name <foo@bar.com.>',
+            'Some Name <foo@bar.co.uk.>',
+            'Some Name foo@bar.co.uk.>',
+            'Some Name <foo@bar.co.uk.',
+            'Some Name < foo@bar.co.uk >',
+            'Name foo@bar.co.uk',
+        ]:
+            self.assertFalse(is_email(i, {"require_display_name": True}))
+        print_test_ok()
 
     def test_valid_emails_with_ip(self):
-        self.assertTrue(is_email('email@[123.123.123.123]', { "allow_ip_domain": True }))
-        self.assertTrue(is_email('email@255.255.255.255', { "allow_ip_domain": True }))
-        print('OK - test_valid_emails_with_ip')
+        for i in [
+            'email@[123.123.123.123]',
+            'email@255.255.255.255',
+        ]:
+            self.assertTrue(is_email(i, {"allow_ip_domain": True}))
+        print_test_ok()
 
     def test_invalid_emails_with_ip(self):
-        self.assertFalse(is_email('email@0.0.0.256', { "allow_ip_domain": True }))
-        self.assertFalse(is_email('email@26.0.0.256', { "allow_ip_domain": True }))
-        self.assertFalse(is_email('email@[266.266.266.266]', { "allow_ip_domain": True }))
-        print('OK - test_invalid_emails_with_ip')
+        for i in [
+            'email@0.0.0.256',
+            'email@26.0.0.256',
+            'email@[266.266.266.266]',
+        ]:
+            self.assertFalse(is_email(i, {"allow_ip_domain": True}))
+        print_test_ok()
 
     def test_valid_emails_with_blacklisted_chars_in_name(self):
-        self.assertTrue(is_email('emil@gmail.com', { "blacklisted_chars": 'abc' }))
-        self.assertTrue(is_email('ssss@gmail.com', { "blacklisted_chars": 'abc' }))
-        self.assertFalse(is_email('today@yahoo.com', { "blacklisted_chars": 'time' }))
-        print('OK - test_valid_emails_with_blacklisted_chars_in_name')
+        for i in [
+            ['emil@gmail.com', {"blacklisted_chars": 'abc'}],
+            ['ssss@gmail.com', {"blacklisted_chars": 'abc'}],
+        ]:
+            self.assertTrue(is_email(*i))
+        for i in [
+            ['today@yahoo.com', {"blacklisted_chars": 'time'}],
+        ]:
+            self.assertFalse(is_email(*i))
+        print_test_ok()
 
     def test_invalid_emails_with_blacklisted_chars_in_name(self):
-        self.assertFalse(is_email('email@gmail.com', { "blacklisted_chars": 'abc' }))
-        self.assertFalse(is_email('ssss@gmail.com', { "blacklisted_chars": 's' }))
-        self.assertFalse(is_email('ssss@gmail.com', { "blacklisted_chars": 'ssss' }))
-        self.assertFalse(is_email('today@yahoo.com', { "blacklisted_chars": 'day' }))
-        print('OK - test_invalid_emails_with_blacklisted_chars_in_name')
+        for i in [
+            ['email@gmail.com', {"blacklisted_chars": 'abc'}],
+            ['ssss@gmail.com', {"blacklisted_chars": 's'}],
+            ['ssss@gmail.com', {"blacklisted_chars": 'ssss'}],
+            ['today@yahoo.com', {"blacklisted_chars": 'day'}],
+        ]:
+            self.assertFalse(is_email(*i))
+        print_test_ok()
 
     def test_valid_long_emails(self):
-        self.assertTrue(is_email('Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX@example.com', { "ignore_max_length": True }))
-        print('OK - test_valid_long_emails')
+        for i in [
+            'Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX@example.com',
+        ]:
+            self.assertTrue(is_email(i, {"ignore_max_length": True}))
+        print_test_ok()
 
     def test_invalid_long_emails(self):
-        self.assertFalse(is_email('Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX@example.com', { "ignore_max_length": False }))
-        self.assertFalse(is_email('Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX-blablabla-blablabla-blablabla-blablabla-blablabla-blablabla@example.com', { "ignore_max_length": False }))
-        print('OK - test_invalid_long_emails')
+        for i in [
+            'Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX@example.com',
+            'Deleted-user-id-19430-Team-5051deleted-user-id-19430-team-5051XXXXXX-blablabla-blablabla-blablabla-blablabla-blablabla-blablabla@example.com',
+        ]:
+            self.assertFalse(is_email(i, {"ignore_max_length": False}))
+        print_test_ok()
 
     def test_valid_emails_with_denied_domains(self):
-        self.assertTrue(is_email('sample@test.com', { "host_blacklist": ['web.com', 'test.domain.com'] }))
-        self.assertTrue(is_email('sample@domain.com', { "host_blacklist": ['web.com', 'test.domain.com'] }))
-        print('OK - test_valid_emails_with_denied_domains')
+        for i in [
+            ['sample@test.com', {"host_blacklist": ['web.com', 'test.domain.com']}],
+            ['sample@domain.com', {"host_blacklist": ['web.com', 'test.domain.com']}],
+        ]:
+            self.assertTrue(is_email(*i))
+        print_test_ok()
 
     def test_invalid_emails_with_denied_domains(self):
-        self.assertFalse(is_email('gosn@web.com', { "host_blacklist": ['web.com', 'test.domain.com'] }))
-        self.assertFalse(is_email('gosn@test.domain.com', { "host_blacklist": ['web.com', 'test.domain.com'] }))
-        print('OK - test_invalid_emails_with_denied_domains')
+        for i in [
+            ['gosn@web.com', {"host_blacklist": ['web.com', 'test.domain.com']}],
+            ['gosn@test.domain.com', {"host_blacklist": ['web.com', 'test.domain.com']}],
+        ]:
+            self.assertFalse(is_email(*i))
+        print_test_ok()

@@ -1,21 +1,28 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_multibyte import is_multibyte
+from . import print_test_ok
 
 
 class TestIsMultiByte(unittest.TestCase):
 
     def test_valid_multibyte(self):
-        self.assertTrue(is_multibyte('ひらがな・カタカナ、．漢字'))
-        self.assertTrue(is_multibyte('あいうえお foobar'))
-        self.assertTrue(is_multibyte('ｶﾀｶﾅ'))
-        self.assertTrue(is_multibyte('中文'))
-        self.assertTrue(is_multibyte('test＠example.com'))
-        self.assertTrue(is_multibyte('1234abcDEｘｙｚ'))
-        print('OK - test_valid_multibyte')
+        for i in [
+            'ひらがな・カタカナ、．漢字',
+            'あいうえお foobar',
+            'ｶﾀｶﾅ',
+            '中文',
+            'test＠example.com',
+            '1234abcDEｘｙｚ',
+        ]:
+            self.assertTrue(is_multibyte(i))
+        print_test_ok()
 
     def test_invalid_multibyte(self):
-        self.assertFalse(is_multibyte('abc'))
-        self.assertFalse(is_multibyte('abc123'))
-        self.assertFalse(is_multibyte('<>@" *.'))
-        print('OK - test_invalid_multibyte')
+        for i in [
+            'abc',
+            'abc123',
+            '<>@" *.',
+        ]:
+            self.assertFalse(is_multibyte(i))
+        print_test_ok()

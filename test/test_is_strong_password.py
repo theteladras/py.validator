@@ -1,6 +1,7 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_strong_password import is_strong_password
+from . import print_test_ok
 
 
 class TestIsStrongPassword(unittest.TestCase):
@@ -13,19 +14,25 @@ class TestIsStrongPassword(unittest.TestCase):
     }
 
     def test_valid_stong_password(self):
-        self.assertTrue(is_strong_password('%2%k{7BsL"M%Kd6e', self.options))
-        self.assertTrue(is_strong_password('EXAMPLE of very long_password123!', self.options))
-        self.assertTrue(is_strong_password('mxH_+2vs&54_+H3P', self.options))
-        self.assertTrue(is_strong_password('+&DxJ=X7-4L8jRCD', self.options))
-        self.assertTrue(is_strong_password('etV*p%Nr6w&H%FeF', self.options))
-        print('OK - test_valid_stong_password')
+        for i in [
+            '%2%k{7BsL"M%Kd6e',
+            'EXAMPLE of very long_password123!',
+            'mxH_+2vs&54_+H3P',
+            '+&DxJ=X7-4L8jRCD',
+            'etV*p%Nr6w&H%FeF',
+        ]:
+            self.assertTrue(is_strong_password(i, self.options))
+        print_test_ok()
 
     def test_invalid_stong_password(self):
-        self.assertFalse(is_strong_password('', self.options))
-        self.assertFalse(is_strong_password('password', self.options))
-        self.assertFalse(is_strong_password('hunter2', self.options))
-        self.assertFalse(is_strong_password('hello world', self.options))
-        self.assertFalse(is_strong_password('passw0rd', self.options))
-        self.assertFalse(is_strong_password('password!', self.options))
-        self.assertFalse(is_strong_password('PASSWORD!', self.options))
-        print('OK - test_invalid_stong_password')
+        for i in [
+            '',
+            'password',
+            'hunter2',
+            'hello world',
+            'passw0rd',
+            'password!',
+            'PASSWORD!',
+        ]:
+            self.assertFalse(is_strong_password(i, self.options))
+        print_test_ok()

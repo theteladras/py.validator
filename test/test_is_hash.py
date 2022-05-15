@@ -1,10 +1,10 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_hash import is_hash
+from . import print_test_ok
 
 
 class TestIsHash(unittest.TestCase):
-
     len_32 = [
         'd94f3f016ae679c3008de268209132f2',
         '751adbc511ccbe8edf23d486fa4581cd',
@@ -69,168 +69,204 @@ class TestIsHash(unittest.TestCase):
     ]
 
     def test_valid_hash_md5(self):
-        for hash in self.len_32:
-            self.assertTrue(is_hash(hash, 'md5'))
-        print('OK - test_valid_hash_md5')
+        for h in self.len_32:
+            self.assertTrue(is_hash(h, 'md5'))
+        print_test_ok()
 
     def test_invalid_hash_md5(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'md5'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'md5'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'md5'))
-        self.assertFalse(is_hash('39485729348', 'md5'))
-        self.assertFalse(is_hash('q943', 'md5'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'md5'))
-        self.assertFalse(is_hash('39485729348', 'md5'))
-        print('OK - test_invalid_hash_md5')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q94375dj93458w34',
+            '39485729348',
+            'q943',
+            '%&FHKJFvk',
+            '39485729348',
+        ]:
+            self.assertFalse(is_hash(i, 'md5'))
+        print_test_ok()
 
     def test_valid_hash_md4(self):
-        for hash in self.len_32:
-            self.assertTrue(is_hash(hash, 'md4'))
-        print('OK - test_valid_hash_md4')
+        for h in self.len_32:
+            self.assertTrue(is_hash(h, 'md4'))
+        print_test_ok()
 
     def test_invalid_hash_md4(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'md4'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'md4'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'md4'))
-        self.assertFalse(is_hash('39485729348', 'md4'))
-        self.assertFalse(is_hash('q943', 'md4'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'md4'))
-        self.assertFalse(is_hash('39485729348', 'md4'))
-        print('OK - test_invalid_hash_md4')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q94375dj93458w34',
+            '39485729348',
+            'q943',
+            '%&FHKJFvk',
+            '39485729348',
+        ]:
+            self.assertFalse(is_hash(i, 'md4'))
+        print_test_ok()
 
     def test_valid_hash_ripemd128(self):
-        for hash in self.len_32:
-            self.assertTrue(is_hash(hash, 'ripemd128'))
-        print('OK - test_valid_hash_ripemd128')
+        for h in self.len_32:
+            self.assertTrue(is_hash(h, 'ripemd128'))
+        print_test_ok()
 
     def test_invalid_hash_ripemd128(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'ripemd128'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'ripemd128'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'ripemd128'))
-        self.assertFalse(is_hash('39485729348', 'ripemd128'))
-        self.assertFalse(is_hash('q943', 'ripemd128'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'ripemd128'))
-        self.assertFalse(is_hash('39485729348', 'ripemd128'))
-        print('OK - test_invalid_hash_ripemd128')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q94375dj93458w34',
+            '39485729348',
+            'q943',
+            '%&FHKJFvk',
+            '39485729348',
+        ]:
+            self.assertFalse(is_hash(i, 'ripemd128'))
+        print_test_ok()
 
     def test_valid_hash_tiger128(self):
-        for hash in self.len_32:
-            self.assertTrue(is_hash(hash, 'tiger128'))
-        print('OK - test_valid_hash_tiger128')
+        for h in self.len_32:
+            self.assertTrue(is_hash(h, 'tiger128'))
+        print_test_ok()
 
     def test_invalid_hash_tiger128(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'tiger128'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'tiger128'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'tiger128'))
-        self.assertFalse(is_hash('39485729348', 'tiger128'))
-        self.assertFalse(is_hash('q943', 'tiger128'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'tiger128'))
-        self.assertFalse(is_hash('39485729348', 'tiger128'))
-        print('OK - test_invalid_hash_tiger128')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q94375dj93458w34',
+            '39485729348',
+            'q943',
+            '%&FHKJFvk',
+            '39485729348',
+        ]:
+            self.assertFalse(is_hash(i, 'tiger128'))
+        print_test_ok()
 
     def test_valid_hash_crc32(self):
-        for hash in self.len_8:
-            self.assertTrue(is_hash(hash, 'crc32'))
-        print('OK - test_valid_hash_crc32')
+        for h in self.len_8:
+            self.assertTrue(is_hash(h, 'crc32'))
+        print_test_ok()
 
     def test_invalid_hash_crc32(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'crc32'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'crc32'))
-        self.assertFalse(is_hash('q943', 'crc32'))
-        self.assertFalse(is_hash('39485729348', 'crc32'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'crc32'))
-        print('OK - test_invalid_hash_crc32')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q943',
+            '39485729348',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'crc32'))
+        print_test_ok()
 
     def test_valid_hash_crc32b(self):
-        for hash in self.len_8:
-            self.assertTrue(is_hash(hash, 'crc32b'))
-        print('OK - test_valid_hash_crc32b')
+        for h in self.len_8:
+            self.assertTrue(is_hash(h, 'crc32b'))
+        print_test_ok()
 
     def test_invalid_hash_crc32b(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'crc32b'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'crc32b'))
-        self.assertFalse(is_hash('q943', 'crc32b'))
-        self.assertFalse(is_hash('39485729348', 'crc32b'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'crc32b'))
-        print('OK - test_invalid_hash_crc32b')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'q94375dj93458w34',
+            'q943',
+            '39485729348',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'crc32b'))
+        print_test_ok()
 
     def test_valid_hash_sha1(self):
-        for hash in self.len_40:
-            self.assertTrue(is_hash(hash, 'sha1'))
-        print('OK - test_valid_hash_sha1')
+        for h in self.len_40:
+            self.assertTrue(is_hash(h, 'sha1'))
+        print_test_ok()
 
     def test_invalid_hash_sha1(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'sha1'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'sha1'))
-        self.assertFalse(is_hash('q943', 'sha1'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'sha1'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'sha1'))
-        print('OK - test_invalid_hash_sha1')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'sha1'))
+        print_test_ok()
 
     def test_valid_hash_tiger160(self):
-        for hash in self.len_40:
-            self.assertTrue(is_hash(hash, 'tiger160'))
-        print('OK - test_valid_hash_tiger160')
+        for h in self.len_40:
+            self.assertTrue(is_hash(h, 'tiger160'))
+        print_test_ok()
 
     def test_invalid_hash_tiger160(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'tiger160'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'tiger160'))
-        self.assertFalse(is_hash('q943', 'tiger160'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'tiger160'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'tiger160'))
-        print('OK - test_invalid_hash_tiger160')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'tiger160'))
+        print_test_ok()
 
     def test_valid_hash_sha256(self):
-        for hash in self.len_64:
-            self.assertTrue(is_hash(hash, 'sha256'))
-        print('OK - test_valid_hash_sha256')
+        for h in self.len_64:
+            self.assertTrue(is_hash(h, 'sha256'))
+        print_test_ok()
 
     def test_invalid_hash_sha256(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'sha256'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'sha256'))
-        self.assertFalse(is_hash('q943', 'sha256'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'sha256'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'sha256'))
-        print('OK - test_invalid_hash_sha256')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'sha256'))
+        print_test_ok()
 
     def test_valid_hash_sha384(self):
-        for hash in self.len_96:
-            self.assertTrue(is_hash(hash, 'sha384'))
-        print('OK - test_valid_hash_sha384')
+        for h in self.len_96:
+            self.assertTrue(is_hash(h, 'sha384'))
+        print_test_ok()
 
     def test_invalid_hash_sha384(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'sha384'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'sha384'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo', 'sha384'))
-        self.assertFalse(is_hash('q943', 'sha384'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'sha384'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'sha384'))
-        print('OK - test_invalid_hash_sha384')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'sha384'))
+        print_test_ok()
 
     def test_valid_hash_sha512(self):
-        for hash in self.len_128:
-            self.assertTrue(is_hash(hash, 'sha512'))
-        print('OK - test_valid_hash_sha512')
+        for h in self.len_128:
+            self.assertTrue(is_hash(h, 'sha512'))
+        print_test_ok()
 
     def test_invalid_hash_sha512(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'sha512'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'sha512'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo', 'sha512'))
-        self.assertFalse(is_hash('q943', 'sha512'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'sha512'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'sha512'))
-        print('OK - test_invalid_hash_sha512')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'sha512'))
+        print_test_ok()
 
     def test_valid_hash_tiger192(self):
-        for hash in self.len_48:
-            self.assertTrue(is_hash(hash, 'tiger192'))
-        print('OK - test_valid_hash_tiger192')
+        for h in self.len_48:
+            self.assertTrue(is_hash(h, 'tiger192'))
+        print_test_ok()
 
     def test_invalid_hash_tiger192(self):
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1', 'tiger192'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk', 'tiger192'))
-        self.assertFalse(is_hash('KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo', 'tiger192'))
-        self.assertFalse(is_hash('q943', 'tiger192'))
-        self.assertFalse(is_hash('q94375dj93458w34', 'tiger192'))
-        self.assertFalse(is_hash('%&FHKJFvk', 'tiger192'))
-        print('OK - test_invalid_hash_tiger192')
+        for i in [
+            'KYT0bf1c35032a71a14c2f719e5a14c1',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjk',
+            'KYT0bf1c35032a71a14c2f719e5a14c1dsjkjkjkjkkjklololo',
+            'q943',
+            'q94375dj93458w34',
+            '%&FHKJFvk',
+        ]:
+            self.assertFalse(is_hash(i, 'tiger192'))
+        print_test_ok()

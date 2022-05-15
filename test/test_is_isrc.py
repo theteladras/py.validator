@@ -1,6 +1,7 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_isrc import is_isrc
+from . import print_test_ok
 
 
 class TestIsIsrc(unittest.TestCase):
@@ -10,14 +11,15 @@ class TestIsIsrc(unittest.TestCase):
         self.assertTrue(is_isrc('GBAYE6800011'))
         self.assertTrue(is_isrc('USRC15705223'))
         self.assertTrue(is_isrc('USCA29500702'))
-        print('OK - test_valid_isrc')
+        print_test_ok()
 
     def test_invalid_isrc(self):
         self.assertFalse(is_isrc('USAT2990060'))
         self.assertFalse(is_isrc('SRC15705223'))
         self.assertFalse(is_isrc('US-CA29500702'))
         self.assertFalse(is_isrc('USARC15705223'))
-        print('OK - test_invalid_isrc')
+        print_test_ok()
 
     def test_fail_isrc(self):
         self.assertRaises(Exception, is_isrc)
+        print_test_ok()

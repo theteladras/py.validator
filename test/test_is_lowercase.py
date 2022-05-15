@@ -1,20 +1,27 @@
 import unittest
 
-from pyvalidator import *
+from pyvalidator.is_lowercase import is_lowercase
+from . import print_test_ok
 
 
 class TestIsLowercase(unittest.TestCase):
 
     def test_valid_lowercase(self):
-        self.assertTrue(is_lowercase('ccc'))
-        self.assertTrue(is_lowercase('qwerty'))
-        self.assertTrue(is_lowercase('asd123'))
-        self.assertTrue(is_lowercase('hello world'))
-        self.assertTrue(is_lowercase('   .'))
-        print('OK - test_valid_lowercase')
+        for i in [
+            'ccc',
+            'qwerty',
+            'asd123',
+            'hello world',
+            '   .',
+        ]:
+            self.assertTrue(is_lowercase(i))
+        print_test_ok()
 
     def test_invalid_lowercase(self):
-        self.assertFalse(is_lowercase('hello WoRLD'))
-        self.assertFalse(is_lowercase('HELLO WORLd'))
-        self.assertFalse(is_lowercase('ASD123'))
-        print('OK - test_invalid_lowercase')
+        for i in [
+            'hello WoRLD',
+            'HELLO WORLd',
+            'ASD123',
+        ]:
+            self.assertFalse(is_lowercase(i))
+        print_test_ok()
