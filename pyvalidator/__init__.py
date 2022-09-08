@@ -60,3 +60,4 @@ from pyvalidator.is_strong_password import is_strong_password
 from pyvalidator.is_uppercase import is_uppercase
 from pyvalidator.is_url import is_url
 from pyvalidator.is_uuid import is_uuid
+from pyvalidator.is_license_plate import is_license_plate
