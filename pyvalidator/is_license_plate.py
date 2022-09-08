@@ -31,7 +31,7 @@ def is_license_plate(input: str, locale: str = 'any') -> bool:
     patterns['kok-IN'] = patterns['en-IN']
 
 
-    if locale not in patterns and locale is not 'any':
+    if locale not in patterns and locale != 'any':
         raise ValueError('Locale is not valid: ', locale)
 
     if locale in patterns:
