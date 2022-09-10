@@ -13,7 +13,8 @@ def is_license_plate(input: str, locale: str = 'any') -> bool:
         'sq-AL': r"^[A-Z]{2}[- ]?((\d{3}[- ]?(([A-Z]{2})|T))|(R[- ]?\d{3}))$",
         'pt-BR': r"^[A-Z]{3}[ -]?[0-9][A-Z][0-9]{2}|[A-Z]{3}[ -]?[0-9]{4}$",
         'sv-SE': r"^[A-HJ-PR-UW-Z]{3} ?[\d]{2}[A-HJ-PR-UW-Z1-9]$|(^[A-ZÅÄÖ ]{2,7}$)/.test(str.trim())",
-        'en-IN': r"^[A-Z]{2}[ -]?[0-9]{1,2}(?:[ -]?[A-Z])(?:[ -]?[A-Z]*)?[ -]?[0-9]{4}$"
+        'en-IN': r"^[A-Z]{2}[ -]?[0-9]{1,2}(?:[ -]?[A-Z])(?:[ -]?[A-Z]*)?[ -]?[0-9]{4}$",
+        'sr-RS': r"(^(AL|AR|AC|BG|BO|BP|BT|BĆ|BU|BČ|VA|VB|VL|VP|VR|VS|VŠ|GL|GM|DE|ĐA|ZA|ZR|IN|IC|JA|KA|KV|KG|KŽ|KI|KL|KM|KO|KŠ|LB|LE|LO|LU|NV|NG|NI|NP|NS|PA|PB|PE|PŽ|PZ|PI|PK|PN|PO|PP|PR|PT|RA|RU|SA|SV|SD|SM|SO|SP|ST|SU|TO|TS|TT|ĆU|UB|UE|UR|ČA|ŠA|ŠI)[- ]?\d{3,4}[- ]?[A-ZČĆĐŠŽ]{2}$)|(^П[- ]?\d{3}[- ]?\d{3}$)|(^(AL|AR|AC|BG|BO|BP|BT|BĆ|BU|BČ|VA|VB|VL|VP|VR|VS|VŠ|GL|GM|DE|ĐA|ZA|ZR|IN|IC|JA|KA|KV|KG|KŽ|KI|KL|KM|KO|KŠ|LB|LE|LO|LU|NV|NG|NI|NP|NS|PA|PB|PE|PŽ|PZ|PI|PK|PN|PO|PP|PR|PT|RA|RU|SA|SV|SD|SM|SO|SP|ST|SU|TO|TS|TT|ĆU|UB|UE|UR|ČA|ŠA|ŠI)[- ]?\d{2}[- ]?\d{3}$)"
     }
 
     patterns['hi-IN'] = patterns['en-IN']

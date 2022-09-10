@@ -211,6 +211,38 @@ class TestIsLicensePlate(unittest.TestCase):
             self.assertFalse(is_license_plate(i, 'pt-BR'))
         print_test_ok()
 
+    def test_valid_license_plate_sr_RS(self):
+        for i in [
+            'BG 1234 AZ',
+            'BG 123 AZ',
+            'BG-123-AZ',
+            'BG123AZ',
+            'VŠ123VŠ',
+            'BG 094 ĆM',
+            'BG-12456',
+            'П555333'
+        ]:
+            self.assertTrue(is_license_plate(i, 'sr-RS'))
+        print_test_ok()
+
+    def test_invalid_license_plate_sr_RS(self):
+        for i in [
+            '',
+            ' ',
+            'AAA 00 AAA',
+            'AB123DC',
+            'AB-123-VŠ',
+            'BG-123_AZ',
+            'BG_123_AZ',
+            'BG-12-AZ',
+            'BG-12456-AZ',
+            'BG 123 AÜ',
+            'BG-124563',
+            'П2233'
+        ]:
+            self.assertFalse(is_license_plate(i, 'sr-RS'))
+        print_test_ok()
+
     def test_valid_license_plate_any(self):
         for i in [
             'ABC1234',
