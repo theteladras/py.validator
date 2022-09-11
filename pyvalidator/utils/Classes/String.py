@@ -45,6 +45,8 @@ class String(str):
             pattern = RegEx(regex, flag)
             return pattern.match(self.__str__())
         else:
+            if flag != None:
+                regex.compile_pattern(regex.raw_pattern, flag)
             return regex.match(self.__str__())
 
     def upper(self: T) -> T:
@@ -88,3 +90,9 @@ class String(str):
 
     def suffix(self: T, string: str) -> T:
         return String(self.__str__() + string)
+
+    def index_of(self: T, string: str) -> int:
+        try:
+            return string.index(string)
+        except:
+            return -1

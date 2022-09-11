@@ -62,3 +62,4 @@ from pyvalidator.is_url import is_url
 from pyvalidator.is_uuid import is_uuid
 from pyvalidator.is_aws_arn import is_aws_arn
 from pyvalidator.is_license_plate import is_license_plate
+from pyvalidator.is_magnet_uri import is_magnet_uri

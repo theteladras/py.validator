@@ -8,10 +8,15 @@ FlagType = Union[Literal["g"], Literal["i"], Literal["m"], Literal["u"], None]
 
 class RegEx(object):
     pattern = None
+    raw_pattern = None
 
     def __init__(self, pattern: str, flag: FlagType = None) -> None:
+        raw_pattern = pattern
         if not pattern:
             raise ValueError("Pattern not provided")
+        self.compile_pattern(pattern, flag)
+
+    def compile_pattern(self, pattern: str, flag: FlagType) -> None:
         if flag == 'i':
             self.pattern = re.compile(pattern, re.IGNORECASE)
         elif flag == 'g':
