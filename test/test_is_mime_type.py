@@ -53,5 +53,5 @@ class TestIsMimeType(unittest.TestCase):
             'model/vnd.gtw; charset=utf-8',
             'video/mp4; charset=utf-8',
         ]:
-            self.assertFalse(is_mime_type(i))
+            self.assertFalse(is_mime_type(i), i)
         print_test_ok()

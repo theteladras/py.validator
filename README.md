@@ -110,6 +110,7 @@ Validator                                | Description
 **is_slug(str)**                        | Check if the string is of type slug. `Options` allow a single hyphen between string. e.g. [`cn-cn`, `cn-c-c`]
 **is_strong_password(str, options)**    | Check if a password is strong or not. Allows for custom requirements or scoring rules. If `return_score` is *True*, then the function returns an integer score for the password rather than a boolean.<br/>Default options: <br/>`{ "min_length": 8, "min_lowercase": 1, "min_uppercase": 1, "min_numbers": 1, "min_symbols": 1, "return_score": False, "points_perUnique": 1, "points_per_repeat": 0.5, "points_for_containing_lower": 10, "points_for_containing_upper": 10, "points_for_containing_number": 10, "points_for_containing_symbol": 10 }`
 **is_mime_type(str)**                   | check if the string matches to a valid [MIME type](https://en.wikipedia.org/wiki/Media_type) format.
+**is_iso6391(str)**                      | check if the string is a valid [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code.
 
 ## Contributing
 
