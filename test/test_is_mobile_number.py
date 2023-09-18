@@ -2555,7 +2555,7 @@ class TestIsMobileNumber(unittest.TestCase):
             invalid_numbers = fixture['invalid']
             for number in invalid_numbers:
                 self.assertFalse(is_mobile_number(number, locale))
-            print_test_ok(r'for locale {locale}')
+            print_test_ok(f'for locale {locale}')
 
     def test_valid_mobile_numbers_locale_any_explicite(self):
         valid_numbers = [
@@ -2607,7 +2607,7 @@ class TestIsMobileNumber(unittest.TestCase):
         ]
         for number in valid_numbers:
             self.assertFalse(is_mobile_number(number, 'any', { "strict_mode": True }))
-            print_test_ok(r', number: {number}')
+            print_test_ok(f', number: {number}')
 
     def test_throw_moboile_number_validation_for_bad_locale(self):
         self.assertRaises(Exception, is_mobile_number, ['+381638730746', 'BAD'])
