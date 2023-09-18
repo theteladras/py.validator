@@ -5,3 +5,4 @@ build
 py.validator.egg-info
 *.pyc
 *.tmp
+pyvalidatorenv
