@@ -1,7 +1,7 @@
 from .utils.assert_string import assert_string
 import re
 
-def is_mailto(input):
+def is_mailto_uri(input):
     input = assert_string(input)
     """
     The function checks if a given string is a valid mailto link with one or more email addresses
