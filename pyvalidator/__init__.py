@@ -66,3 +66,4 @@ from pyvalidator.is_magnet_uri import is_magnet_uri
 from pyvalidator.is_mailto_uri import is_mailto_uri
 from pyvalidator.is_mime_type import is_mime_type
 from pyvalidator.is_iso6391 import is_iso6391
+from pyvalidator.is_freight_container_id import is_freight_container_id
