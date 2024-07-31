@@ -5,7 +5,7 @@ passport_regex_by_country_code = {
     "AM": r"^[A-Z]{2}\d{7}$",  # ARMENIA
     "AR": r"^[A-Z]{3}\d{6}$",  # ARGENTINA
     "AT": r"^[A-Z]\d{7}$",  # AUSTRIA
-    "AU": r"^[A-Z]\d{7}$",  # AUSTRALIA
+    "AU": r"^([A-Z]{2}\d{7}|[A-Z]{1}\d{7})$",  # AUSTRALIA
     "BA": r"^[A-Z]\d{7}$",  # BOSNIA AND HERZEGOVINA,
     "BE": r"^[A-Z]{2}\d{6}$",  # BELGIUM
     "BG": r"^\d{9}$",  # BULGARIA
