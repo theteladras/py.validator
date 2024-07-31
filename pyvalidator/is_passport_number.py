@@ -5,7 +5,7 @@ passport_regex_by_country_code = {
     "AM": r"^[A-Z]{2}\d{7}$",  # ARMENIA
     "AR": r"^[A-Z]{3}\d{6}$",  # ARGENTINA
     "AT": r"^[A-Z]\d{7}$",  # AUSTRIA
-    "AU": r"^[A-Z]\d{7}$",  # AUSTRALIA
+    "AU": r"^([A-Z]{2}\d{7}|[A-Z]{1}\d{7})$",  # AUSTRALIA
     "BA": r"^[A-Z]\d{7}$",  # BOSNIA AND HERZEGOVINA,
     "BE": r"^[A-Z]{2}\d{6}$",  # BELGIUM
     "BG": r"^\d{9}$",  # BULGARIA
@@ -49,6 +49,7 @@ passport_regex_by_country_code = {
     "RS": r"^\d{9}$",  # SERBIA,
     "RU": r"^\d{9}$",  # RUSSIAN FEDERATION
     "SE": r"^\d{8}$",  # SWEDEN
+    "SG": r"^(e|E)\d{7}[a-zA-Z]{1}$",  # SINGAPORE
     "SL": r"^(P)[A-Z]\d{7}$",  # SLOVENIA
     "SK": r"^[0-9A-Z]\d{7}$",  # SLOVAKIA
     "TR": r"^[A-Z]\d{8}$",  # TURKEY
