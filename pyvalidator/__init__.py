@@ -24,6 +24,7 @@ from pyvalidator.is_even import is_even
 from pyvalidator.is_float import is_float
 from pyvalidator.is_fqdn import is_fqdn
 from pyvalidator.is_full_width import is_full_width
+from pyvalidator.is_half_width import is_half_width
 from pyvalidator.is_hash import is_hash
 from pyvalidator.is_hexadecimal import is_hexadecimal
 from pyvalidator.is_hsl import is_hsl
